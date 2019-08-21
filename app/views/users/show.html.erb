@@ -2,11 +2,15 @@
   <div class="row">
     <div class="col-md-2">
       <%= image_tag('images.png', alt: 'User_image', id:'user_image') %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
+      <p>画像を変更する（リンク）</p>
       <%= @user.name %>
+      <p>投稿フォーム</p>
+    </div>
+    <div class="col-md-5 bg-warning">
+      投稿一覧
+    </div>
+    <div class="col-md-5 bg-info">
+      気になるリスト一覧
     </div>
   </div>
 </div>

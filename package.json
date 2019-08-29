@@ -1,5 +1,8 @@
 {
   "name": "my_first_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "puppeteer": "^1.19.0"
+  }
 }

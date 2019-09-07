@@ -5,6 +5,11 @@
     padding-bottom: 20px;
 }
 
+/** フラッシュメッセージ **/
+.alert{
+    text-align: center;
+}
+
 /** ユーザーページ **/
 
 #user_image{
@@ -15,13 +20,3 @@
     border: 2px solid black;
     margin: 10px 0;
 }
-
-/**
-.post_list{
-    background-color: orange;
-}
-
-.interested_list{
-    background-color: yellow;
-}
-**/

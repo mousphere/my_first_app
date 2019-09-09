@@ -14,7 +14,7 @@ RSpec.describe 'ユーザー登録時の挙動', type: :system do
   context '有効な情報を送信したとき' do
     example 'ユーザーページにリダイレクトされる' do
       subject
-      expect(page).to have_content('投稿一覧')
+      expect(page).to have_content(user.name)
     end
     
     example 'ユーザーレコード数が１増える' do

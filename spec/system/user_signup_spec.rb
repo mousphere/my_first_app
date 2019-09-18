@@ -18,7 +18,7 @@ RSpec.describe 'ユーザー登録時の挙動', type: :system do
     end
     
     example 'ユーザーレコード数が１増える' do
-      expect{ subject }.to change(User, :count).by(1)
+      expect { subject }.to change(User, :count).by(1)
     end
   end
   

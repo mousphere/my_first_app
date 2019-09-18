@@ -12,6 +12,17 @@ RSpec.describe 'ログイン時の挙動', type: :system do
       expect(page).to have_content(user.name)
       expect(page).to have_content('アカウント')
     end
+    
+    example 'ログイン後、ログアウトリンクをクリックするとセッションが切断される' do
+      visit(login_path)
+      fill_in('メールアドレス', with: user.email)
+      fill_in('パスワード', with: user.password)
+      click_button('ログイン')
+      visit(root_path)
+      click_link('アカウント')
+      click_link('ログアウト')
+      expect(page).to have_content('ログイン')
+    end
   end
   
   context '無効な情報が入力された時' do

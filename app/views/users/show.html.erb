@@ -1,18 +1,7 @@
 <div class="container-fluid text-center">
   <div class="row">
-    <div class="col-md-2">
-      <%= image_tag('images.png', alt: 'User_image', id:'user_image') %>
-      <p><%= @user.name %></p>
-      <%= form_for(@user, url: '#') do |f| %>
-        <div class="form-group">
-          <%= f.submit "プロフィール変更", class:"btn btn-primary" %>
-        </div>
-      <% end %>
-      <%= form_for(:article, url: '#') do |f| %>
-        <div class="form-group">
-          <%= f.submit "投稿する", class:"btn btn-primary" %>
-        </div>
-      <% end %>
+    <div class="col-md-2 user_profile">
+      <%= render 'shared/user_profile' %>
     </div>
     <div class="col-md-5 bg-warning">
       投稿一覧

@@ -1,13 +1,14 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <h2 class="text-center">新規登録</h2>
+<div class="container-fluid text-center">
+  <div class="row">
+    <div class="col-md-2 user_profile">
+      <%= render 'shared/user_profile' %>
+    </div>
+    <div class="col-md-4 offset-md-2">
       <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages' %>
         <div class="form-group">
           <%= f.label :name, "ユーザー名" %>
-          <%= f.text_field :name, class:"form-control",
-                                  placeholder: '20文字以内で入力してください' %>
+          <%= f.text_field :name, class:"form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :email, "メールアドレス" %>
@@ -15,18 +16,15 @@
         </div>
         <div class="form-group">
           <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, class:"form-control",
-                                          placeholder: '8文字以上で入力してください' %>
+          <%= f.password_field :password, class:"form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :password_confirmation, "パスワード(確認用にもう1度入力してください)" %>
           <%= f.password_field :password_confirmation, class:"form-control" %>
         </div>
         <div class="form-group">
-          <%= f.submit "登録", class:"btn btn-primary" %>
+          <%= f.submit "変更", class:"btn btn-primary" %>
         </div>
         
       <% end %>
     </div>
-  </div>
-</div>

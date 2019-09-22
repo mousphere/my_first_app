@@ -25,6 +25,13 @@
     margin: 10px 0;
 }
 
+/* ユーザープロフィール上のボタン */
+.user_profile{
+    .btn-primary{
+        margin-bottom: 10px;
+    }
+}
+
 /** ログインページ **/
 /* チェックボックス */
 .cookie_check{
@@ -36,7 +43,7 @@
 }
 
 .checkbox {
-  span {
-    margin-left: 15px;
-  }
+    span {
+        margin-left: 15px;
+    }
 }

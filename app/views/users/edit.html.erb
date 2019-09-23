@@ -1,11 +1,16 @@
-<div class="container-fluid text-center">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-2 user_profile">
+    <div class="col-md-2 text-center user_profile">
       <%= render 'shared/user_profile' %>
     </div>
     <div class="col-md-4 offset-md-2">
+      <h2 class="text-center">ユーザー情報編集</h2>
       <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages' %>
+        <div class="form-group">
+          <%= f.label :image, "プロフィール画像", class:"image-label" %>
+          <%= f.file_field :image %>
+        </div>
         <div class="form-group">
           <%= f.label :name, "ユーザー名" %>
           <%= f.text_field :name, class:"form-control" %>

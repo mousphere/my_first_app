@@ -12,24 +12,27 @@
 
 /** フラッシュメッセージ **/
 .alert{
+    margin-bottom: 0px;
     text-align: center;
 }
 
-/** ユーザーページ **/
-#user_image{
+/** ユーザープロフィール **/
+.user_profile{
+    .btn-primary{
+        margin-bottom: 10px;
+    }
+    #user_image{
     border-radius: 50%;
     width: 80px;
     height: 80px;
     background-position: center center;
     border: 2px solid black;
     margin: 10px 0;
+    }
 }
 
-/* ユーザープロフィール上のボタン */
-.user_profile{
-    .btn-primary{
-        margin-bottom: 10px;
-    }
+.image-label{
+    display: block;
 }
 
 /** ログインページ **/

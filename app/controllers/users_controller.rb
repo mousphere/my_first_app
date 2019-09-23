@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = '登録が完了しました！みんなで観光地を共有しましょう！'
       redirect_to user_path(@user)
     else
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(user_params_including_image)
       flash[:success] = 'プロフィールが更新されました'
       redirect_to @user
     else
@@ -38,5 +39,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email,
                                    :password, :password_confirmation)
+    end
+    
+    # TODO
+    # 新規登録時も以下に更新する
+    def user_params_including_image
+      params.require(:user).permit(:name, :email,
+                                   :password, :password_confirmation, :image)
     end
 end

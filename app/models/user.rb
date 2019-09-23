@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
+  
+  # ----- バリデーション -----
   validates :name, presence: true, length: { maximum: 20 }
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -8,10 +10,16 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   
-  has_secure_password
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
   
+  validates :image, allow_nil: true
+  
+  # ----- -----
+  
+  has_secure_password
   mount_uploader :image, ImagesUploader
+  
+  # ----- 関数一覧 -----
   
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)

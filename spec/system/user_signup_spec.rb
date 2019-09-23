@@ -17,6 +17,11 @@ RSpec.describe 'ユーザー登録時の挙動', type: :system do
       expect(page).to have_content(user.name)
     end
     
+    example '自動的にログインする' do
+      subject
+      expect(page).to have_content('アカウント')
+    end
+    
     example 'ユーザーレコード数が１増える' do
       expect { subject }.to change(User, :count).by(1)
     end

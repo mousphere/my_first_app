@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー登録時の挙動', type: :system do
-  let(:user) { build(:valid_user) }
+  let(:user) { build(:user1) }
   
   subject { visit(new_user_path)
               fill_in('ユーザー名', with: user.name)

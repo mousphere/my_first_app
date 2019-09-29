@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :deactivate, :destroy]
+  before_action :correct_user, only: [:edit, :update, :deactivate, :destroy]
   
   def new
     @user = User.new
@@ -24,8 +24,15 @@ class UsersController < ApplicationController
       render '/users/new'
     end
   end
+  
+  def deactivate
+     @user = User.find(params[:id])
+  end
 
-  def delete
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = 'アカウントが削除されました'
+    redirect_to root_url
   end
   
   def update
@@ -62,7 +69,7 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       unless current_user?(@user)
-        flash[:danger] = '他ユーザーの情報は編集できません'
+        flash[:danger] = 'アクセス権がありません'
         redirect_to root_url
       end
     end

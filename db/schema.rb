@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190928013533) do
+ActiveRecord::Schema.define(version: 20190928020835) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20190928013533) do
     t.string "area"
     t.string "genre"
     t.string "image"
+    t.string "tourist_attraction"
     t.index ["user_id", "created_at"], name: "index_articles_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end

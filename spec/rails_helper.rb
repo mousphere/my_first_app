@@ -33,6 +33,9 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+# SQL実行ログをコンソールに出力
+#ActiveRecord::Base.logger = Logger.new(STDOUT)
 RSpec.configure do |config|
   config.include Capybara::DSL
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user)  { User.new(params) }
-  let(:params) { { name: 'hogehoge', email: 'test@test.com',
-                   password: 'a' * 8, password_confirmation: 'a' * 8 } }
+  let(:user) { build(:user1) }
                    
   context '有効なユーザー情報' do
     example 'テストケースの有効性確認' do
@@ -49,9 +47,9 @@ RSpec.describe User, type: :model do
       
       example '大文字、小文字の区別をしない' do
         user.save
-        other_user = user.dup
-        other_user.email = 'TesT@tESt.coM'
-        expect(other_user).not_to be_valid
+        @other_user = user.dup
+        @other_user.email = 'TesT1@tESt.coM'
+        expect(@other_user).not_to be_valid
       end
     end
     
@@ -73,4 +71,9 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  
+  # context 'articlesとの関連' do
+  #   example 'ユーザーが削除されると記事も削除される' do
+  #   end
+  # end
 end

@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-4 offset-md-2">
       <h2 class="text-center">記事投稿</h2>
-      <%= form_for [ @user, @article ], html: { class: [ :border, :rounded ] } do |f| %>
+      <%= form_for @article, html: { class: [ :border, :rounded ] } do |f| %>
         <%= render 'shared/error_messages' %>
         <div class="form-group">
           <%= f.label :tourist_attraction, '名称' %>

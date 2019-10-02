@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'deactivate', on: :member
-    resources :articles
   end
+  
+  resources :articles
 end

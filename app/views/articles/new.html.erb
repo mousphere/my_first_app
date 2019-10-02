@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 text-center user_profile">
+      <%= render 'shared/user_profile' %>
+    </div>
+    <div class="col-md-4 offset-md-2">
+      <h2 class="text-center">記事投稿</h2>
+      <%= form_for [ @user, @article ], html: { class: [ :border, :rounded ] } do |f| %>
+        <%= render 'shared/error_messages' %>
+        <div class="form-group">
+          <%= f.label :tourist_attraction, '名称' %>
+          <%= f.text_field :tourist_attraction, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :area, '都道府県' %>
+          <%= f.select :area, [['東京都', '東京都'], ['千葉県', '千葉県'],
+                               ['神奈川県', '神奈川県'], ['埼玉県', '埼玉県'],
+                               ['その他', 'その他'] ] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :genre, 'ジャンル' %>
+          <%= f.select :genre, [['歴史', '歴史'], ['飲食店', '飲食店'],
+                               ['景色', '景色'], ['その他', 'その他'] ] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :content, '紹介文' %>
+          <%= f.text_area :content, rows: 5, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "投稿する", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

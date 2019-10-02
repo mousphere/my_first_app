@@ -3,9 +3,6 @@ require 'rails_helper'
 RSpec.describe Article, type: :model do
   let(:user) { create(:user1) }
   let(:article) { create(:article, user_id: user.id) }
-  subject { for i in 1..5 do
-            create(:article, user_id: user.id)
-            end } 
     
   context '無効な記事内容' do
     context '1. 観光スポットが無効' do
@@ -24,7 +21,8 @@ RSpec.describe Article, type: :model do
   
   context '記事の順番'
     example '投稿時刻の降順になっているか' do
-      subject
-      expect(user.articles.first.content).to eq '5番目の投稿'
+      user1 = user
+      create_article(user1)
+      expect(user1.articles.first.content).to eq '5番目の投稿'
     end
 end

@@ -5,4 +5,10 @@ module SpecTestHelpers
     fill_in('パスワード', with: user.password)
     click_button('ログイン')
   end
+  
+  def create_article(user)
+    for i in 1..5 do
+      create(:article, user_id: user.id)
+    end
+  end
 end

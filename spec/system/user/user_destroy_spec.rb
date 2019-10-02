@@ -21,7 +21,7 @@ RSpec.describe 'ユーザー削除時の挙動', type: :system do
     end
   end
   
-  context '自分のアカウントを削除する' do
+  context '削除成功時' do
     example 'ユーザー登録数が1減る' do
       log_in(user1)
       visit(deactivate_user_path(user1))
@@ -34,6 +34,13 @@ RSpec.describe 'ユーザー削除時の挙動', type: :system do
       click_link('削除')
       expect(current_path).to eq root_path
       expect(page).to have_css('div.alert-success')
+    end
+    
+    example '関連の記事が全て削除される' do
+      log_in(user1)
+      create_article(user1)
+      visit(deactivate_user_path(user1))
+      expect{ click_link('削除') }.to change(Article, :count).by(-5)
     end
   end
 end

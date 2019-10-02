@@ -71,9 +71,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-  
-  # context 'articlesとの関連' do
-  #   example 'ユーザーが削除されると記事も削除される' do
-  #   end
-  # end
 end

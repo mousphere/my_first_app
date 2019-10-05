@@ -5,6 +5,16 @@
     padding-bottom: 20px;
 }
 
+/** li ・消し **/
+li{
+    list-style: none;
+}
+
+/** col padding 0 **/
+.no_padding{
+    padding: 0px;
+}
+
 /** ナビゲーションバー **/
 .navbar{
     height: 51.5px;
@@ -16,18 +26,20 @@
     text-align: center;
 }
 
-/** ユーザープロフィール **/
-.user_profile{
-    .btn-primary{
-        margin-bottom: 10px;
-    }
-    #user_image{
+/** イメージ画像 **/
+.user_image{
     border-radius: 50%;
     width: 80px;
     height: 80px;
     background-position: center center;
     border: 2px solid black;
     margin: 10px 0;
+    }
+
+/** ユーザープロフィール **/
+.user_profile{
+    .btn-primary{
+        margin-bottom: 10px;
     }
 }
 
@@ -54,4 +66,28 @@
 /** 記事投稿フォーム **/
 #new_article{
     padding: 5px 10px;
+}
+
+/** 記事内容 **/
+.user{
+    font-size: 1.5rem;
+}
+
+.sweet_image{
+    display: block;
+    width: 250px;
+    height: 150px;
+    margin: 5px 0px;
+    background-position: center center;
+}
+
+.content{
+    display: block;
+    padding-right: 15px;
+}
+
+.timestamp{
+    margin-left: 20px;
+    font-size: 0.9rem;
+    color: gray;
 }

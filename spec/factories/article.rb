@@ -4,9 +4,8 @@ FactoryBot.define do
   end
   
   factory :article, class: Article do
-    tourist_attraction { '浅草寺' }
-    area { '東京都' }
-    genre { '歴史' }
+    sweet_name { 'チョコレート' }
+    genre { 'チョコレート' }
     content
   end
 end

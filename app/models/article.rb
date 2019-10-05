@@ -3,6 +3,9 @@ class Article < ApplicationRecord
   default_scope { order(created_at: :desc) }
   
   # ----- バリデーション -----
-  validates :tourist_attraction, presence: true
+  validates :sweet_name, presence: true
+  validates :genre, presence: true
   validates :content, presence: true
+  
+  mount_uploader :image, ImagesUploader
 end

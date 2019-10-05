@@ -5,9 +5,15 @@ RSpec.describe Article, type: :model do
   let(:article) { create(:article, user_id: user.id) }
     
   context '無効な記事内容' do
-    context '1. 観光スポットが無効' do
-      example '観光スポット名が入力されていない' do
-        article.tourist_attraction = ''
+    context '1. 商品名が無効' do
+      example '商品名が入力されていない' do
+        article.sweet_name = ''
+        expect(article).not_to be_valid
+      end
+    end
+    context '3. ジャンルが無効' do
+      example 'ジャンルが入力されていない' do
+        article.genre = ''
         expect(article).not_to be_valid
       end
     end
@@ -21,8 +27,7 @@ RSpec.describe Article, type: :model do
   
   context '記事の順番'
     example '投稿時刻の降順になっているか' do
-      user1 = user
-      create_article(user1)
-      expect(user1.articles.first.content).to eq '5番目の投稿'
+      create_article(user)
+      expect(user.articles.first.content).to eq '5番目の投稿'
     end
 end

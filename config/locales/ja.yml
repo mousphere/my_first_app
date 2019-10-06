@@ -6,6 +6,9 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: '確認用のパスワード'
+      article:
+        sweet_name: '商品名'
+        content: '紹介文'
     errors:
       models:
         user:
@@ -21,6 +24,12 @@ ja:
               too_short: 'は8文字以上で入力してください'
             password_confirmation:
               confirmation: 'が一致していません'
+        article:
+          attributes:
+            sweet_name:
+              blank: 'が入力されていません'
+            content:
+              blank: 'が入力されていません'
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"

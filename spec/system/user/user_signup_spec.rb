@@ -4,11 +4,11 @@ RSpec.describe 'ユーザー登録時の挙動', type: :system do
   let(:user) { build(:user1) }
   
   subject { visit(new_user_path)
-              fill_in('ユーザー名', with: user.name)
-              fill_in('メールアドレス', with: user.email)
-              fill_in('パスワード', with: user.password)
-              fill_in('パスワード(確認用にもう1度入力してください)', with: user.password_confirmation)
-              click_button('登録')
+            fill_in('ユーザー名', with: user.name)
+            fill_in('メールアドレス', with: user.email)
+            fill_in('パスワード', with: user.password)
+            fill_in('パスワード(確認用にもう1度入力してください)', with: user.password_confirmation)
+            click_button('登録')
           }
   
   context '有効な情報を送信したとき' do

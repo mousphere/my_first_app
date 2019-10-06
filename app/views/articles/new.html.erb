@@ -5,30 +5,32 @@
     </div>
     <div class="col-md-4 offset-md-2">
       <h2 class="text-center">記事投稿</h2>
-      <%= form_for(@article, html: { class: [ :border, :rounded ] }) do |f| %>
+      <%= form_for(@article) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div class="form-group">
-          <%= f.label :sweet_name, '商品名' %>
-          <%= f.text_field :sweet_name, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :genre, 'ジャンル' %>
-          <%= f.select :genre, [['チョコレート', 'チョコレート'],
-                                ['クッキー', 'クッキー'],
-                                ['アイス', 'アイス'],
-                                ['ケーキ', 'ケーキ'],
-                                ['その他', 'その他'] ] %>
-        </div>
-        <div class="form-group">
-          <%= f.label :content, '紹介文' %>
-          <%= f.text_area :content, rows: 5, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :image, '画像', class:"image-label" %>
-          <%= f.file_field :image %>
-        </div>
-        <div class="form-group">
-          <%= f.submit '投稿する', class:"btn btn-primary" %>
+        <div class="article-form border rounded">
+          <div class="form-group">
+            <%= f.label :sweet_name, '商品名' %>
+            <%= f.text_field :sweet_name, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :genre, 'ジャンル' %>
+            <%= f.select :genre, [['チョコレート', 'チョコレート'],
+                                  ['クッキー', 'クッキー'],
+                                  ['アイス', 'アイス'],
+                                  ['ケーキ', 'ケーキ'],
+                                  ['その他', 'その他'] ] %>
+          </div>
+          <div class="form-group">
+            <%= f.label :content, '紹介文' %>
+            <%= f.text_area :content, rows: 5, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image, '画像', class:"image-label" %>
+            <%= f.file_field :image %>
+          </div>
+          <div class="form-group">
+            <%= f.submit '投稿する', class:"btn btn-primary" %>
+          </div>
         </div>
       <% end %>
     </div>

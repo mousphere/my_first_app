@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :users
+  resources :users do
+    get 'deactivate', on: :member
+  end
+  
+  resources :articles
 end

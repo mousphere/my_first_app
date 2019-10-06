@@ -1,20 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー登録時の挙動', type: :system do
-  let(:user) { build(:valid_user) }
+  let(:user) { build(:user1) }
   
   subject { visit(new_user_path)
-              fill_in('ユーザー名', with: user.name)
-              fill_in('メールアドレス', with: user.email)
-              fill_in('パスワード', with: user.password)
-              fill_in('パスワード(確認用にもう1度入力してください)', with: user.password_confirmation)
-              click_button('登録')
+            fill_in('ユーザー名', with: user.name)
+            fill_in('メールアドレス', with: user.email)
+            fill_in('パスワード', with: user.password)
+            fill_in('パスワード(確認用にもう1度入力してください)', with: user.password_confirmation)
+            click_button('登録')
           }
   
   context '有効な情報を送信したとき' do
     example 'ユーザーページにリダイレクトされる' do
       subject
       expect(page).to have_content(user.name)
+    end
+    
+    example '自動的にログインする' do
+      subject
+      expect(page).to have_content('アカウント')
     end
     
     example 'ユーザーレコード数が１増える' do

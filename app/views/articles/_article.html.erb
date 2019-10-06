@@ -1,0 +1,30 @@
+<li id="article-<%= article.id %>">
+  <div class="row border-bottom">
+    <div class="col-md-3">
+      <% image = 
+         article.user.image.present? ? article.user.image : 'images.png' %>
+      <%= link_to image_tag(image, alt: 'User_image', class:'user_image'),
+                  article.user %>
+    </div>
+    <div class="col-md-9 no_padding">
+      <span class="user"><%= link_to article.user.name, article.user %></span>
+      <span class="timestamp">
+        <%= time_ago_in_words(article.created_at) %> 前
+      </span>
+      <% if article.image.present? %>
+        <%= image_tag(article.image, alt: 'sweet_image', class:'sweet_image') %>
+      <% end %>
+      <p>商品名：
+      <span class="sweet_name"><%= article.sweet_name %></span>
+      </p>
+      <p>ジャンル：
+      <span class="genre"><%= article.genre %></span>
+      </p>
+      <u>紹介文</u>
+      <span class="content"><%= article.content %></span>
+      <p>
+      
+      </p>
+    </div>
+  </div>
+</li>

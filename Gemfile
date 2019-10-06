@@ -14,8 +14,8 @@ gem 'bootstrap', '>= 4.1.1'
 gem 'jquery-rails'
 gem 'sprockets-rails', '>= 2.3.2'
 
-# 暗号化ライブラリ
-gem 'bcrypt', '3.1.12'
+# 画像アップロード用
+gem 'carrierwave'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
@@ -37,10 +37,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-gem 'nokogiri', '~> 1.6'
-gem 'rubyzip', '~> 1.0'
+gem 'bcrypt', '3.1.12'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -63,10 +60,6 @@ end
 
 group :test do
   gem 'rails-controller-testing', '1.0.2'
-  gem 'minitest',                 '5.11.3'
-  gem 'minitest-reporters',       '1.1.14'
-  gem 'guard',                    '2.13.0'
-  gem 'guard-minitest',           '2.4.4'
   gem 'webdrivers'
   gem 'selenium-webdriver'
   gem 'rspec-rails'

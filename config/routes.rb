@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -8,6 +10,6 @@ Rails.application.routes.draw do
   resources :users do
     get 'deactivate', on: :member
   end
-  
-  resources :articles
+
+  resources :articles, param: :genre
 end

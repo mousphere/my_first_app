@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   let(:user) { create(:user1) }
   let(:article) { create(:article, user_id: user.id) }
-    
+
   context '無効な記事内容' do
     context '1. 商品名が無効' do
       example '商品名が入力されていない' do
@@ -24,10 +26,10 @@ RSpec.describe Article, type: :model do
       end
     end
   end
-  
+
   context '記事の順番'
-    example '投稿時刻の降順になっているか' do
-      create_article(user)
-      expect(user.articles.first.content).to eq '5番目の投稿'
-    end
+  example '投稿時刻の降順になっているか' do
+    create_article(user)
+    expect(user.articles.first.content).to eq '5番目の投稿'
+  end
 end

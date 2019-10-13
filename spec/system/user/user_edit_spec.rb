@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'プロフィール編集時の挙動', type: :system do
   let(:user1) { create(:user1) }
   let(:user2) { create(:user2) }
-  
+
   context 'ログインしていない時' do
     example '警告メッセージを表示し、ルートパスにリダイレクトする' do
       visit(edit_user_path(user1))
@@ -11,7 +13,7 @@ RSpec.describe 'プロフィール編集時の挙動', type: :system do
       expect(page).to have_css('div.alert-danger')
     end
   end
-  
+
   context '別のユーザーの情報を編集しようとした時' do
     example '警告メッセージを表示し、ルートパスにリダイレクトする' do
       log_in(user1)
@@ -20,7 +22,7 @@ RSpec.describe 'プロフィール編集時の挙動', type: :system do
       expect(page).to have_css('div.alert-danger')
     end
   end
-  
+
   context '有効な情報が入力された時' do
     example '成功メッセージを表示し、ユーザー情報を更新する' do
       log_in(user1)
@@ -38,7 +40,7 @@ RSpec.describe 'プロフィール編集時の挙動', type: :system do
       expect(page).to have_css('div.alert-success')
     end
   end
-  
+
   context '無効な情報が入力された時' do
     example 'エラーメッセージを表示して編集フォームを表示する' do
       log_in(user1)

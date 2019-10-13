@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SpecTestHelpers
   def log_in(user)
     visit(login_path)
@@ -5,9 +7,9 @@ module SpecTestHelpers
     fill_in('パスワード', with: user.password)
     click_button('ログイン')
   end
-  
+
   def create_article(user)
-    for i in 1..5 do
+    (1..5).each do |_i|
       create(:article, user_id: user.id)
     end
   end

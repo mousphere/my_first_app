@@ -1,13 +1,30 @@
-<div class="container">
-  <div class="row explain">
-    会員登録をして、おすすめ観光地を投稿しましょう！
+<div class="container-fluid">
+  <div class="row">
+    <span class="explain">
+      好きなスイーツについて投稿、共有しましょう！
+    </span>
   </div>
   <div class="row">
-    <div class="col-md-5 offset-md-1">
-      人気観光地のポスト一覧
+    <div class="col-md-3" >
+      <!-- サイドバーを固定したい -->
+      <div class="sidebar">
+      <span class="category">カテゴリー</span>
+      <ul>
+        <li><%= link_to '全て', root_path,
+                class:"genre_list" %></li>
+        <li><%= link_to 'チョコレート', article_path('chocolate'),
+                class:"genre_list" %></li>
+        <li><%= link_to 'クッキー', article_path('cookie'),
+                class:"genre_list" %></li>
+        <li><%= link_to 'アイスクリーム', article_path('ice_cream'),
+                class:"genre_list" %></li>
+        <li><%= link_to 'その他', article_path('etc'),
+                class:"genre_list" %></li>
+      </ul>
+      </div>
     </div>
-    <div class="col-md-5">
-      新着ポスト一覧
+    <div class="col-md-6" >
+      <%= render @articles %>
     </div>
   </div>
 </div>

@@ -1,0 +1,26 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - "config/initializers/*"
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - "db/schema.rb"
+    - "node_modules/**/*"
+    - "db/migrate/*.rb"
+    - "bin/*"
+  TargetRubyVersion: 2.6.3
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'spec/**/**/*'
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+  
+Metrics/LineLength:
+  Max: 120

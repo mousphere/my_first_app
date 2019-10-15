@@ -2,6 +2,10 @@
 
 class User < ApplicationRecord
   has_many :articles, dependent: :destroy
+  has_many :stocks,
+           foreign_key: 'stock_user_id', inverse_of: :stock_user, dependent: :destroy
+  has_many :stocked_articles, through: :stocks
+
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191003035146) do
+ActiveRecord::Schema.define(version: 20191013080710) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20191003035146) do
     t.string "sweet_name"
     t.index ["user_id", "created_at"], name: "index_articles_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "stock_user_id"
+    t.integer "stocked_article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_user_id", "stocked_article_id"], name: "index_stocks_on_stock_user_id_and_stocked_article_id", unique: true
+    t.index ["stock_user_id"], name: "index_stocks_on_stock_user_id"
+    t.index ["stocked_article_id"], name: "index_stocks_on_stocked_article_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

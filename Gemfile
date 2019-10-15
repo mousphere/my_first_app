@@ -18,6 +18,10 @@ gem 'sprockets-rails', '>= 2.3.2'
 # 画像アップロード用
 gem 'carrierwave'
 
+# React用
+gem 'webpacker', '~> 3.0'
+gem 'react-rails'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # Use Puma as the app server

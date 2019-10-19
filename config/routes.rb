@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
 
   resources :articles, param: :genre
+  resources :stocks, only: %i[create destroy]
 end

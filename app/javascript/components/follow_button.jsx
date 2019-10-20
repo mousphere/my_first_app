@@ -63,7 +63,7 @@ export default class FollowButton extends Component {
     
     return (
       <button onClick={ isStocking ? this.unstock : this.stock } disabled={ this.state.loading }>
-        { isStocking ? 'Unstock' : 'Stock' }
+        { isStocking ? 'ストック解除' : 'ストックする' }
       </button>
     )
   }

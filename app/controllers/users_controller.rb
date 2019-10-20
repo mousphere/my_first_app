@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   include Common
 
-  before_action :logged_in_user, only: %i[edit update deactivate destroy]
+  before_action :logged_in_user, only: %i[edit update deactivate destroy stocks]
   before_action :correct_user, only: %i[edit update deactivate destroy]
 
   def new
@@ -48,6 +48,11 @@ class UsersController < ApplicationController
     else
       render '/users/edit'
     end
+  end
+
+  def stocks
+    @articles = Article.where(id: Stock.select(:stocked_article_id)
+                       .where(stock_user_id: params[:id]))
   end
 
   private

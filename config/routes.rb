@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'deactivate', on: :member
+    member do
+      get :stocks
+    end
   end
 
   resources :articles, param: :genre
+  resources :stocks, only: %i[create destroy]
 end

@@ -23,14 +23,16 @@
         </p>
         <u>紹介文</u>
         <span class="content"><%= article.content %></span>
+        <div class="stock-button">
+          <% unless current_user?(article.user) %>
+            <% @article = article %>
+            <%= react_component('follow_button',
+                                 article: @article.attributes,
+                                 stock: current_user.stocks.find_by(stocked_article_id: @article.id)&.attributes) %>
+          <% end %>
+        </div>
       </div>
     </div>
-      <% unless current_user?(article.user) %>
-        <% @article = article %>
-        <%= react_component('follow_button',
-                             article: @article.attributes,
-                             stock: current_user.stocks.find_by(stocked_article_id: @article.id)&.attributes) %>
-      <% end %>
     <div class="border-bottom">
     </div>
   </li>

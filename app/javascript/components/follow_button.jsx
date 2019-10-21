@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
+import classnames from 'classnames'
 
 export default class FollowButton extends Component {
   constructor(props) {
@@ -60,9 +61,17 @@ export default class FollowButton extends Component {
   
   render() {
     const isStocking = this.state.stock !== null
+    const className = classnames('btn',{
+      'btn-link text-primary': isStocking,
+      'btn-link': !isStocking
+    })
     
     return (
-      <button onClick={ isStocking ? this.unstock : this.stock } disabled={ this.state.loading }>
+      <button
+        className={ className }
+        onClick={ isStocking ? this.unstock : this.stock }
+        disabled={ this.state.loading }
+      >
         { isStocking ? 'ストック解除' : 'ストックする' }
       </button>
     )

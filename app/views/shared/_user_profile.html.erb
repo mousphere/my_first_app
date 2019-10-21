@@ -6,9 +6,8 @@
 <%= link_to image_tag(image, alt: 'User_image', class:'user_image'), @user %>
 <p><%= link_to @user.name, @user %></p>
 <% if current_user?(@user) %>
-<%= link_to "プロフィール変更", edit_user_path(@user), 
-    class:"btn btn-primary" %>
-<%= link_to "記事投稿", new_article_path, class:"btn btn-primary" %>
-<%= link_to "ストック記事", stocks_user_path, class:"btn btn-primary" %>
-<%= link_to "アカウント削除", deactivate_user_path(@user), class:"btn btn-primary" %>
+  <%= link_to "プロフィール変更", edit_user_path(@user), class:"btn btn-primary" %>
+  <%= link_to "記事投稿", new_article_path, class:"btn btn-primary" %>
+  <%= link_to "ストック記事", stocks_user_path(@user), class:"btn btn-primary" %>
+  <%= link_to "アカウント削除", deactivate_user_path(@user), class:"btn btn-primary" %>
 <% end %>

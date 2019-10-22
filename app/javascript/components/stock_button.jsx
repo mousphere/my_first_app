@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import classnames from 'classnames'
 
-export default class FollowButton extends Component {
+export default class StockButton extends Component {
   constructor(props) {
     super(props)
     
@@ -78,11 +78,11 @@ export default class FollowButton extends Component {
   }
 }
 
-FollowButton.defaultProps = {
+StockButton.defaultProps = {
   stock: null
 }
 
-FollowButton.propTypes = {
+StockButton.propTypes = {
   article: PropTypes.object.isRequired,
   stock: PropTypes.object
 }

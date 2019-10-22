@@ -26,12 +26,15 @@
         <div class="stock-button">
           <% unless current_user?(article.user) %>
             <% @article = article %>
-            <%= react_component('follow_button',
+            <% @user = current_user %>
+            <%= react_component('stock_button',
                                  article: @article.attributes,
-                                 stock: current_user.stocks.find_by(stocked_article_id: @article.id)&.attributes) %>
+                                 stock: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.attributes) %>
             <%= react_component('like_button',
                                  article: @article.attributes,
-                                 like: current_user.likes.find_by(liked_article_id: @article.id)&.attributes) %>
+                                 like: current_user &. likes &.find_by(liked_article_id: @article.id)&.attributes,
+                                 count: Like.where(liked_article_id: @article.id).count,
+                                 user: @user) %>
           <% end %>
         </div>
       </div>

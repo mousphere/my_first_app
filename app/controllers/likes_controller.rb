@@ -12,8 +12,7 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @article }
-      format.json { render :json => { :like  => current_user.likes.find_by(liked_article_id: @article.id),
-                                      :count => @like_count } }
+      format.json { render json: { like: current_user.likes.find_by(liked_article_id: @article.id), count: @like_count } }
     end
   end
 
@@ -24,8 +23,7 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @article }
-      format.json { render :json => { :like => nil,
-                                      :count => @like_count } }
+      format.json { render json: { like: nil, count: @like_count } }
     end
   end
 end

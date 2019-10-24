@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import classnames from 'classnames'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class LikeButton extends Component {
   constructor(props) {
@@ -14,11 +15,11 @@ export default class LikeButton extends Component {
     }
   }
   
-  alert_message = () =>{
+  alertMessage = () =>{
     alert('ログインが必要です')
   }
   
-  add_like = () =>{
+  addLike = () =>{
     this.setState({
       loading: true
     })
@@ -45,7 +46,7 @@ export default class LikeButton extends Component {
     })
   }
   
-  remove_like = () => {
+  removeLike = () => {
     this.setState({
       loading: true
     })
@@ -72,21 +73,22 @@ export default class LikeButton extends Component {
   render() {
     const contained = this.state.like !== null
     const notLoggedIn = this.state.user == null
-    // const className = classnames('btn',{
-    //   'btn-link text-primary': contained,
-    //   'btn-link': !contained
-    // })
+    const btnClass = classnames('btn',{
+      'btn-link icon-big liked': contained,
+      'btn-link icon-big': !contained
+    })
+    const spanClass = classnames('like-count')
     
     return (
       <div>
         <button
-          // className={ className }
-          onClick={ notLoggedIn ?  this.alert_message : contained ? this.remove_like : this.add_like }
+          className={ btnClass }
+          onClick={ notLoggedIn ?  this.alertMessage : contained ? this.removeLike : this.addLike }
           disabled={ this.state.loading }
         >
-          { contained ? 'いいね！済み' : 'いいね！' }
+          { contained ? <FontAwesomeIcon icon={['fas', 'heart']} /> : <FontAwesomeIcon icon={['far', 'heart']} /> }
         </button>
-        <span>{ this.state.count }</span>
+        <span className={ spanClass }>{ this.state.count }</span>
       </div>
     )
   }

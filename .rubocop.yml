@@ -11,16 +11,23 @@ AllCops:
     - "bin/*"
   TargetRubyVersion: 2.6.3
 
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*'
-    - 'spec/**/**/*'
+# --- Style --- #
 
 Style/AsciiComments:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
-  
+
+# --- Metrics --- #
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'spec/**/**/*'
+
 Metrics/LineLength:
-  Max: 120
+  Max: 130
+
+Metrics/AbcSize:
+  Max: 25

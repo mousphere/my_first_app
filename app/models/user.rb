@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :stocks,
            foreign_key: 'stock_user_id', inverse_of: :stock_user, dependent: :destroy
   has_many :stocked_articles, through: :stocks, source: :stocked_article
-  
-  # ストック
+
+  # いいね
   has_many :likes,
            foreign_key: 'like_user_id', inverse_of: :like_user, dependent: :destroy
   has_many :liked_articles, through: :likes, source: :liked_article

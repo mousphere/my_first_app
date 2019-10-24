@@ -120,9 +120,24 @@ li{
     padding-left: 20px;
 }
 
+/* ボタン共通 */
+.icon-big{
+    font-size: 1.2em;
+}
+
 /* ストックボタン */
-.stock-button{
+.function-button{
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 20px;
+    display: inline-flex;
+}
+
+/* いいねボタン */
+.inline-block{
+    display: inline-block;
+}
+
+.liked{
+    color: hotpink;
 }

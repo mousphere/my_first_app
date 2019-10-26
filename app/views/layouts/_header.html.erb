@@ -30,7 +30,7 @@
           <a class="nav-link dropdown-toggle" href='#' id="navbarDropdownMenu"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">アカウント</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenu">
-            <%= link_to "プロフィール", user_path(@current_user), class:"dropdown-item" %>
+            <%= link_to "プロフィール", user_path(current_user), class:"dropdown-item" %>
             <%= link_to "ログアウト", logout_path, method: :delete, class:"dropdown-item" %>
           </div>
         </li>

@@ -2,9 +2,16 @@
 
 class User < ApplicationRecord
   has_many :articles, dependent: :destroy
+
+  # ストック
   has_many :stocks,
            foreign_key: 'stock_user_id', inverse_of: :stock_user, dependent: :destroy
   has_many :stocked_articles, through: :stocks, source: :stocked_article
+
+  # いいね
+  has_many :likes,
+           foreign_key: 'like_user_id', inverse_of: :like_user, dependent: :destroy
+  has_many :liked_articles, through: :likes, source: :liked_article
 
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
@@ -79,7 +86,12 @@ class User < ApplicationRecord
     stocks.find_by(stocked_article_id: article.id).destroy
   end
 
-  def stocking?(article)
-    stocked_articles.include?(article)
+  # いいね関連
+  def add_like(article)
+    liked_articles << article
+  end
+
+  def remove_like(article)
+    likes.find_by(liked_article_id: article.id).destroy
   end
 end

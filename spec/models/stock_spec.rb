@@ -23,11 +23,11 @@ RSpec.describe Stock, type: :model do
   end
 
   context 'ユーザー、記事との依存性チェック' do
-    example 'ユーザー削除でストックも削除' do
+    example 'ユーザー削除でストックリレーションも削除' do
       user.stocks.create(stocked_article_id: article.id)
       expect { user.destroy }.to change { Stock.count }.by(-1)
     end
-    example '記事削除でストックも削除' do
+    example '記事削除でストックリレーションも削除' do
       user.stocks.create(stocked_article_id: article.id)
       expect { article.destroy }.to change { Stock.count }.by(-1)
     end

@@ -2,31 +2,43 @@
 
 require 'rails_helper'
 
-RSpec.describe '記事ストック時の挙動', type: :system do
+RSpec.describe 'ストックボタン関連の挙動', type: :system do
   let(:user1) { create(:user1) }
   let(:user2) { create(:user2) }
   let(:article) { create(:article, user_id: user2.id) }
 
+  context 'ログインせずにストックボタンを押した時' do
+    example 'ログインを求められる' do
+      article
+      visit(root_path)
+      find('.stock-button').click
+      expect(page.driver.browser.switch_to.alert.text).to eq 'ログインが必要です'
+    end
+    example 'ストックが生成されない' do
+      article
+      visit(root_path)
+      expect { find('.stock-button').click }.to change(Stock, :count).by(0)
+    end
+  end
 
   context 'ストックボタンを押した時' do
     before do
       @article = article
     end
 
-    example 'ストックが生成され、ボタン表示が切り替わる' do
+    example 'ストックが生成される' do
       log_in(user1)
       click_link('ホーム')
       expect(Stock.count).to eq(0)
-      click_button('ストックする')
+      find('.stock-button').click
       sleep 1
-      expect(page).to have_content('ストック解除')
       expect(Stock.count).to eq(1)
     end
-    
+
     example 'マイページのストック記事に反映される' do
       log_in(user1)
       click_link('ホーム')
-      click_button('ストックする')
+      find('.stock-button').click
       visit(user_path(user1))
       click_link('ストック記事')
       expect(page).to have_content(@article.sweet_name)
@@ -37,12 +49,11 @@ RSpec.describe '記事ストック時の挙動', type: :system do
     before do
       create(:stock, stock_user_id: user1.id, stocked_article_id: article.id)
     end
-    example 'ストック解除ボタンを押すとストックされ、ボタン表示が切り替わる' do
+    example 'ボタンを押すとストックが解除される' do
       log_in(user1)
       click_link('ホーム')
       expect(Stock.count).to eq(1)
-      click_button('ストック解除')
-      expect(page).to have_content('ストックする')
+      find('.stock-button').click
       expect(Stock.count).to eq(0)
     end
   end

@@ -1,15 +1,21 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import classnames from 'classnames'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default class FollowButton extends Component {
+export default class StockButton extends Component {
   constructor(props) {
     super(props)
     
     this.state = {
       loading: false,
-      stock: props.stock
+      stock: props.stock,
+      user: props.user
     }
+  }
+  
+  alertMessage = () =>{
+    alert('ログインが必要です')
   }
   
   stock = () =>{
@@ -61,28 +67,30 @@ export default class FollowButton extends Component {
   
   render() {
     const isStocking = this.state.stock !== null
+    const notLoggedIn = this.state.user == null
     const className = classnames('btn',{
-      'btn-link text-primary': isStocking,
-      'btn-link': !isStocking
+      'btn-link icon-big text-primary': isStocking,
+      'btn-link icon-big': !isStocking
     })
     
     return (
       <button
         className={ className }
-        onClick={ isStocking ? this.unstock : this.stock }
+        onClick={ notLoggedIn ? this.alertMessage : isStocking ? this.unstock : this.stock }
         disabled={ this.state.loading }
       >
-        { isStocking ? 'ストック解除' : 'ストックする' }
+        { isStocking ?
+        <FontAwesomeIcon icon={['fas', 'folder-plus']} /> : <FontAwesomeIcon icon={['fas', 'folder-open']} /> }
       </button>
     )
   }
 }
 
-FollowButton.defaultProps = {
+StockButton.defaultProps = {
   stock: null
 }
 
-FollowButton.propTypes = {
+StockButton.propTypes = {
   article: PropTypes.object.isRequired,
   stock: PropTypes.object
 }

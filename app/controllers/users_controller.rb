@@ -12,6 +12,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if current_user?(@user)
+      @user.update_last_access_time unless @user.next_last_access_time.nil?
+      @user.update_next_last_access_time
+    end
+
     @articles = @user.articles
   end
 
@@ -53,6 +58,14 @@ class UsersController < ApplicationController
   def stocks
     @articles = Article.where(id: Stock.select(:stocked_article_id)
                        .where(stock_user_id: params[:id]))
+  end
+
+  def notify
+    @likes = Like.where(liked_article_id: Article.select(:id)
+                 .where(user_id: params[:id]))
+    # @users = User.where(id: Like.select(:like_user_id)
+    #                   .where(liked_article_id: Article.select(:id)
+    #                   .where(user_id: params[:id])))
   end
 
   private

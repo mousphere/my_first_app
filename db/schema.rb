@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191021084316) do
+ActiveRecord::Schema.define(version: 20191027124053) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20191021084316) do
     t.string "password_digest"
     t.string "remember_digest"
     t.string "image"
+    t.datetime "last_access_time", default: "1900-01-01 00:00:00"
+    t.datetime "next_last_access_time"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -1,0 +1,10 @@
+<div class="like_notification">
+  <% user = User.find(like.like_user_id) %>
+  <% image = user.image.present? ? user.image : 'images.png' %>
+  <%= image_tag(image, alt: 'User_image', class:'user_image') %>
+  <br />
+  <p>
+    <b><%= "#{User.find(like.like_user_id).name}" %></b> さんがあなたの投稿をいいねしました
+  </p>
+  <%= link_to '', root_path %>
+</div>

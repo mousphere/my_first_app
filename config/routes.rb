@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'deactivate', on: :member
+    get 'notify', on: :member
     member do
       get :stocks
     end

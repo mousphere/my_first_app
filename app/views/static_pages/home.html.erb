@@ -12,13 +12,15 @@
       <ul>
         <li><%= link_to '全て', root_path,
                 class:"genre_list" %></li>
-        <li><%= link_to 'チョコレート', article_path('chocolate'),
+        <li><%= link_to 'チョコレート', articles_path(genre: 'chocolate'),
                 class:"genre_list" %></li>
-        <li><%= link_to 'クッキー', article_path('cookie'),
+        <li><%= link_to 'クッキー', articles_path(genre: 'cookie'),
                 class:"genre_list" %></li>
-        <li><%= link_to 'アイスクリーム', article_path('ice_cream'),
+        <li><%= link_to 'アイスクリーム', articles_path(genre: 'ice_cream'),
                 class:"genre_list" %></li>
-        <li><%= link_to 'その他', article_path('etc'),
+        <li><%= link_to 'ケーキ', articles_path(genre: 'cake'),
+                class:"genre_list" %></li>
+        <li><%= link_to 'その他', articles_path(genre: 'etc'),
                 class:"genre_list" %></li>
       </ul>
       </div>

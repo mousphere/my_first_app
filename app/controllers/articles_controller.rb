@@ -21,6 +21,10 @@ class ArticlesController < ApplicationController
 
   def show
     @articles = Article.where(genre: params[:genre])
+  end
+
+  def index
+    @articles = Article.where(genre: params[:genre])
     render '/static_pages/home'
   end
 

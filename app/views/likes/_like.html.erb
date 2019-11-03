@@ -6,5 +6,5 @@
   <p>
     <b><%= "#{User.find(like.like_user_id).name}" %></b> さんがあなたの投稿をいいねしました
   </p>
-  <%= link_to '', root_path %>
+  <%= link_to '', article_path(Article.find(like.liked_article_id)) %>
 </div>

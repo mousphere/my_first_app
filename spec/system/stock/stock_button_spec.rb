@@ -54,6 +54,7 @@ RSpec.describe 'ストックボタン関連の挙動', type: :system do
       click_link('ホーム')
       expect(Stock.count).to eq(1)
       find('.stock-button').click
+      sleep 1
       expect(Stock.count).to eq(0)
     end
   end

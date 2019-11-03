@@ -11,10 +11,15 @@
 <% if current_user?(user) %>
   <!-- 自分の記事がいいねされていて、かつそのcreated_atがlast_access_time より前であること -->
   <% number_of_notice = Like.where(liked_article_id: Article.where(user_id: user.id))
-                            .where("created_at > ?", user.last_access_time).count.to_s %>
+                            .where("created_at > ?", user.last_access_time).count.to_s.tr('0-9', '０-９') %>
+  <% number_of_notice = '' if number_of_notice == '０' %>
   <ul>
     <li><%= link_to "記事投稿", new_article_path, class:"btn btn-primary" %></li>
-    <li><%= link_to "通知 #{number_of_notice}", notify_user_path(user), class:"btn btn-primary" %></li>
+    <li>
+      <%= link_to notify_user_path(user), class:"btn btn-primary" do %>
+        通知 <span class="rounded-circle bg-danger number_of_notice"><%= "#{number_of_notice}" %></span>
+      <% end %>
+    </li>
     <li><%= link_to "ストック記事", stocks_user_path(user), class:"btn btn-primary" %></li>
     <li><%= link_to "プロフィール変更", edit_user_path(user), class:"btn btn-primary" %></li>
     <li><%= link_to "アカウント削除", deactivate_user_path(user), class:"btn btn-primary" %></li>

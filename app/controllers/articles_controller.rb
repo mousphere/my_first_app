@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @articles = Article.where(genre: params[:genre])
+    @article = Article.find(params[:id])
   end
 
   def index

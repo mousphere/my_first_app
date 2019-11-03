@@ -11,11 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    if current_user?(@user)
-      @user.update_last_access_time unless @user.next_last_access_time.nil?
-      @user.update_next_last_access_time
-    end
+    update_access_time
 
     @articles = @user.articles
   end
@@ -28,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = '登録が完了しました！みんなで観光地を共有しましょう！'
+      flash[:success] = '登録が完了しました！あなたのおすすめスイーツを共有しましょう！'
       redirect_to user_path(@user)
     else
       render '/users/new'
@@ -61,8 +57,11 @@ class UsersController < ApplicationController
   end
 
   def notify
+    update_access_time
+
     @likes = Like.where(liked_article_id: Article.select(:id)
-                 .where(user_id: params[:id]))
+                 .where(user_id: params[:id])).order(created_at: :desc)
+
     # @users = User.where(id: Like.select(:like_user_id)
     #                   .where(liked_article_id: Article.select(:id)
     #                   .where(user_id: params[:id])))
@@ -80,5 +79,14 @@ class UsersController < ApplicationController
   def user_params_including_image
     params.require(:user).permit(:name, :email,
                                  :password, :password_confirmation, :image)
+  end
+
+  def update_access_time
+    @user = User.find(params[:id])
+
+    return unless current_user?(@user)
+
+    @user.update_last_access_time unless @user.next_last_access_time.nil?
+    @user.update_next_last_access_time
   end
 end

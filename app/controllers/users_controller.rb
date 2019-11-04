@@ -3,16 +3,15 @@
 class UsersController < ApplicationController
   include Common
 
-  before_action :logged_in_user, only: %i[edit update deactivate destroy stocks]
-  before_action :correct_user, only: %i[edit update deactivate destroy]
+  before_action :logged_in_user, only: %i[edit update deactivate destroy stocks notify]
+  before_action :correct_user, only: %i[edit update deactivate destroy notify]
 
   def new
     @user = User.new
   end
 
   def show
-    update_access_time
-
+    @user = User.find(params[:id])
     @articles = @user.articles
   end
 
@@ -83,10 +82,6 @@ class UsersController < ApplicationController
 
   def update_access_time
     @user = User.find(params[:id])
-
-    return unless current_user?(@user)
-
-    @user.update_last_access_time unless @user.next_last_access_time.nil?
-    @user.update_next_last_access_time
+    @user.update_last_access_time if current_user?(@user)
   end
 end

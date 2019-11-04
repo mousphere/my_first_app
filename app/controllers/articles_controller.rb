@@ -21,6 +21,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @like = Like.find(params[:like_id])
+    @like.change_checked?
   end
 
   def index

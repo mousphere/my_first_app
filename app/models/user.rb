@@ -96,11 +96,7 @@ class User < ApplicationRecord
   end
 
   # 通知機能関連
-  def update_next_last_access_time
-    update(next_last_access_time: Time.zone.now.to_s(:custom))
-  end
-
   def update_last_access_time
-    update(last_access_time: next_last_access_time)
+    update(last_access_time: Time.zone.now.to_s(:custom))
   end
 end

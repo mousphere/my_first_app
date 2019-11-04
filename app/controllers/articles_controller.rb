@@ -20,6 +20,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
+    @like = Like.find(params[:like_id])
+    @like.change_checked?
+  end
+
+  def index
     @articles = Article.where(genre: params[:genre])
     render '/static_pages/home'
   end

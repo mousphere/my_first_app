@@ -3,8 +3,8 @@
 class UsersController < ApplicationController
   include Common
 
-  before_action :logged_in_user, only: %i[edit update deactivate destroy stocks]
-  before_action :correct_user, only: %i[edit update deactivate destroy]
+  before_action :logged_in_user, only: %i[edit update deactivate destroy stocks notify]
+  before_action :correct_user, only: %i[edit update deactivate destroy notify]
 
   def new
     @user = User.new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = '登録が完了しました！みんなで観光地を共有しましょう！'
+      flash[:success] = '登録が完了しました！あなたのおすすめスイーツを共有しましょう！'
       redirect_to user_path(@user)
     else
       render '/users/new'
@@ -55,6 +55,17 @@ class UsersController < ApplicationController
                        .where(stock_user_id: params[:id]))
   end
 
+  def notify
+    update_access_time
+
+    @likes = Like.where(liked_article_id: Article.select(:id)
+                 .where(user_id: params[:id])).order(created_at: :desc)
+
+    # @users = User.where(id: Like.select(:like_user_id)
+    #                   .where(liked_article_id: Article.select(:id)
+    #                   .where(user_id: params[:id])))
+  end
+
   private
 
   def user_params
@@ -67,5 +78,10 @@ class UsersController < ApplicationController
   def user_params_including_image
     params.require(:user).permit(:name, :email,
                                  :password, :password_confirmation, :image)
+  end
+
+  def update_access_time
+    @user = User.find(params[:id])
+    @user.update_last_access_time if current_user?(@user)
   end
 end

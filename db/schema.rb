@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191021084316) do
+ActiveRecord::Schema.define(version: 20191103080505) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20191021084316) do
     t.integer "liked_article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "checked?", default: false, null: false
     t.index ["like_user_id", "liked_article_id"], name: "index_likes_on_like_user_id_and_liked_article_id", unique: true
     t.index ["like_user_id"], name: "index_likes_on_like_user_id"
     t.index ["liked_article_id"], name: "index_likes_on_liked_article_id"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20191021084316) do
     t.string "password_digest"
     t.string "remember_digest"
     t.string "image"
+    t.datetime "last_access_time", default: "1900-01-01 00:00:00"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

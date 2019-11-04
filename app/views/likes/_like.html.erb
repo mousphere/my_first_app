@@ -1,0 +1,11 @@
+<% @bg_css = like.checked? ? 'bg-white' : 'lightcyan' %>
+<div class="like_notification <%= @bg_css %>">
+  <% user = User.find(like.like_user_id) %>
+  <% image = user.image.present? ? user.image : 'images.png' %>
+  <%= image_tag(image, alt: 'User_image', class:'user_image') %>
+  <br />
+  <p>
+    <b><%= "#{User.find(like.like_user_id).name}" %></b> さんがあなたの投稿をいいねしました
+  </p>
+  <%= link_to '', article_path(Article.find(like.liked_article_id), like_id: like.id) %>
+</div>

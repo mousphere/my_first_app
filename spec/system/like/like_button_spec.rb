@@ -43,6 +43,27 @@ RSpec.describe 'いいねボタン関連の挙動', type: :system do
       sleep 1
       expect(find('.like-count').text).to eq '1'
     end
+
+    context '通知機能関連' do
+      example '通知件数が1と表示される' do
+        log_in(user1)
+        click_link('ホーム')
+        find('.like-button').click
+        log_out
+        log_in(user2)
+        expect(page).to have_content('通知 １')
+      end
+
+      example '通知リンクをクリックするといいねしたユーザー名が表示される' do
+        log_in(user1)
+        click_link('ホーム')
+        find('.like-button').click
+        log_out
+        log_in(user2)
+        click_link('通知 １')
+        expect(page).to have_content(user1.name)
+      end
+    end
   end
 
   context 'いいねされている時にボタンを押した時' do

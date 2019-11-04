@@ -24,23 +24,21 @@
         <u>紹介文</u>
         <span class="content"><%= article.content %></span>
         <div class="function-button">
-          <% unless current_user?(article.user) %>
-            <% @article = article %>
-            <% @user = current_user %>
-            <div class="stock-button">
-              <%= react_component('stock_button',
-                                   article: @article.attributes,
-                                   stock: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.attributes,
-                                   user: @user) %>
-            </div>
-            <div class="like-button">
-              <%= react_component('like_button',
-                                   article: @article.attributes,
-                                   like: current_user &. likes &.find_by(liked_article_id: @article.id)&.attributes,
-                                   count: Like.where(liked_article_id: @article.id).count,
-                                   user: @user) %>
-            </div>
-          <% end %>
+          <% @article = article %>
+          <% @user = current_user %>
+          <div class="stock-button">
+            <%= react_component('stock_button',
+                                 article: @article.attributes,
+                                 stock: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.attributes,
+                                 user: @user) %>
+          </div>
+          <div class="like-button">
+            <%= react_component('like_button',
+                                 article: @article.attributes,
+                                 like: current_user &. likes &.find_by(liked_article_id: @article.id)&.attributes,
+                                 count: Like.where(liked_article_id: @article.id).count,
+                                 user: @user) %>
+          </div>
         </div>
       </div>
     </div>

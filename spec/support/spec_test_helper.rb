@@ -8,6 +8,12 @@ module SpecTestHelpers
     click_button('ログイン')
   end
 
+  def log_out
+    visit(root_path)
+    click_link('アカウント')
+    click_link('ログアウト')
+  end
+
   def create_article(user)
     (1..5).each do |_i|
       create(:article, user_id: user.id)

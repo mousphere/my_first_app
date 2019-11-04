@@ -22,8 +22,4 @@ class Article < ApplicationRecord
   validates :content, presence: true
 
   mount_uploader :image, ImagesUploader
-
-  def to_param
-    genre
-  end
 end

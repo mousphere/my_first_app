@@ -3,7 +3,8 @@
 class ArticlesController < ApplicationController
   include Common
 
-  before_action :logged_in_user, only: %i[new create]
+  before_action :logged_in_user, only: %i[new create edit update]
+  before_action :correct_article_user, only: %i[edit update]
 
   def new
     @article = Article.new
@@ -21,8 +22,24 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    return unless params[:like_id]
+
     @like = Like.find(params[:like_id])
     @like.change_checked?
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      flash[:success] = '記事が更新されました'
+      redirect_to @article
+    else
+      render '/articles/edit'
+    end
   end
 
   def index
@@ -34,5 +51,13 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:sweet_name, :genre, :content, :image)
+  end
+  
+  def correct_article_user
+    @article = Article.find(params[:id])
+    return if current_user?(@article.user)
+
+    flash[:danger] = 'アクセス権がありません'
+    redirect_to root_url
   end
 end

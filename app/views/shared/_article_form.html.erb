@@ -1,0 +1,29 @@
+<h2 class="text-center"><%= title %></h2>
+<%= form_for(@article) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="article-form border rounded">
+    <div class="form-group">
+      <%= f.label :image, '画像', class:"image-label" %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.label :sweet_name, '商品名' %>
+      <%= f.text_field :sweet_name, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :genre, 'ジャンル' %>
+      <%= f.select :genre, [['チョコレート', 'chocolate'],
+                            ['クッキー', 'cookie'],
+                            ['アイス', 'ice_cream'],
+                            ['ケーキ', 'cake'],
+                            ['その他', 'etc'] ] %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content, '紹介文' %>
+      <%= f.text_area :content, rows: 5, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit button_string, class:"btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

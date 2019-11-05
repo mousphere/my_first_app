@@ -39,6 +39,11 @@
                                  count: Like.where(liked_article_id: @article.id).count,
                                  user: @user) %>
           </div>
+          <% if current_user?(@article.user) %>
+            <div class="edit-link">
+              <%= link_to '編集', edit_article_path(@article) %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

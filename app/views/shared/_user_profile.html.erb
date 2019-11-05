@@ -1,4 +1,9 @@
-<% user = params[:id] ? User.find(params[:id]) : current_user %>
+<!-- params[:id] はuserとarticle(show, editアクション)の場合があり、articleの場合は、
+     current_userのidと基本的には異なってしまうが、articleのeditアクションはそもそも
+     current_userしかアクセス権がないので、current_userを代入する 
+     他ユーザーのarticle showアクションにアクセスする場合のみ
+     User.find(params[:id]) を返す -->
+<% user = params[:id] && params[:id] == current_user.id ? current_user : User.find(params[:id]) %>
 <!-- データベースに画像ファイルが保存されていない場合は
      デフォルト画像を使用する -->
 <% image = user.image.present? ? user.image : 'images.png' %>

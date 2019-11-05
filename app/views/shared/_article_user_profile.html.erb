@@ -1,8 +1,6 @@
-<!-- User コントローラのviewで使用
-     user_idからユーザーを判断
-     記事作成時はuser_idを取得できないが
-     current_userによる使用のみなのでcurrent_userを返す -->
-<% user = params[:id] ? User.find(params[:id]) : current_user %>
+<!-- Article コントローラのviewで使用
+     article_idからユーザーを判断 -->
+<% user = Article.find(params[:id]).user %>
 <!-- データベースに画像ファイルが保存されていない場合は
      デフォルト画像を使用する -->
 <% image = user.image.present? ? user.image : 'images.png' %>

@@ -40,7 +40,7 @@ RSpec.describe '記事投稿時の挙動', type: :system do
       expect(page).to have_css('div.alert-danger')
     end
   end
-  
+
   context 'カレントユーザーが作成した記事がない時' do
     example '他ユーザー作成記事の中に編集リンクが表示されない' do
       log_in(user2)

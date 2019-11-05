@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:sweet_name, :genre, :content, :image)
   end
-  
+
   def correct_article_user
     @article = Article.find(params[:id])
     return if current_user?(@article.user)

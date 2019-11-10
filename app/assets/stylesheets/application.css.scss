@@ -1,0 +1,42 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+/* btn-light の色設定変更 */
+.btn-light {
+    background: gainsboro;
+    color: black;
+}
+
+.btn-light:hover, .btn-light:focus, 
+.btn-light:active, .btn-light:active:focus, .btn-light:active:hover, .btn-light:active.focus,
+.btn-light.active, .btn-light.active:focus, .btn-light.active:hover, .btn-light.active.focus,
+.open > .dropdown-toggle.btn-light, 
+.open > .dropdown-toggle.btn-light:hover,
+.open > .dropdown-toggle.btn-light:focus, 
+.open > .dropdown-toggle.btn-light.focus,
+.btn-light.disabled:hover, .btn-light[disabled]:hover, fieldset[disabled] .btn-light:hover,
+.btn-light.disabled:focus, .btn-light[disabled]:focus, fieldset[disabled] .btn-light:focus,
+.btn-light.disabled.focus, .btn-light[disabled].focus, fieldset[disabled] .btn-light.focus {
+    background: lightgray;
+    color: black;
+}
+
+.btn-light.outline {
+    border: 3px solid gainsboro;
+    color: black;
+}

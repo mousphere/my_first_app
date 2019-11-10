@@ -68,9 +68,8 @@ export default class StockButton extends Component {
   render() {
     const isStocking = this.state.stock !== null
     const notLoggedIn = this.state.user == null
-    const className = classnames('btn',{
-      'btn-link icon-big text-primary': isStocking,
-      'btn-link icon-big': !isStocking
+    const className = classnames('btn btn-link icon-big',{
+      'text-primary': isStocking,
     })
     
     return (

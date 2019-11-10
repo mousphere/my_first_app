@@ -22,6 +22,9 @@ gem 'carrierwave'
 gem 'react-rails'
 gem 'webpacker', '~> 3.0'
 
+# font-awesome用
+gem 'font-awesome-sass', '~> 5.11.2'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # Use Puma as the app server

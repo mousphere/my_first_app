@@ -23,7 +23,7 @@
         </p>
         <u>紹介文</u>
         <span class="content"><%= article.content %></span>
-        <div class="function-button">
+        <div class="function-button flex">
           <% @article = article %>
           <% @user = current_user %>
           <div class="stock-button">
@@ -40,9 +40,17 @@
                                  user: @user) %>
           </div>
           <% if current_user?(@article.user) %>
-            <div class="edit-link">
-              <%= link_to '編集', edit_article_path(@article) %>
+            <div class="btn btn-link icon-big">
+              <%= link_to edit_article_path(@article) do %>
+                 <%= icon('far', 'edit') %>
+              <% end %>
             </div>
+            <div>
+              <%= react_component('article_delete_button') %>
+            </div>
+          <% else %>
+            <div class="btn btn-link icon-big dummy-edit"></div>
+            <div class="btn btn-link icon-big dummy-article-delete"></div>
           <% end %>
         </div>
       </div>

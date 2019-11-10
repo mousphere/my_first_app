@@ -73,9 +73,8 @@ export default class LikeButton extends Component {
   render() {
     const contained = this.state.like !== null
     const notLoggedIn = this.state.user == null
-    const btnClass = classnames('btn',{
-      'btn-link icon-big liked': contained,
-      'btn-link icon-big': !contained
+    const btnClass = classnames('btn btn-link icon-big',{
+      'liked': contained,
     })
     const spanClass = classnames('like-count')
     

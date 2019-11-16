@@ -4,6 +4,40 @@ import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Popup extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loading: false,
+      delete_article: props.delete_article,
+    }
+  }
+  
+  deleteArticle = () => {
+      this.setState({
+      loading: true
+    })
+    
+    $.ajax({
+      type: 'DELETE',
+      url: `/articles/${this.state.delete_article.id}`,
+      dataType: 'json',
+      contentType: 'application/json',
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      }
+    }).then((response) => {
+      this.setState({
+        loading: false
+      })
+    })
+  }
+  
+//   closePopup = async () => {
+//     await deleteArticle
+//     this.props.closePopup()
+// }
+  
   render() {
     return (
       <div className='popup'>
@@ -11,8 +45,8 @@ class Popup extends Component {
           <b>この記事を削除しますか？</b>
           <p>この操作は取り消せません。このサイト上全てのページで表示されていた記事が削除されます。</p>
           <div className='modal-button'>
-            <button className='btn btn-light' onClick={this.props.closePopup}>キャンセル</button>
-            <button className='btn btn-danger' onClick={this.props.closePopup}>削除</button>
+            <button className='btn btn-light' onClick={ this.props.closePopup }>キャンセル</button>
+            <button className='btn btn-danger' onClick={() =>{ this.deleteArticle(); this.props.closePopup(); window.location.reload(true); }}>削除</button>
           </div>
         </div>
       </div>
@@ -26,6 +60,7 @@ export default class ArticleDeleteButton extends Component {
     
     this.state = {
       showPopup: false,
+      delete_article: props.delete_article
     }
   }
   
@@ -46,7 +81,7 @@ export default class ArticleDeleteButton extends Component {
           <FontAwesomeIcon icon={['far', 'trash-alt']} />
         </button>
         {this.state.showPopup ? 
-          <Popup closePopup={this.togglePopup.bind(this)} />
+          <Popup delete_article={ this.state.delete_article } closePopup={ this.togglePopup } />
           : null
         }
       </div>
@@ -55,7 +90,9 @@ export default class ArticleDeleteButton extends Component {
 }
 
 ArticleDeleteButton.defaultProps = {
+  delete_article: null
 }
 
 ArticleDeleteButton.propTypes = {
+  delete_article: PropTypes.object.isRequired
 }

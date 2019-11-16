@@ -3,8 +3,8 @@
 class ArticlesController < ApplicationController
   include Common
 
-  before_action :logged_in_user, only: %i[new create edit update]
-  before_action :correct_article_user, only: %i[edit update]
+  before_action :logged_in_user, only: %i[new create edit update destroy]
+  before_action :correct_article_user, only: %i[edit update destroy]
 
   def new
     @article = Article.new
@@ -45,6 +45,17 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.where(genre: params[:genre])
     render '/static_pages/home'
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:success] = '記事が削除されました'
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      # format.json { render json: nil }
+      format.json { redirect_back(fallback_location: root_path) }
+    end
   end
 
   private

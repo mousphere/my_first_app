@@ -46,7 +46,7 @@
               <% end %>
             </div>
             <div>
-              <%= react_component('article_delete_button') %>
+              <%= react_component('article_delete_button', delete_article: @article.attributes) %>
             </div>
           <% else %>
             <div class="btn btn-link icon-big dummy-edit"></div>

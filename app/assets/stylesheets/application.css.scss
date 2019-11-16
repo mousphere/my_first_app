@@ -16,6 +16,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+/** li ・消し **/
+li{
+    list-style: none;
+}
+
 /* btn-light の色設定変更 */
 .btn-light {
     background: gainsboro;

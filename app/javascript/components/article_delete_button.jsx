@@ -13,12 +13,9 @@ class Popup extends Component {
     }
   }
   
-  deleteArticle = () => {
-      this.setState({
-      loading: true
-    })
-    
-    $.ajax({
+  deleteArticle() {
+    return new Promise((resolve, reject) => {
+      $.ajax({
       type: 'DELETE',
       url: `/articles/${this.state.delete_article.id}`,
       dataType: 'json',
@@ -26,17 +23,22 @@ class Popup extends Component {
       beforeSend: function(xhr) {
         xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
       }
-    }).then((response) => {
-      this.setState({
-        loading: false
       })
+      resolve()
     })
   }
   
-//   closePopup = async () => {
-//     await deleteArticle
-//     this.props.closePopup()
-// }
+  async asyncFunc1() {
+    this.setState({
+      loading: true
+    })
+    await deleteArticle().then(() => {
+    this.setState({
+        loading: false
+      })
+    window.location.reload(true)
+    })
+  }
   
   render() {
     return (
@@ -46,7 +48,7 @@ class Popup extends Component {
           <p>この操作は取り消せません。このサイト上全てのページで表示されていた記事が削除されます。</p>
           <div className='modal-button'>
             <button className='btn btn-light' onClick={ this.props.closePopup }>キャンセル</button>
-            <button className='btn btn-danger' onClick={() =>{ this.deleteArticle(); this.props.closePopup(); window.location.reload(true); }}>削除</button>
+            <button className='btn btn-danger' onClick={() =>{ this.asyncFunc1(); this.props.closePopup(); }}>削除</button>
           </div>
         </div>
       </div>

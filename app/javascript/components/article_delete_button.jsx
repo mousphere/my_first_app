@@ -13,30 +13,39 @@ class Popup extends Component {
     }
   }
   
-  deleteArticle() {
+  deleteArticle = () => {
+    this.setState({
+      loading: true
+    })
+
     return new Promise((resolve, reject) => {
       $.ajax({
-      type: 'DELETE',
-      url: `/articles/${this.state.delete_article.id}`,
-      dataType: 'json',
-      contentType: 'application/json',
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
-      }
+        type: 'DELETE',
+        url: `/articles/${this.state.delete_article.id}`,
+        dataType: 'json',
+        contentType: 'application/json',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        }
       })
       resolve()
     })
   }
-  
-  async asyncFunc1() {
-    this.setState({
-      loading: true
-    })
-    await deleteArticle().then(() => {
-    this.setState({
-        loading: false
+      
+  closePopup = () => {
+    return new Promise((resolve, reject) => {
+      this.setState({
+        loading: true
       })
-    window.location.reload(true)
+      this.props.closePopup()
+      resolve()
+    })
+  }
+  
+  reloadPage = () => {
+    return new Promise((resolve, reject) => {
+      window.location.reload(true)
+      resolve()
     })
   }
   
@@ -48,7 +57,10 @@ class Popup extends Component {
           <p>この操作は取り消せません。このサイト上全てのページで表示されていた記事が削除されます。</p>
           <div className='modal-button'>
             <button className='btn btn-light' onClick={ this.props.closePopup }>キャンセル</button>
-            <button className='btn btn-danger' onClick={() =>{ this.asyncFunc1(); this.props.closePopup(); }}>削除</button>
+            <button className='btn btn-danger' onClick={() =>{ this.deleteArticle()
+                                                              .then(this.closePopup)
+                                                              .then(this.reloadPage)
+                                                              }}>削除</button>
           </div>
         </div>
       </div>

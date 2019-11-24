@@ -35,7 +35,7 @@ class Popup extends Component {
   closePopup = () => {
     return new Promise((resolve, reject) => {
       this.setState({
-        loading: true
+        loading: false
       })
       this.props.closePopup()
       resolve()

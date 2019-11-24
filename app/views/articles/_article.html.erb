@@ -40,13 +40,15 @@
                                  user: @user) %>
           </div>
           <% if current_user?(@article.user) %>
-            <div class="btn btn-link icon-big">
+            <div class="btn btn-link icon-big article-edit-button">
               <%= link_to edit_article_path(@article) do %>
                  <%= icon('far', 'edit') %>
               <% end %>
             </div>
             <div>
-              <%= react_component('article_delete_button', delete_article: @article.attributes) %>
+              <div class="article-delete-button">
+                <%= react_component('hooks_article_delete_button') %>
+              </div>
             </div>
           <% else %>
             <div class="btn btn-link icon-big dummy-edit"></div>

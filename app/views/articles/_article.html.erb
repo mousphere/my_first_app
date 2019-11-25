@@ -47,7 +47,7 @@
             </div>
             <div>
               <div class="article-delete-button">
-                <%= react_component('hooks_article_delete_button') %>
+                <%= react_component('hooks_article_delete_button', delete_article: @article.attributes) %>
               </div>
             </div>
           <% else %>

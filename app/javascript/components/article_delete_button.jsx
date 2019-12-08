@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import ReactDOM from 'react-dom'
 import PropTypes from "prop-types"
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -51,6 +52,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
       })
     }
     
+    const flashMessage = () =>{
+      const element = (
+        <div>
+          <h1>記事を削除しました</h1>
+        </div>
+      )
+      ReactDOM.render(element, document.getElementById('root'))
+    }
+
+    
     return (
       <div className='popup'>
         <div className='popup_inner text-center'>
@@ -66,7 +77,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
               className='btn btn-danger' 
               onClick={ () => deleteArticle()
                               .then(hideModal)
-                              .then(reloadPage) } >
+                              .then(reloadPage)
+                              .then(flashMessage)} >
               削除
             </button>
           </div>

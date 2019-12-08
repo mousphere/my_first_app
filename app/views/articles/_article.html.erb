@@ -28,8 +28,8 @@
           <% @user = current_user %>
           <div class="stock-button">
             <%= react_component('stock_button',
-                                 article: @article.attributes,
-                                 stock: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.attributes,
+                                 article_id: @article.id,
+                                 stock_id: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.id,
                                  user: @user) %>
           </div>
           <div class="like-button">

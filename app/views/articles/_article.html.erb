@@ -46,9 +46,31 @@
               <% end %>
             </div>
             <div>
-              <div class="article-delete-button">
-                <%= react_component('article_delete_button', delete_article: @article.attributes) %>
-              </div>
+              <button type="button" class="btn btn-link icon-big" data-toggle="modal" data-target="#myModal">
+                <%= icon('far', 'trash-alt') %>
+              </button>
+
+              <!-- モーダルの設定 -->
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">記事を削除しますか？</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>この操作は取り消せません。このサイト上全てのページで表示されていた記事が削除されます。</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                      <%= link_to '削除', article_path(@article), method: :delete, 
+                          class:"btn btn-danger" %>
+                    </div><!-- /.modal-footer -->
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
             </div>
           <% else %>
             <div class="btn btn-link icon-big dummy-edit"></div>

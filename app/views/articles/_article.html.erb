@@ -46,8 +46,29 @@
               <% end %>
             </div>
             <div>
-              <div class="article-delete-button">
-                <%= react_component('article_delete_button', delete_article: @article.attributes) %>
+              <button type="button" class="btn btn-link icon-big article-delete-button" data-toggle="modal" data-target="#myModal">
+                <%= icon('far', 'trash-alt') %>
+              </button>
+
+              <!-- モーダルの設定 -->
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">記事を削除しますか？</h5>
+                      <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>この操作は取り消せません。削除すると、このサイト全てのページ上で表示されていた該当記事が見られなくなります。</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                      <%= link_to '削除', article_path(@article), method: :delete, class:"btn btn-danger" %>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           <% else %>

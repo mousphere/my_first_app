@@ -11,7 +11,7 @@ RSpec.describe '記事削除ボタン関連の挙動', type: :system do
     article
     log_in(user1)
     find('.article-delete-button').click
-    expect{ click_button('削除') }.to change(Article, :count).by(-1)
+    expect { find('.btn-danger').click }.to change(Article, :count).by(-1)
   end
 
   example '他ユーザーの記事には削除アイコンが表示されない' do

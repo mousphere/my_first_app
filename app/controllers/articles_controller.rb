@@ -51,11 +51,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     flash[:success] = '記事が削除されました'
-    respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path) }
-      # format.json { render json: nil }
-      format.json { redirect_back(fallback_location: root_path) }
-    end
+    redirect_back(fallback_location: root_path)
   end
 
   private

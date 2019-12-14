@@ -52,9 +52,6 @@ class ArticlesController < ApplicationController
     @article.destroy
     flash[:success] = '記事が削除されました'
     redirect_back(fallback_location: root_path)
-      # format.json { render json: nil }
-      # format.json { redirect_back(fallback_location: root_path) }
-    # end
   end
 
   private

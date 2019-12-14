@@ -143,6 +143,9 @@
 /* いいねボタン */
 .liked{
     color: hotpink;
+    &:hover{
+        color: hotpink;
+    }
 }
 
 /* 記事編集ボタン */

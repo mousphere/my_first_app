@@ -1,28 +1,21 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default class LikeButton extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      loading: false,
-      like: props.like,
-      count: props.count,
-      user: props.user
-    }
-  }
+function LikeButton(props) {
+  const [loading, setLoading] = useState(false)
+  const [articleID, setArticleID] = useState(props.article_id)
+  const [likeID, setLikeID] = useState(props.like_id)
+  const [count, setCount] = useState(props.count)
+  const [user, setUser] = useState(props.user)
   
-  alertMessage = () =>{
+  const alertMessage = () =>{
     alert('ログインが必要です')
   }
   
-  addLike = () =>{
-    this.setState({
-      loading: true
-    })
+  const addLike = () =>{
+    setLoading(true)
     
     $.ajax({
       type: 'POST',
@@ -30,77 +23,64 @@ export default class LikeButton extends Component {
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify({
-        liked_article_id: this.props.article.id
+        liked_article_id: articleID
       }),
       beforeSend: function(xhr) {
         xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
       }
     }).then((response) => {
-      const like = response.like
-      const count = response.count
-      this.setState({
-        loading: false,
-        like,
-        count
-      })
+      setLoading(false)
+      setLikeID(response.like.id)
+      setCount(response.count)
     })
   }
   
-  removeLike = () => {
-    this.setState({
-      loading: true
-    })
+  const removeLike = () => {
+    setLoading(true)
     
     $.ajax({
       type: 'DELETE',
-      url: `/likes/${this.state.like.id}`,
+      url: `/likes/${likeID}`,
       dataType: 'json',
       contentType: 'application/json',
       beforeSend: function(xhr) {
         xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
       }
     }).then((response) => {
-      const like = response.like
-      const count = response.count
-      this.setState({
-        loading: false,
-        like: null,
-        count
-      })
+      setLoading(false)
+      setLikeID(null)
+      setCount(response.count)
     })
   }
   
-  render() {
-    const contained = this.state.like !== null
-    const notLoggedIn = this.state.user == null
-    const btnClass = classnames('btn btn-link icon-big',{
-      'liked': contained,
-    })
-    const spanClass = classnames('like-count')
-    
-    return (
-      <div>
-        <button
-          className={ btnClass }
-          onClick={ notLoggedIn ?  this.alertMessage : contained ? this.removeLike : this.addLike }
-          disabled={ this.state.loading }
-        >
-          { contained ? <FontAwesomeIcon icon={['fas', 'heart']} /> : <FontAwesomeIcon icon={['far', 'heart']} /> }
-        </button>
-        <span className={ spanClass }>{ this.state.count }</span>
-      </div>
-    )
-  }
+  const liked = likeID !== null
+  const notLoggedIn = user == null
+  const btnClass = classnames('btn btn-link icon-big',{
+                              'liked': liked,
+  })
+  const spanClass = classnames('like-count')
+  
+  return (
+    <div>
+      <button
+        className={ btnClass }
+        onClick={ notLoggedIn ? () => alertMessage()
+                 :      liked ? () =>   removeLike() : () => addLike() }
+        disabled={ loading }
+      >
+        { liked ? <FontAwesomeIcon icon={['fas', 'heart']} />
+                : <FontAwesomeIcon icon={['far', 'heart']} /> }
+      </button>
+      <span className={ spanClass }>{ count }</span>
+    </div>
+  )
 }
 
-LikeButton.defaultProps = {
-  like: null,
-  user: null
-}
+export default LikeButton
 
 LikeButton.propTypes = {
-  article: PropTypes.object.isRequired,
-  like: PropTypes.object,
+  article_id: PropTypes.number.isRequired,
+  like_id: PropTypes.number,
   count: PropTypes.number,
   user: PropTypes.object.isRequired
 }

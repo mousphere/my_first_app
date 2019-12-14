@@ -28,11 +28,6 @@
     height: 40px;
 }
 
-/** li ・消し **/
-li{
-    list-style: none;
-}
-
 /** col padding 0 **/
 .no_padding{
     padding: 0px;
@@ -112,7 +107,7 @@ li{
 
 .content{
     display: block;
-    padding-right: 15px;
+    padding-right: 25px;
     padding-bottom: 10px;
 }
 
@@ -127,30 +122,78 @@ li{
 }
 
 /* ボタン共通 */
+.flex{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
 .icon-big{
     font-size: 1.2em;
 }
+
 
 /* ストックボタン */
 .function-button{
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 20px;
-    display: inline-flex;
 }
 
 /* いいねボタン */
-.inline-block{
-    display: inline-block;
-}
-
 .liked{
     color: hotpink;
 }
 
-/* 記事編集リンク */
+/* 記事編集ボタン */
 .edit-link{
     margin: auto 0 auto 20px;
+}
+
+/* 記事削除ボタン */
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+  z-index: 100;
+}
+.popup_inner {
+  position: absolute;
+  left: 36%;
+  right: 36%;
+  top: 35%;
+  bottom: 35%;
+  margin: auto;
+  padding: 10px 5px;
+  background-color: white;
+  z-index: 100;
+  p{
+      padding-top: 15px;
+  }
+}
+
+.modal-button{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 65%;
+    padding-top: 10px;
+}
+
+/* ダミーボタン */
+/* current_user以外の記事のボタンの位置調整の為の、
+   同じwidthを持ったダミーの記事編集、削除ボタン */
+.dummy-edit{
+    width: 47.61px;
+}
+
+.dummy-article-delete{
+    width: 42.8px;
 }
 
 /** 通知機能 **/

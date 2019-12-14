@@ -1,27 +1,20 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default class StockButton extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      loading: false,
-      stock: props.stock,
-      user: props.user
-    }
-  }
+function StockButton(props){
+  const [loading, setLoading] = useState(false)
+  const [stockID, setStock] = useState(props.stock_id)
+  const [articleID, setArticle] = useState(props.article_id)
+  const [user, setUser] = useState(props.user)
   
-  alertMessage = () =>{
+  const alertMessage = () =>{
     alert('ログインが必要です')
   }
   
-  stock = () =>{
-    this.setState({
-      loading: true
-    })
+  const stockArticle = () =>{
+    setLoading(true)
     
     $.ajax({
       type: 'POST',
@@ -29,68 +22,59 @@ export default class StockButton extends Component {
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify({
-        stocked_article_id: this.props.article.id
+        stocked_article_id: articleID
       }),
       beforeSend: function(xhr) {
         xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
       }
     }).then((response) => {
-      const stock = response
-      this.setState({
-        loading: false,
-        stock
-      })
+      setLoading(false)
+      setStock(response.id)
     })
   }
+
   
-  unstock = () => {
-    this.setState({
-      loading: true
-    })
+  const unstockArticle = () =>{
+    setLoading(true)
     
     $.ajax({
       type: 'DELETE',
-      url: `/stocks/${this.state.stock.id}`,
+      url: `/stocks/${stockID}`,
       dataType: 'json',
       contentType: 'application/json',
       beforeSend: function(xhr) {
         xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
       }
     }).then((response) => {
-      const stock = response
-      this.setState({
-        loading: false,
-        stock: null
-      })
+      setLoading(false)
+      setStock(null)
     })
   }
-  
-  render() {
-    const isStocking = this.state.stock !== null
-    const notLoggedIn = this.state.user == null
-    const className = classnames('btn',{
-      'btn-link icon-big text-primary': isStocking,
-      'btn-link icon-big': !isStocking
-    })
+
+  const isStocking = stockID !== null
+  const notLoggedIn = user == null 
+  const className = classnames('btn btn-link icon-big',{
+    'text-primary': isStocking,
+  })
     
-    return (
+  return (
+    <div>
       <button
         className={ className }
-        onClick={ notLoggedIn ? this.alertMessage : isStocking ? this.unstock : this.stock }
-        disabled={ this.state.loading }
+        onClick={ notLoggedIn ? () => alertMessage()
+        　　　　 : isStocking ? () => unstockArticle() : () => stockArticle() }
+        disabled={ loading }
       >
-        { isStocking ?
-        <FontAwesomeIcon icon={['fas', 'folder-plus']} /> : <FontAwesomeIcon icon={['fas', 'folder-open']} /> }
+        { isStocking ? <FontAwesomeIcon icon={['fas', 'folder-plus']} />
+                     : <FontAwesomeIcon icon={['fas', 'folder-open']} /> }
       </button>
+    </div>
     )
   }
-}
 
-StockButton.defaultProps = {
-  stock: null
-}
+export default StockButton
 
 StockButton.propTypes = {
-  article: PropTypes.object.isRequired,
-  stock: PropTypes.object
+  article_id: PropTypes.number.isRequired,
+  stock_id: PropTypes.number
 }

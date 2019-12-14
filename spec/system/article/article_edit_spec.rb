@@ -11,7 +11,7 @@ RSpec.describe '記事投稿時の挙動', type: :system do
     example '記事が更新され、成功メッセージが表示される' do
       article
       log_in(user1)
-      click_link('編集')
+      find('.article-edit-button').click
       fill_in('紹介文', with: '記事を更新しました')
       click_button('更新する')
       expect(current_path).to eq article_path(article)
@@ -23,7 +23,7 @@ RSpec.describe '記事投稿時の挙動', type: :system do
     example '商品名が空白の時' do
       article
       log_in(user1)
-      click_link('編集')
+      find('.article-edit-button').click
       fill_in('商品名', with: '')
       click_button('更新する')
       expect(page).to have_content('記事編集')
@@ -33,7 +33,7 @@ RSpec.describe '記事投稿時の挙動', type: :system do
     example '紹介文が空白の時' do
       article
       log_in(user1)
-      click_link('編集')
+      find('.article-edit-button').click
       fill_in('紹介文', with: '')
       click_button('更新する')
       expect(page).to have_content('記事編集')

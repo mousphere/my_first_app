@@ -14,7 +14,6 @@ class Article < ApplicationRecord
   has_many :like_users, through: :liked, source: :like_user
 
   belongs_to :user
-  default_scope { order(created_at: :desc) }
 
   # ----- バリデーション -----
   validates :sweet_name, presence: true

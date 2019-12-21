@@ -26,10 +26,4 @@ RSpec.describe Article, type: :model do
       end
     end
   end
-
-  context '記事の順番'
-  example '投稿時刻の降順になっているか' do
-    create_article(user)
-    expect(user.articles.first.content).to eq '5番目の投稿'
-  end
 end

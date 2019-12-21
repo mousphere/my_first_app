@@ -9,6 +9,7 @@ class LikesController < ApplicationController
     @article = Article.find(params[:liked_article_id])
     @like = current_user.add_like(@article)
     @like_count = Like.where(liked_article_id: @article.id).count
+    @article.update(like_counts: @like_count)
 
     respond_to do |format|
       format.html { redirect_to @article }
@@ -20,6 +21,7 @@ class LikesController < ApplicationController
     @article = Like.find(params[:id]).liked_article
     current_user.remove_like(@article)
     @like_count = Like.where(liked_article_id: @article.id).count
+    @article.update(like_counts: @like_count)
 
     respond_to do |format|
       format.html { redirect_to @article }

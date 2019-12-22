@@ -4,9 +4,9 @@ import classnames from 'classnames'
 function ChangingDisplayOrderButton(){
   const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')
   const darkButton = classnames('d-inline-block p-2 mx-2 btn btn-secondary')
+  const root_url = "https://b57360db244146fc98d63bdf0ee06acb.vfs.cloud9.us-east-2.amazonaws.com/"
   
   const setInfo = (url, opt) => {
-    const root_url = "https://b57360db244146fc98d63bdf0ee06acb.vfs.cloud9.us-east-2.amazonaws.com/"
     let type, data
     
     if(url == root_url){

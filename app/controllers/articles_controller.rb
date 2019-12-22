@@ -43,8 +43,16 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.where(genre: params[:genre])
-    render '/static_pages/home'
+    # @articles = Article.where(genre: params[:genre])
+    if current_user
+      current_user.update(order_option: params[:option]) if params[:option]
+      display_order_change(current_user.order_option)
+    end
+    # render '/static_pages/home'
+    respond_to do |format|
+      format.html { render 'static_pages/home' }
+      format.json { render json: nil }
+    end
   end
 
   def destroy
@@ -66,5 +74,13 @@ class ArticlesController < ApplicationController
 
     flash[:danger] = 'アクセス権がありません'
     redirect_to root_url
+  end
+
+  def display_order_change(option)
+    if option.zero?
+      @articles = Article.where(genre: params[:genre]).order(created_at: :desc)
+    elsif option == 1
+      @articles = Article.where(genre: params[:genre]).order(like_counts: :desc)
+    end
   end
 end

@@ -2,7 +2,17 @@
 
 FactoryBot.define do
   sequence :content do |n|
-    "#{n}番目の投稿"
+    i = if n % 5 == 0
+          5
+        else
+          n % 5
+        end
+
+    "#{i}番目の投稿"
+  end
+
+  sequence :like_counts do |n|
+    5 if n % 5 == 1
   end
 
   factory :article, class: Article do

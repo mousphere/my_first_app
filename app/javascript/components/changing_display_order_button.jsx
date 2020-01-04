@@ -1,32 +1,48 @@
-import React from "react"
+import React, {useState} from "react"
 import classnames from 'classnames'
 
-function ChangingDisplayOrderButton(){
-  const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')
-  const darkButton = classnames('d-inline-block p-2 mx-2 btn btn-secondary')
+function ChangingDisplayOrderButton(props){
   const root_url = "https://b57360db244146fc98d63bdf0ee06acb.vfs.cloud9.us-east-2.amazonaws.com/"
+  const url = window.location.href
+  
+  const [option, setOption] = useState(props.option)
+  const [loading, setLoading] = useState(false)
   
   const setInfo = (url, opt) => {
-    let type, data
+    let type, optionData
     
     if(url == root_url){
       type = 'POST'
-      data = JSON.stringify({ option: opt })
+      optionData = JSON.stringify({ option: opt })
     }else{
       type = 'GET'
-      data = { option: opt }
+      optionData = { option: opt }
     }
     
-    return[type, data]
+    return[type, optionData]
   }
   
-  const ajaxProcess = (type, url, data) => {
+  const setLoadingTrue = () =>{
+    return new Promise((resolve, reject) => {
+      setLoading(true)
+      resolve()
+    })
+  }
+  
+  const setOpt = (opt) =>{
+    return new Promise((resolve, reject) => {
+      setOption(opt)
+      resolve()
+    })
+  }
+  
+  const sendOptionWithAjax = (type, url, option) => {
     $.ajax({
       type: type,
       url: url,
       dataType: 'json',
       contentType: 'application/json',
-      data: data,
+      data: option,
       beforeSend: function(xhr) {
         xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
       }
@@ -36,39 +52,51 @@ function ChangingDisplayOrderButton(){
   }
   
   const orderByCreatedAtDesk = () =>{
-    const url = window.location.href
-    const [type, data] = setInfo(url, 0)
     
-    ajaxProcess(type, url, data)
+    const [type, opt] = setInfo(url, 0)
+    
+    setOpt(opt)
+    .then(setLoadingTrue()
+    .then(sendOptionWithAjax(type, url, opt)
+      )
+    )
   }
   
   const orderByCreatedAtAsk = () =>{
-    const url = window.location.href
-    const [type, data] = setInfo(url, 1)
+    const [type, opt] = setInfo(url, 1)
     
-    ajaxProcess(type, url, data)
+    setOpt(opt)
+    .then(setLoadingTrue()
+    .then(sendOptionWithAjax(type, url, opt)
+      )
+    )
   }
+  
+  const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')
+  const secondaryButton = classnames('d-inline-block p-2 mx-2 btn btn-secondary')
   
   return(
     <div>
       <div className = 'form-group row justify-content-center'>
         <div>
-          <div
-            className={ primaryButton }
+          <button
+            className={ option === 0 ? primaryButton : secondaryButton }
             onClick={ () => orderByCreatedAtDesk() }
+            disabled={ loading }
           >
             新しい投稿順
-          </div>
-          <div
-            className={ darkButton }
+          </button>
+          <button
+            className={ option === 0 ? secondaryButton : primaryButton }
             onClick={ () => orderByCreatedAtAsk() }
+            disabled={ loading }
           >
             いいね多い順
-          </div>
+          </button>
         </div>
       </div>
     </div>
-    )
+  )
 }
 
 export default ChangingDisplayOrderButton

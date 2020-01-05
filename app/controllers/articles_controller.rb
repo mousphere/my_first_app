@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   include Common
+  include DisplayOrder
 
   before_action :logged_in_user, only: %i[new create edit update destroy]
   before_action :correct_article_user, only: %i[edit update destroy]
@@ -78,18 +79,5 @@ class ArticlesController < ApplicationController
 
     flash[:danger] = 'アクセス権がありません'
     redirect_to root_url
-  end
-
-  def display_order_change(option)
-    if option.zero?
-      @articles = Article.where(genre: params[:genre]).order(created_at: :desc)
-    elsif option == 1
-      @articles = Article.where(genre: params[:genre]).order(like_counts: :desc)
-    end
-  end
-
-  def set_option_in_session
-    session[:not_logged_in] = 0                    if session[:not_logged_in].nil?
-    session[:not_logged_in] = params[:option].to_i if params[:option]
   end
 end

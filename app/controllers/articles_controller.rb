@@ -43,12 +43,16 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    # @articles = Article.where(genre: params[:genre])
     if current_user
       current_user.update(order_option: params[:option]) if params[:option]
-      display_order_change(current_user.order_option)
+      option = current_user.order_option
+    else
+      set_option_in_session
+      option = session[:not_logged_in]
     end
-    # render '/static_pages/home'
+
+    display_order_change(option)
+
     respond_to do |format|
       format.html { render 'static_pages/home' }
       format.json { render json: nil }
@@ -82,5 +86,10 @@ class ArticlesController < ApplicationController
     elsif option == 1
       @articles = Article.where(genre: params[:genre]).order(like_counts: :desc)
     end
+  end
+
+  def set_option_in_session
+    session[:not_logged_in] = 0                    if session[:not_logged_in].nil?
+    session[:not_logged_in] = params[:option].to_i if params[:option]
   end
 end

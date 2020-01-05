@@ -20,6 +20,8 @@ Style/Documentation:
   Enabled: false
 
 # --- Metrics --- #
+Metrics/AbcSize:
+  Max: 25
 
 Metrics/BlockLength:
   Exclude:
@@ -29,5 +31,5 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Max: 130
 
-Metrics/AbcSize:
-  Max: 25
+Metrics/MethodLength:
+  Max: 15

@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   include Common
+  include DisplayOrder
 
   before_action :logged_in_user, only: %i[new create edit update destroy]
   before_action :correct_article_user, only: %i[edit update destroy]
@@ -43,8 +44,20 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.where(genre: params[:genre])
-    render '/static_pages/home'
+    if current_user
+      current_user.update(order_option: params[:option]) if params[:option]
+      option = current_user.order_option
+    else
+      set_option_in_session
+      option = session[:not_logged_in]
+    end
+
+    display_order_change(option)
+
+    respond_to do |format|
+      format.html { render 'static_pages/home' }
+      format.json { render json: nil }
+    end
   end
 
   def destroy

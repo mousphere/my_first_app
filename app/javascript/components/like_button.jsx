@@ -31,7 +31,7 @@ function LikeButton(props) {
     }).then((response) => {
       setLoading(false)
       setLikeID(response.like.id)
-      setCount(response.count)
+      setCount(response.counts)
     })
   }
   
@@ -49,7 +49,7 @@ function LikeButton(props) {
     }).then((response) => {
       setLoading(false)
       setLikeID(null)
-      setCount(response.count)
+      setCount(response.counts)
     })
   }
   
@@ -81,6 +81,6 @@ export default LikeButton
 LikeButton.propTypes = {
   article_id: PropTypes.number.isRequired,
   like_id: PropTypes.number,
-  count: PropTypes.number,
+  counts: PropTypes.number,
   user: PropTypes.object.isRequired
 }

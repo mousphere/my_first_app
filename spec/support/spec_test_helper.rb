@@ -15,8 +15,8 @@ module SpecTestHelpers
   end
 
   def create_article(user)
-    (1..5).each do |_i|
-      create(:article, user_id: user.id)
+    (1..5).each do |i|
+      create(:article, user_id: user.id, created_at: Time.zone.now + i)
     end
   end
 end

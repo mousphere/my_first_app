@@ -3,6 +3,7 @@
 class ArticlesController < ApplicationController
   include Common
   include DisplayOrder
+  PER = 5
 
   before_action :logged_in_user, only: %i[new create edit update destroy]
   before_action :correct_article_user, only: %i[edit update destroy]
@@ -52,7 +53,7 @@ class ArticlesController < ApplicationController
       option = session[:not_logged_in]
     end
 
-    display_order_change(option)
+    display_order_change(option, PER)
 
     respond_to do |format|
       format.html { render 'static_pages/home' }

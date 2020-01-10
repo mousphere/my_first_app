@@ -25,9 +25,19 @@
       </ul>
       </div>
     </div>
+    
+    <% if current_user %>
+      <% option = current_user.order_option %>
+    <% else %>
+      <% option = session[:not_logged_in] %>
+    <% end %>
+    
     <div class="col-md-6">
-      <%= react_component('changing_display_order_button', option: current_user &. order_option) %>
+      <%= react_component('changing_display_order_button', option: option) %>
       <%= render @articles %>
+      <div class="pagination">
+        <%= paginate @articles %>
+      </div>
     </div>
   </div>
 </div>

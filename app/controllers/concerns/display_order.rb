@@ -5,11 +5,11 @@ module DisplayOrder
 
   private
 
-  def display_order_change(option)
+  def display_order_change(option, per)
     if option.zero?
-      @articles = Article.order(created_at: :desc)
+      @articles = Article.page(params[:page]).per(per).order(created_at: :desc)
     elsif option == 1
-      @articles = Article.order(like_counts: :desc)
+      @articles = Article.page(params[:page]).per(per).order(like_counts: :desc)
     end
   end
 

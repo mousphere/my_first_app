@@ -2,6 +2,7 @@
 
 class StaticPagesController < ApplicationController
   include DisplayOrder
+  PER = 5
 
   def home
     if current_user
@@ -12,7 +13,7 @@ class StaticPagesController < ApplicationController
       option = session[:not_logged_in]
     end
 
-    display_order_change(option)
+    display_order_change(option, PER)
 
     respond_to do |format|
       format.html { render 'static_pages/home' }

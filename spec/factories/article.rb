@@ -12,7 +12,11 @@ FactoryBot.define do
   end
 
   sequence :like_counts do |n|
-    5 if n % 5 == 1
+    if n % 5 == 1
+      5
+    else
+      n - 1
+    end
   end
 
   factory :article, class: Article do

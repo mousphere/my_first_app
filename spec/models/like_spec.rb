@@ -23,12 +23,15 @@ RSpec.describe Like, type: :model do
   end
 
   context 'ユーザー、記事との依存性チェック' do
-    example 'ユーザー削除でストックリレーションも削除' do
-      user.likes.create(liked_article_id: article.id)
+    subject { user.likes.create(liked_article_id: article.id) }
+
+    example 'ユーザー削除でいいねリレーションも削除' do
+      subject
       expect { user.destroy }.to change { Like.count }.by(-1)
     end
-    example '記事削除でストックリレーションも削除' do
-      user.likes.create(liked_article_id: article.id)
+
+    example '記事削除でいいねリレーションも削除' do
+      subject
       expect { article.destroy }.to change { Like.count }.by(-1)
     end
   end

@@ -13,6 +13,10 @@ class Article < ApplicationRecord
            inverse_of: :liked_article, dependent: :destroy
   has_many :like_users, through: :liked, source: :like_user
 
+  # コメント
+  has_many :comments,
+           foreign_key: 'article_id', inverse_of: :article, dependent: :destroy
+  
   belongs_to :user
 
   # ----- バリデーション -----

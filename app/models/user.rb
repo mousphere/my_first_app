@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # 記事
   has_many :articles, dependent: :destroy
 
   # ストック
@@ -12,6 +13,10 @@ class User < ApplicationRecord
   has_many :likes,
            foreign_key: 'like_user_id', inverse_of: :like_user, dependent: :destroy
   has_many :liked_articles, through: :likes, source: :liked_article
+
+  # コメント
+  has_many :comments,
+           foreign_key: 'user_id', inverse_of: :user, dependent: :destroy
 
   attr_accessor :remember_token
   before_save { self.email = email.downcase }

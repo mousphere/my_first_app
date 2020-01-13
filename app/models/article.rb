@@ -16,6 +16,7 @@ class Article < ApplicationRecord
   # コメント
   has_many :comments,
            foreign_key: 'article_id', inverse_of: :article, dependent: :destroy
+  has_many :comment_users, through: :comments, source: :user
   
   belongs_to :user
 

@@ -17,6 +17,7 @@ class User < ApplicationRecord
   # コメント
   has_many :comments,
            foreign_key: 'user_id', inverse_of: :user, dependent: :destroy
+  has_many :commented_articles, through: :comments, source: :article
 
   attr_accessor :remember_token
   before_save { self.email = email.downcase }

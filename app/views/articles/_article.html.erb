@@ -1,5 +1,5 @@
-<div class ="border-left border-right">
-  <li id="article-<%= article.id %>">
+<li id="article-<%= article.id %>">
+  <div class ="border-left border-right">
     <div class="row">
       <div class="col-md-3 text-center">
         <% image = 
@@ -40,13 +40,15 @@
                                  user: @user) %>
           </div>
           <% if current_user?(@article.user) %>
-            <div class="btn btn-link icon-big article-edit-button">
-              <%= link_to edit_article_path(@article) do %>
-                 <%= icon('far', 'edit') %>
-              <% end %>
+            <div class="article-edit-button">
+              <button class="btn btn-link icon-big">
+                <%= link_to edit_article_path(@article) do %>
+                   <%= icon('far', 'edit') %>
+                <% end %>
+              </button>
             </div>
-            <div>
-              <button type="button" class="btn btn-link icon-big article-delete-button" data-toggle="modal" data-target="#myModal">
+            <div class="article-delete-button">
+              <button type="button" class="btn btn-link icon-big" data-toggle="modal" data-target="#myModal">
                 <%= icon('far', 'trash-alt') %>
               </button>
 
@@ -80,5 +82,5 @@
     </div>
     <div class="border-bottom">
     </div>
-  </li>
-</div>
+  </div>
+</li>

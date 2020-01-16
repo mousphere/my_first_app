@@ -45,6 +45,8 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    session[:for_article_show] = 0
+
     if current_user
       current_user.update(order_option: params[:option]) if params[:option]
       option = current_user.order_option

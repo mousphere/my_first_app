@@ -5,25 +5,8 @@
     </span>
   </div>
   <div class="row">
-    <div class="col-md-3" >
-      <!-- サイドバーを固定したい -->
-      <div class="sidebar">
-      <span class="category">カテゴリー</span>
-      <ul>
-        <li><%= link_to '全て', root_path,
-                class:"genre_list" %></li>
-        <li><%= link_to 'チョコレート', articles_path(genre: 'chocolate'),
-                class:"genre_list" %></li>
-        <li><%= link_to 'クッキー', articles_path(genre: 'cookie'),
-                class:"genre_list" %></li>
-        <li><%= link_to 'アイスクリーム', articles_path(genre: 'ice_cream'),
-                class:"genre_list" %></li>
-        <li><%= link_to 'ケーキ', articles_path(genre: 'cake'),
-                class:"genre_list" %></li>
-        <li><%= link_to 'その他', articles_path(genre: 'etc'),
-                class:"genre_list" %></li>
-      </ul>
-      </div>
+    <div class="col-md-2">
+      <%= render 'shared/category' %>
     </div>
     
     <% if current_user %>
@@ -32,7 +15,7 @@
       <% option = session[:not_logged_in] %>
     <% end %>
     
-    <div class="col-md-6">
+    <div class="col-md-6 offset-md-1">
       <%= react_component('changing_display_order_button', option: option) %>
       <div class="articles">
         <ul>

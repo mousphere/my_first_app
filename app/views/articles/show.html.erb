@@ -1,14 +1,24 @@
 <div class="container-fluid">
+  <% if session[:for_article_show] == 0 %>
+    <div class="row">
+      <span class="explain">
+        好きなスイーツについて投稿、共有しましょう！
+      </span>
+    </div>
+  <% end %>
   <div class="row">
-    <div class="col-md-2 text-center user_profile">
-      <%= render 'shared/article_user_profile' %>
-    </div>
+    <% if session[:for_article_show] == 0 %> 
+      <div class="col-md-2">
+        <%= render 'shared/category' %>
+      </div>
+    <% else %>
+      <div class="col-md-2 text-center user_profile">
+        <%= render 'shared/article_user_profile' %>
+      </div>
+    <% end %>
     <div class="col-md-6 offset-md-1">
-      <h2 class="text-center">作成記事</h2>
+      <h2 class="text-center">記事詳細</h2>
       <%= render @article %>
-    </div>
-    <div class="col-md-3">
-      <p class="text-center">空白列（仮）</p>
     </div>
   </div>
 </div>

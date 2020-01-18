@@ -24,6 +24,13 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+
+    if session[:for_article_show].zero?
+      render '/articles/show_with_category'
+    else
+      render '/articles/show_with_user_func'
+    end
+
     return unless params[:like_id]
 
     @like = Like.find(params[:like_id])

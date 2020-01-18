@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <span class="explain">
+      好きなスイーツについて投稿、共有しましょう！
+    </span>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'shared/category' %>
+    </div>
+    <div class="col-md-6 offset-md-1">
+      <h2 class="text-center">記事詳細</h2>
+      <%= render @article %>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
     display_order_change(option, PER)
 
     respond_to do |format|
-      format.html { render 'static_pages/home' }
+      format.html {}
       format.json { render json: nil }
     end
   end

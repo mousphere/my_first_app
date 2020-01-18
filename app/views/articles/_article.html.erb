@@ -16,7 +16,9 @@
           <%= image_tag(article.image, alt: 'sweet_image', class:'sweet_image') %>
         <% end %>
         <p>商品名：
-        <span class="sweet_name"><%= link_to article.sweet_name, article %></span>
+        <div data-turbolinks="false">
+          <span class="sweet_name"><%= link_to article.sweet_name, article %></span>
+        </div>
         </p>
         <p>ジャンル：
         <span class="genre"><%= article.genre %></span>

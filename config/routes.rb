@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   resources :articles
   resources :stocks, only: %i[create destroy]
   resources :likes, only: %i[create destroy]
+  resources :comments
 end

@@ -4,13 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function CommentButton(props) {
   const [user, setUser] = useState(props.user)
+  const [articleID, setArticleID] = useState(props.article_id)
   
   const alertMessage = () =>{
     alert('ログインが必要です')
   }
   
   const moveToCommentView = () =>{
-    window.location.href = '/comments/new'
+    // window.location.href = '/comments/new' + '?id=' + articleID 
+    window.location.href = '/articles/' + articleID + '/comments/new' 
   }
   
   const notLoggedIn = user == null

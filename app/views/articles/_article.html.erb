@@ -31,7 +31,9 @@
           <% @article = article %>
           <% @user = current_user %>
           <div class="comment-button">
-            <%= react_component('comment_button', user: @user) %> 
+            <%= react_component('comment_button',
+                                 article_id: @article.id,
+                                 user: @user) %> 
           </div>
           <div class="stock-button">
             <%= react_component('stock_button',

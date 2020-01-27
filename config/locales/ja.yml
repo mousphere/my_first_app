@@ -9,6 +9,8 @@ ja:
       article:
         sweet_name: '商品名'
         content: '紹介文'
+      comment:
+        content: 'コメント文'
     errors:
       models:
         user:
@@ -29,6 +31,10 @@ ja:
           attributes:
             sweet_name:
               blank: 'が入力されていません'
+            content:
+              blank: 'が入力されていません'
+        comment:
+          attributes:
             content:
               blank: 'が入力されていません'
   datetime:

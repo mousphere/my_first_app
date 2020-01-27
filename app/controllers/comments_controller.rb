@@ -9,14 +9,25 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @article = Article.find(params[:article_id])
   end
-  
+
   def create
-    @comment = current_user.comments.build(comment_params)
+    @article = Article.find(params[:article_id])
+
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.article_id = @article.id
+
+    if @comment.save
+      flash[:success] = 'コメントを投稿しました！'
+      redirect_to @article
+    else
+      render '/comments/new'
+    end
   end
-  
+
   private
 
-  def article_params
-    params.require(:comment).permit(:content, :user_id, :article_id)
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end

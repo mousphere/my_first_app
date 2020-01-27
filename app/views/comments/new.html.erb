@@ -19,6 +19,11 @@
     <div class="col-md-6 offset-md-1">
       <%= render @article %>
       
+      <%= form_for [@article, @comment] do |f| %>
+        <div class="comment-error-messages">
+          <%= render 'shared/error_messages', object: f.object %>
+        </div>
+      
       <!-- コメントフォームを作成する -->
       <!-- プロフ写真、テキストエリア、コメントボタン -->
       <div class="border border-dark rounded comment-form">
@@ -30,13 +35,12 @@
             </div>
           </div>
           <div class="col-md-9 no_padding">
-            <%= form_for [@article, @comment] do |f| %>
               <div class="display-flex">
                 <div class="form-group comment-area">
-                  <%= f.text_area :content, rows: 4, class:"form-control", id: "comment_area", placeholder: 'コメントを入力' %>
+                  <%= f.text_area :content, rows: 4, class:"form-control", id: "comment-area", placeholder: 'コメントを入力' %>
                 </div>
                 <script>
-                  document.getElementById('comment_area').focus()
+                  document.getElementById('comment-area').focus()
                 </script>
                 <div class="form-group comment-button">
                   <%= f.submit '送信', class:"btn btn-primary" %>

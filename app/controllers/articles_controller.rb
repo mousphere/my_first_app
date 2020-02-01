@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comments = Comment.where(article_id: params[:id]).order(created_at: :desc)
 
     if session[:for_article_show].zero?
       render '/articles/show_with_category'

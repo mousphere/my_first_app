@@ -52,7 +52,9 @@
 }
 
 /** 記事一覧 **/
-.articles ul{
+.articles ul,
+.article ul,
+.comments ul{
     padding-left: 0px;
 }
 
@@ -147,6 +149,12 @@
 
 .stock-link{
     padding-left: 20px;
+}
+
+/* コメント内容 */
+.comment-content{
+    margin-top: 5px;
+    padding-right: 20px;
 }
 
 /* ボタン共通 */
@@ -247,11 +255,7 @@
     height: 130px;
     width: 100%;
     background-color: #EEEEEE;
-}
-
-/* エラーメッセージ */
-.comment-error-messages{
-    margin: 10px 0;
+    display: table;
 }
 
 .display-flex{
@@ -267,4 +271,9 @@
 
 .comment-button{
     margin-right: 20px;
+}
+
+/* エラーメッセージ */
+.comment-error-messages{
+    margin: 10px 0;
 }

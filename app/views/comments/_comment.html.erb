@@ -1,0 +1,17 @@
+<li>
+  <div class="border rounded">
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <% image = comment.user.image.present? ? comment.user.image : 'images.png' %>
+        <%= link_to image_tag(image, alt: 'User_image', class:'user_image'), comment.user %>
+      </div>
+      <div class="col-md-9 no_padding">
+        <span class="user"><%= link_to comment.user.name, comment.user %></span>
+        <span class="timestamp">
+          <%= time_ago_in_words(comment.created_at) %> 前
+        </span>
+        <p class="comment-content"><%= comment.content %></p>
+      </div>
+    </div>
+  </div>
+</li>

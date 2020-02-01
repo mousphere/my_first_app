@@ -31,6 +31,15 @@ RSpec.describe 'コメント投稿時の挙動', type: :system do
       expect(page).to have_css('div.alert-success')
     end
 
+    example '記事詳細ページにコメント内容が反映される' do
+      visit(root_path)
+      visit(article_path(article))
+      expect(page).not_to have_css('p.comment-content')
+      subject
+      visit(article_path(article))
+      expect(page).to have_css('p.comment-content')
+    end
+
     example 'コメントレコード数が1増える' do
       expect { subject }.to change(Comment, :count).by(1)
     end

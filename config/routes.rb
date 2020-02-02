@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
   resources :stocks, only: %i[create destroy]
   resources :likes, only: %i[create destroy]
 end

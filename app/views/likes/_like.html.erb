@@ -1,5 +1,5 @@
 <% @bg_css = like.checked? ? 'bg-white' : 'lightcyan' %>
-<div class="like_notification <%= @bg_css %>">
+<div class="like_notification whole-link <%= @bg_css %>">
   <% user = User.find(like.like_user_id) %>
   <% image = user.image.present? ? user.image : 'images.png' %>
   <%= image_tag(image, alt: 'User_image', class:'user_image') %>

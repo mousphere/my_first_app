@@ -24,6 +24,14 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comments = Comment.where(article_id: params[:id]).order(created_at: :desc)
+
+    if session[:for_article_show].zero?
+      render '/articles/show_with_category'
+    else
+      render '/articles/show_with_user_func'
+    end
+
     return unless params[:like_id]
 
     @like = Like.find(params[:like_id])
@@ -45,6 +53,8 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    session[:for_article_show] = 0
+
     if current_user
       current_user.update(order_option: params[:option]) if params[:option]
       option = current_user.order_option

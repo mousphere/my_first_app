@@ -1,5 +1,28 @@
 @import "bootstrap";
 
+/*** 共通機能 ***/
+
+/** 全体リンク化 **/
+.whole-link{
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    &:hover{
+        opacity: 0.5;
+        background-color: #EEEEEE;
+    }
+}
+
+.whole-link a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+}
+
 /** ホーム画面 **/
 
 .explain{
@@ -28,6 +51,13 @@
     height: 40px;
 }
 
+/** 記事一覧 **/
+.articles ul,
+.article ul,
+.comments ul{
+    padding-left: 0px;
+}
+
 /** col padding 0 **/
 .no_padding{
     padding: 0px;
@@ -47,8 +77,8 @@
 /** イメージ画像 **/
 .user_image{
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     background-position: center center;
     border: 2px solid black;
     margin: 10px 0;
@@ -119,6 +149,16 @@
 
 .stock-link{
     padding-left: 20px;
+}
+
+/* コメント内容 */
+.comment-content{
+    margin-top: 5px;
+    padding-right: 20px;
+}
+
+.comment-delete-button{
+    padding-right: 25px;
 }
 
 /* ボタン共通 */
@@ -204,26 +244,40 @@
     background-color: lightcyan;
 }
 .like_notification {
-    position: relative;
-    display: block;
     width: 70%;
-    margin: 0 auto;
-    &:hover{
-        opacity: 0.5;
-        background-color: #EEEEEE;
-    }
-}
-.like_notification a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
 }
 
 /** ページネーション **/
 .pagination{
     margin-top: 10px;
     justify-content: center;
+}
+
+/** コメント投稿フォーム **/
+.comment-form{
+    margin-top: 15px;
+    height: 130px;
+    width: 100%;
+    background-color: #EEEEEE;
+    display: table;
+}
+
+.display-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.comment-area{
+    margin-top: 10px;
+    width: 80%;
+}
+
+.comment-button{
+    margin-right: 20px;
+}
+
+/* エラーメッセージ */
+.comment-error-messages{
+    margin: 10px 0;
 }

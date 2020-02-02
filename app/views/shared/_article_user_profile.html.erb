@@ -1,6 +1,7 @@
 <!-- Article コントローラのviewで使用
      article_idからユーザーを判断 -->
-<% user = Article.find(params[:id]).user %>
+<% article_id = params[:id] || params[:article_id] %>
+<% user = Article.find(article_id).user %>
 <!-- データベースに画像ファイルが保存されていない場合は
      デフォルト画像を使用する -->
 <% image = user.image.present? ? user.image : 'images.png' %>

@@ -2,5 +2,6 @@
 
 FactoryBot.define do
   factory :comment, class: Comment do
+    content { 'テスト' }
   end
 end

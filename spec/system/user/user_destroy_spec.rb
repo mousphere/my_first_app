@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe 'ユーザー削除時の挙動', type: :system do
   let(:user1) { create(:user1) }
   let(:user2) { create(:user2) }
+  let(:test_user) { create(:test_user) }
 
   context 'ログインしていない時' do
     example '警告メッセージを表示し、ルートパスにリダイレクトする' do
@@ -20,6 +21,22 @@ RSpec.describe 'ユーザー削除時の挙動', type: :system do
       visit(deactivate_user_path(user2))
       expect(current_path).to eq root_path
       expect(page).to have_css('div.alert-danger')
+    end
+  end
+
+  context 'テストユーザー削除時' do
+    example '警告メッセージを表示し、アカウント削除ページにリダイレクトする' do
+      log_in(test_user)
+      visit(deactivate_user_path(test_user))
+      click_link('削除')
+      expect(current_path).to eq deactivate_user_path(test_user)
+      expect(page).to have_css('div.alert-danger')
+    end
+
+    example 'ユーザー登録数が変化しない' do
+      log_in(test_user)
+      visit(deactivate_user_path(test_user))
+      expect { click_link('削除') }.to change(User, :count).by(0)
     end
   end
 

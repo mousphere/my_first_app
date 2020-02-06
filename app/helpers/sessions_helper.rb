@@ -5,6 +5,12 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
+  def log_in_as_test_user
+    user = User.find_by(for_test: true)
+    log_in user
+    redirect_to user_path(user)
+  end
+
   # ユーザーのセッションを永続的にする
   def remember(user)
     user.remember

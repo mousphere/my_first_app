@@ -21,6 +21,10 @@
           <%= f.submit 'ログイン', class:"btn btn-primary" %>
         </div>
       <% end %>
+      <button class="btn btn-success">
+        <%= link_to 'テストユーザーとしてログイン', login_path(for_test: true), method: :post,
+            class: 'test-user-button' %>
+      </button>
     </div>
   </div>
 </div>

@@ -117,6 +117,15 @@
     }
 }
 
+/* テストユーザーログインボタン */
+.test-user-button{
+    &:hover{
+        color: white;
+        text-decoration: none;
+    }
+    color: white;
+}
+
 /** 記事投稿フォーム **/
 .article-form{
     padding: 5px 10px;

@@ -16,8 +16,8 @@ FactoryBot.define do
   end
 
   factory :test_user, class: User do
-    name { 'test2' }
-    email { 'test2@test.com' }
+    name { 'test_user' }
+    email { 'test_user@test.com' }
     password { 'password' }
     password_confirmation { 'password' }
     for_test { true }

@@ -4,6 +4,16 @@ require 'rails_helper'
 
 RSpec.describe 'ログイン時の挙動', type: :system do
   let(:user) { create(:user1) }
+  let(:test_user) { create(:test_user) }
+
+  context 'テストユーザーとしてログイン' do
+    example 'テストユーザー用ログインボタンのクリックのみでログイン可能' do
+      test_user
+      visit(login_path)
+      find('a.test-user-button').click
+      expect(page).to have_content(test_user.name)
+    end
+  end
 
   context '有効な情報が入力された時' do
     example 'ナビゲーションが切り替わり、ユーザーページにリダイレクトされる' do

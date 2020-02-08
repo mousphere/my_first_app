@@ -37,9 +37,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = 'アカウントが削除されました'
-    redirect_to root_url
+    @user = User.find(params[:id])
+    if @user.for_test
+      flash[:danger] = 'テストユーザーは削除できません'
+      redirect_back(fallback_location: root_path)
+    else
+      @user.destroy
+      flash[:success] = 'アカウントが削除されました'
+      redirect_to root_url
+    end
   end
 
   def update

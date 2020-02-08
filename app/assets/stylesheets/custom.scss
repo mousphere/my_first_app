@@ -1,6 +1,8 @@
 @import "bootstrap";
 
-/*** 共通機能 ***/
+body{
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+}
 
 /** 全体リンク化 **/
 .whole-link{
@@ -25,15 +27,24 @@
 
 /** ホーム画面 **/
 
-.explain{
+.theme-bg{
     width: 100%;
-    height: 100px;
+    height: 300px;
     margin-bottom: 20px;
-    border-bottom: solid;
-    border-width: thin;
+    background-image: image-url("sweet.jpeg");
+    background-color:rgba(255,255,255,0.4);
+    background-blend-mode:lighten;
+    background-position: center center;
+    background-size: 100% auto;
+}
+
+.theme{
     display: flex;
-	align-items: center;
 	justify-content: center;
+	color: #0099FF;
+	font-size: 2.0rem;
+	font-weight: bold;
+	line-height: 300px;
 }
 
 .sidebar{
@@ -133,7 +144,7 @@
 
 /** 記事内容 **/
 .user{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .sweet_image{

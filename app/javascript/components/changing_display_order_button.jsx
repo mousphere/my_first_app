@@ -72,8 +72,8 @@ function ChangingDisplayOrderButton(props){
     )
   }
   
-  const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary display-order-button')
-  const secondaryButton = classnames('d-inline-block p-2 mx-2 btn btn-secondary display-order-button')
+  const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')
+  const secondaryButton = classnames('d-inline-block p-2 mx-2 btn btn-secondary')
   
   return(
     <div>

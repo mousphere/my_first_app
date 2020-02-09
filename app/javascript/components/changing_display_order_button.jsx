@@ -72,12 +72,12 @@ function ChangingDisplayOrderButton(props){
     )
   }
   
-  const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')
-  const secondaryButton = classnames('d-inline-block p-2 mx-2 btn btn-secondary')
+  const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary display-order-button')
+  const secondaryButton = classnames('d-inline-block p-2 mx-2 btn btn-secondary display-order-button')
   
   return(
     <div>
-      <div className = 'form-group row justify-content-center'>
+      <div className = 'text-center'>
         <div>
           <button
             className={ option === 0 ? primaryButton : secondaryButton }

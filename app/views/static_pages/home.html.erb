@@ -1,22 +1,30 @@
 <div class="container-fluid">
   <div class="row">
     <div class="theme-bg">
-      <span class="theme">好きなスイーツについて投稿、共有しましょう！</span>
+      <span class="theme">好きなスイーツをShareしましょう！</span>
     </div>
   </div>
+  <!--表示切替ボタン-->
+  <div id="naviParent">
+    <div class="row" id="changing_display_order_button">
+      <div class="col-md-6 offset-md-3">
+        <% if current_user %>
+          <% option = current_user.order_option %>
+        <% else %>
+          <% option = session[:not_logged_in] %>
+        <% end %>
+        <div>
+          <%= react_component('changing_display_order_button', option: option) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--カテゴリ、記事一覧-->
   <div class="row">
     <div class="col-md-2">
       <%= render 'shared/category' %>
     </div>
-    
-    <% if current_user %>
-      <% option = current_user.order_option %>
-    <% else %>
-      <% option = session[:not_logged_in] %>
-    <% end %>
-    
     <div class="col-md-6 offset-md-1">
-      <%= react_component('changing_display_order_button', option: option) %>
       <div class="articles">
         <ul>
           <%= render @articles %>

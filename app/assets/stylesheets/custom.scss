@@ -30,7 +30,6 @@ body{
 .theme-bg{
     width: 100%;
     height: 300px;
-    margin-bottom: 20px;
     background-image: image-url("sweet.jpeg");
     background-color:rgba(255,255,255,0.4);
     background-blend-mode:lighten;
@@ -41,14 +40,11 @@ body{
 .theme{
     display: flex;
 	justify-content: center;
+	padding-top: 25.75px; /* 25.75px...ナビゲーションバーheight / 2 */
 	color: #0099FF;
 	font-size: 2.0rem;
 	font-weight: bold;
 	line-height: 300px;
-}
-
-.sidebar{
-    position: sticky;
 }
 
 .category{
@@ -60,6 +56,32 @@ body{
 .genre_list{
     display: inline-block;
     height: 40px;
+}
+
+/* 表示順切替ボタン */
+#naviParent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.fixed_naviParent{
+    margin-bottom: 42px; /* 42px...表示順切替ボタンのheight */
+}
+
+.fixed_button {
+    background-color: white;
+    position: fixed;
+    top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index: 1;
+}
+
+.fixed_sidebar {
+    position: fixed;
+    top: 133.5px; /* 133.5px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
+    z-index: 1;
 }
 
 /** 記事一覧 **/
@@ -77,6 +99,9 @@ body{
 /** ナビゲーションバー **/
 .navbar{
     height: 51.5px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 /** フラッシュメッセージ **/

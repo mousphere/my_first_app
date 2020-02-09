@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(window).on('load', function(){
   const button = $('#changing_display_order_button');
   const naviParent = $('#naviParent');
   const navbar = $('.navbar');

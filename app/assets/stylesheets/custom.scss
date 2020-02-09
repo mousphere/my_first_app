@@ -4,6 +4,10 @@ body{
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
 }
 
+.main{
+    padding-top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+}
+
 /** 全体リンク化 **/
 .whole-link{
     position: relative;
@@ -40,7 +44,6 @@ body{
 .theme{
     display: flex;
 	justify-content: center;
-	padding-top: 25.75px; /* 25.75px...ナビゲーションバーheight / 2 */
 	color: #0099FF;
 	font-size: 2.0rem;
 	font-weight: bold;

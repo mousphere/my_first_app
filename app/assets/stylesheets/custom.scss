@@ -6,6 +6,7 @@ body{
 
 .main{
     padding-top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+    background-color: #FFF5EE;
 }
 
 /** 全体リンク化 **/
@@ -72,7 +73,7 @@ body{
 }
 
 .fixed_button {
-    background-color: white;
+    background-color: #FFF5EE;
     position: fixed;
     top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
     width: 100%;
@@ -171,6 +172,22 @@ body{
 }
 
 /** 記事内容 **/
+.box13{
+    color: #FFF;
+    background: #6eb7ff;
+    border-bottom: solid 6px #3f87ce;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+
+.article{
+    background-color: #FAFAFA;
+}
+
+.sweet_name{
+    padding: 10px 0;
+}
+
 .user{
     font-size: 1.2rem;
 }
@@ -187,6 +204,11 @@ body{
     display: block;
     padding-right: 25px;
     padding-bottom: 10px;
+}
+
+div.content{
+    margin-right: 25px;
+    // padding-bottom: 10px;
 }
 
 .timestamp{

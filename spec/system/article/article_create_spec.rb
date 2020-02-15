@@ -32,13 +32,13 @@ RSpec.describe '記事投稿時の挙動', type: :system do
 
     example 'ユーザーページに投稿した記事が表示される' do
       subject
-      expect(page).to have_content('商品名： ' + article.sweet_name)
+      expect(page).to have_content('商品名：' + article.sweet_name)
     end
 
     example 'ルートページに投稿した記事が表示される' do
       subject
-      click_link('ホーム')
-      expect(page).to have_content('商品名： ' + article.sweet_name)
+      visit(root_path)
+      expect(page).to have_content('商品名：' + article.sweet_name)
     end
 
     example '記事レコード数が1増える' do

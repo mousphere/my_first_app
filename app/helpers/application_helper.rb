@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def use_turbolinks_cache?
-    if @use_turbolinks_cache == false
-      "reload"
-    else
-      ""
-      # "no-cache"
-    end
+  def content(use_turbolinks_visit_control)
+    'reload' if use_turbolinks_visit_control
   end
 end

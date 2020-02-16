@@ -1,11 +1,17 @@
 @import "bootstrap";
+html{
+    height: 100%;
+}
 
 body{
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    height: 100%;
+    background-color: #FFEEFF;
 }
 
 .main{
     padding-top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+    color: #888888;
 }
 
 /** 全体リンク化 **/
@@ -72,7 +78,7 @@ body{
 }
 
 .fixed_button {
-    background-color: white;
+    background-color: #FFEEFF;
     position: fixed;
     top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
     width: 100%;
@@ -171,6 +177,17 @@ body{
 }
 
 /** 記事内容 **/
+.article{
+    background-color: #FFF5EE;
+    border-bottom: solid 4px #DDDDDD;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+
+.sweet_name{
+    padding: 10px 0;
+}
+
 .user{
     font-size: 1.2rem;
 }
@@ -178,7 +195,7 @@ body{
 .sweet_image{
     display: block;
     width: 250px;
-    height: 150px;
+    height: 200px;
     margin: 5px 0px;
     background-position: center center;
 }
@@ -187,6 +204,11 @@ body{
     display: block;
     padding-right: 25px;
     padding-bottom: 10px;
+}
+
+div.content{
+    margin-right: 25px;
+    // padding-bottom: 10px;
 }
 
 .timestamp{

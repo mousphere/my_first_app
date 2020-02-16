@@ -7,6 +7,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
+    
+    <% use_turbolinks_visit_control = @use_turbolinks_visit_control ? true : false %>
+    <meta name="turbolinks-visit-control" content="<%= "#{content(use_turbolinks_visit_control)}" %>">
   </head>
 
   <body>
@@ -20,6 +23,5 @@
     <div class="main">
       <%= yield %>
     </div>
-    <%= javascript_include_tag('pin_element') %>
   </body>
 </html>

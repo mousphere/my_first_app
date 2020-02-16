@@ -2,6 +2,8 @@
 
 class StaticPagesController < ApplicationController
   include DisplayOrder
+
+  before_action :use_turbolinks_visit_control
   PER = 5
 
   def home
@@ -21,5 +23,11 @@ class StaticPagesController < ApplicationController
       format.html {}
       format.json { render json: nil }
     end
+  end
+
+  private
+
+  def use_turbolinks_visit_control
+    @use_turbolinks_visit_control = true
   end
 end

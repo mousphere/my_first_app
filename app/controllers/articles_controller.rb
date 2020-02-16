@@ -53,6 +53,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    # 記事表示時、第1列目表示内容設定用
     session[:for_article_show] = 0
 
     if current_user
@@ -63,7 +64,11 @@ class ArticlesController < ApplicationController
       option = session[:not_logged_in]
     end
 
-    display_order_change(option, PER)
+    if option.zero?
+      @articles = Article.where(genre: params[:genre]).page(params[:page]).per(PER).order(created_at: :desc)
+    else
+      @articles = Article.where(genre: params[:genre]).page(params[:page]).per(PER).order(like_counts: :desc)
+    end
 
     respond_to do |format|
       format.html { render 'static_pages/home' }

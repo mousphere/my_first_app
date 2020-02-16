@@ -10,7 +10,7 @@ RSpec.describe '記事投稿時の挙動', type: :system do
     log_in(user)
     click_link('記事投稿')
     fill_in('商品名', with: article.sweet_name)
-    select(article.genre, from: 'ジャンル')
+    select('チョコレート', from: 'ジャンル')
     fill_in('紹介文', with: article.content)
     click_button('投稿する')
   end

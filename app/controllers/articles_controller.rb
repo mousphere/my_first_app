@@ -55,15 +55,8 @@ class ArticlesController < ApplicationController
   def index
     session[:for_article_show] = 0
 
-    if current_user
-      current_user.update(order_option: params[:option]) if params[:option]
-      option = current_user.order_option
-    else
-      set_option_in_session
-      option = session[:not_logged_in]
-    end
-
-    display_order_change(option, PER)
+    option = set_option
+    display_order_change(option, PER, params[:genre])
 
     respond_to do |format|
       format.html { render 'static_pages/home' }

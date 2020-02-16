@@ -43,10 +43,11 @@ RSpec.describe '記事投稿時の挙動', type: :system do
 
   context 'カレントユーザーが作成した記事がない時' do
     example '他ユーザー作成記事の中に編集リンクが表示されない' do
+      article
       log_in(user2)
       visit(root_path)
       expect(page).to have_content(article.sweet_name)
-      expect(page).not_to have_content('編集')
+      expect(page).not_to have_css('div.article-edit-button')
     end
   end
 

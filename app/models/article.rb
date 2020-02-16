@@ -25,5 +25,18 @@ class Article < ApplicationRecord
   validates :genre, presence: true
   validates :content, presence: true
 
+  # ----- -----
+
   mount_uploader :image, ImagesUploader
+
+  # ----- 関数一覧 -----
+
+  def converted_genre
+    translation_table = { 'chocolate' => 'チョコレート',
+                          'cookie' => 'クッキー',
+                          'ice_cream' => 'アイスクリーム',
+                          'cake' => 'ケーキ',
+                          'etc' => 'その他' }
+    translation_table[genre]
+  end
 end

@@ -20,8 +20,8 @@ FactoryBot.define do
   end
 
   factory :article, class: Article do
-    sweet_name { 'チョコレート' }
-    genre { 'チョコレート' }
+    sweet_name { 'テストチョコ' }
+    genre { 'chocolate' }
     content
   end
 end

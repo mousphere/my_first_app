@@ -1,5 +1,5 @@
 <li id="article-<%= article.id %>">
-  <div class ="border-left border-right">
+  <div class ="article">
     <div class="row">
       <div class="col-md-3 text-center">
         <% image = 
@@ -15,16 +15,16 @@
         <% if article.image.present? %>
           <%= image_tag(article.image, alt: 'sweet_image', class:'sweet_image') %>
         <% end %>
-        <p>商品名：
-        <div data-turbolinks="false">
-          <span class="sweet_name"><%= link_to article.sweet_name, article %></span>
+        <div class="sweet_name">
+          <span>商品名：<%= link_to article.sweet_name, article %></span>
         </div>
-        </p>
         <p>ジャンル：
         <span class="genre"><%= article.genre %></span>
         </p>
         <u>紹介文</u>
-        <span class="content"><%= article.content %></span>
+        <div class="border rounded content">
+          <span class="content"><%= article.content %></span>
+        </div>
         
         <!-- ボタン一覧 -->
         <div class="function-button flex">

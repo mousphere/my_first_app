@@ -77,7 +77,7 @@ function ChangingDisplayOrderButton(props){
   
   return(
     <div>
-      <div className = 'form-group row justify-content-center'>
+      <div className = 'text-center'>
         <div>
           <button
             className={ option === 0 ? primaryButton : secondaryButton }

@@ -1,6 +1,18 @@
 @import "bootstrap";
+html{
+    height: 100%;
+}
 
-/*** 共通機能 ***/
+body{
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    height: 100%;
+    background-color: #FFEEFF;
+}
+
+.main{
+    padding-top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+    color: #888888;
+}
 
 /** 全体リンク化 **/
 .whole-link{
@@ -25,19 +37,23 @@
 
 /** ホーム画面 **/
 
-.explain{
+.theme-bg{
     width: 100%;
-    height: 100px;
-    margin-bottom: 20px;
-    border-bottom: solid;
-    border-width: thin;
-    display: flex;
-	align-items: center;
-	justify-content: center;
+    height: 300px;
+    background-image: image-url("sweet.jpeg");
+    background-color:rgba(255,255,255,0.4);
+    background-blend-mode:lighten;
+    background-position: center center;
+    background-size: 100% auto;
 }
 
-.sidebar{
-    position: sticky;
+.theme{
+    display: flex;
+	justify-content: center;
+	color: #0099FF;
+	font-size: 2.0rem;
+	font-weight: bold;
+	line-height: 300px;
 }
 
 .category{
@@ -49,6 +65,32 @@
 .genre_list{
     display: inline-block;
     height: 40px;
+}
+
+/* 表示順切替ボタン */
+#naviParent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.fixed_naviParent{
+    margin-bottom: 42px; /* 42px...表示順切替ボタンのheight */
+}
+
+.fixed_button {
+    background-color: #FFEEFF;
+    position: fixed;
+    top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index: 1;
+}
+
+.fixed_sidebar {
+    position: fixed;
+    top: 133.5px; /* 133.5px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
+    z-index: 1;
 }
 
 /** 記事一覧 **/
@@ -66,6 +108,9 @@
 /** ナビゲーションバー **/
 .navbar{
     height: 51.5px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 /** フラッシュメッセージ **/
@@ -132,14 +177,25 @@
 }
 
 /** 記事内容 **/
+.article{
+    background-color: #FFF5EE;
+    border-bottom: solid 4px #DDDDDD;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+
+.sweet_name{
+    padding: 10px 0;
+}
+
 .user{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .sweet_image{
     display: block;
     width: 250px;
-    height: 150px;
+    height: 200px;
     margin: 5px 0px;
     background-position: center center;
 }
@@ -148,6 +204,11 @@
     display: block;
     padding-right: 25px;
     padding-bottom: 10px;
+}
+
+div.content{
+    margin-right: 25px;
+    // padding-bottom: 10px;
 }
 
 .timestamp{

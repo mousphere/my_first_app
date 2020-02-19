@@ -37,24 +37,41 @@
   </div>
 </div>
 <script>
-  $(window).on('load', function(){
+  $(document).on('turbolinks:load', function() {
     const button = $('#changing_display_order_button');
     const naviParent = $('#naviParent');
     const navbar = $('.navbar');
     const sidebar = $('.sidebar');
     
-    const offset = button.offset();
+    function initialize()
+    {
+      let d = new $.Deferred;
+
+      button.removeClass('fixed_button');
+      naviParent.removeClass('fixed_naviParent');
+      sidebar.removeClass('fixed_sidebar');
+      scrollTo(0, 0);
+
+      d.resolve();
+      return d.promise();
+    }
     
-    $(window).scroll(function () {
-      if($(window).scrollTop() >= (offset.top - navbar.outerHeight() - 20.0)) {
-        button.addClass('fixed_button');
-        naviParent.addClass('fixed_naviParent');
-        sidebar.addClass('fixed_sidebar')
-      } else {
-        button.removeClass('fixed_button');
-        naviParent.removeClass('fixed_naviParent');
-        sidebar.removeClass('fixed_sidebar')
-      }
+    const promise = initialize();
+
+    promise.then(function(){
+      const offset = button.offset();
+
+      $(window).scroll(function () {
+        if($(window).scrollTop() >= (offset.top - navbar.outerHeight() - 20.0)) {
+          button.addClass('fixed_button');
+          naviParent.addClass('fixed_naviParent');
+          sidebar.addClass('fixed_sidebar')
+        } else {
+          button.removeClass('fixed_button');
+          naviParent.removeClass('fixed_naviParent');
+          sidebar.removeClass('fixed_sidebar');
+        }
+      });
     });
   });
 </script>

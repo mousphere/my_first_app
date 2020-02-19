@@ -1,18 +1,17 @@
-<!-- サイドバーを固定したい -->
 <div class="sidebar">
   <span class="category">カテゴリー</span>
   <ul>
     <li><%= link_to '全て', root_path,
             class:"genre_list" %></li>
-    <li><%= link_to 'チョコレート', articles_path(genre: 'chocolate'),
+    <li><%= link_to 'チョコレート', root_path(genre: 'chocolate'),
             class:"genre_list" %></li>
-    <li><%= link_to 'クッキー', articles_path(genre: 'cookie'),
+    <li><%= link_to 'クッキー', root_path(genre: 'cookie'),
             class:"genre_list" %></li>
-    <li><%= link_to 'アイスクリーム', articles_path(genre: 'ice_cream'),
+    <li><%= link_to 'アイスクリーム', root_path(genre: 'ice_cream'),
             class:"genre_list" %></li>
-    <li><%= link_to 'ケーキ', articles_path(genre: 'cake'),
+    <li><%= link_to 'ケーキ', root_path(genre: 'cake'),
             class:"genre_list" %></li>
-    <li><%= link_to 'その他', articles_path(genre: 'etc'),
+    <li><%= link_to 'その他', root_path(genre: 'etc'),
             class:"genre_list" %></li>
   </ul>
 </div>

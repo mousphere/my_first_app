@@ -52,18 +52,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def index
-    session[:for_article_show] = 0
-
-    option = set_option
-    display_order_change(option, PER, params[:genre])
-
-    respond_to do |format|
-      format.html { render 'static_pages/home' }
-      format.json { render json: nil }
-    end
-  end
-
   def destroy
     @article = Article.find(params[:id])
     @article.destroy

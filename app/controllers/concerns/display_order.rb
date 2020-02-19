@@ -18,7 +18,7 @@ module DisplayOrder
     end
   end
 
-  def display_order_change(option, per, genre = '')
+  def display_order_change(option, per, genre)
     articles = if genre.present?
                  Article.where(genre: genre)
                else

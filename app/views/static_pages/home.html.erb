@@ -42,20 +42,31 @@
     const naviParent = $('#naviParent');
     const navbar = $('.navbar');
     const sidebar = $('.sidebar');
-    
+
+    function removeClass()
+    {
+      button.removeClass('fixed_button');
+      naviParent.removeClass('fixed_naviParent');
+      sidebar.removeClass('fixed_sidebar');
+    }
+
+    function addClass(){
+      button.addClass('fixed_button');
+      naviParent.addClass('fixed_naviParent');
+      sidebar.addClass('fixed_sidebar')
+    }
+
     function initialize()
     {
       let d = new $.Deferred;
 
-      button.removeClass('fixed_button');
-      naviParent.removeClass('fixed_naviParent');
-      sidebar.removeClass('fixed_sidebar');
+      removeClass();
       scrollTo(0, 0);
 
       d.resolve();
       return d.promise();
     }
-    
+
     const promise = initialize();
 
     promise.then(function(){
@@ -63,17 +74,14 @@
 
       $(window).scroll(function () {
         if($(window).scrollTop() >= (offset.top - navbar.outerHeight() - 20.0)) {
-          button.addClass('fixed_button');
-          naviParent.addClass('fixed_naviParent');
-          sidebar.addClass('fixed_sidebar')
+          addClass();
         } else {
-          button.removeClass('fixed_button');
-          naviParent.removeClass('fixed_naviParent');
-          sidebar.removeClass('fixed_sidebar');
+          removeClass();
         }
       });
     });
   });
+
   window.addEventListener("popstate", function() {
     window.location.reload();
   });

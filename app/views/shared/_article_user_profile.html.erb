@@ -25,6 +25,7 @@
     </li>
     <li><%= link_to "ストック記事", stocks_user_path(user), class:"btn btn-primary" %></li>
     <li><%= link_to "プロフィール変更", edit_user_path(user), class:"btn btn-primary" %></li>
+    <li><%= link_to "ログアウト", logout_path, method: :delete, class:"btn btn-primary" %></li>
     <li><%= link_to "アカウント削除", deactivate_user_path(user), class:"btn btn-primary" %></li>
   </ul>
 <% end %>

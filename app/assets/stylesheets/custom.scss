@@ -93,6 +93,11 @@ body{
     z-index: 1;
 }
 
+/* ヘッダー */
+.header-item{
+    text-decoration: underline;
+}
+
 /** 記事一覧 **/
 .articles ul,
 .article ul,

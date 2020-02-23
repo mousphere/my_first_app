@@ -8,7 +8,7 @@
   <% number_of_notice = Like.where(liked_article_id: Article.where(user_id: user.id))
                             .where("created_at > ?", user.last_access_time).count.to_s.tr('0-9', '０-９') %>
   <% number_of_notice = '' if number_of_notice == '０' %>
-  <ul>
+  <ul class="user-function">
     <li><%= link_to "記事投稿", new_article_path, class:"btn btn-primary" %></li>
     <li>
       <%= link_to notify_user_path(user), class:"btn btn-primary" do %>

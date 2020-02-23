@@ -133,7 +133,7 @@ body{
     margin: 10px 0;
     }
 
-/** ユーザープロフィール **/
+/** ユーザーページ機能 **/
 .user_profile{
     padding: 0px;
     .btn-primary{
@@ -148,6 +148,10 @@ body{
 .number_of_notice{
     width: 100px;
     height: 100px;
+}
+
+.user-function a{
+    width: 85%;
 }
 
 /** ログインページ **/

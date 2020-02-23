@@ -25,7 +25,7 @@ RSpec.describe 'ログイン時の挙動', type: :system do
     example 'ログイン後、ログアウトリンクをクリックするとセッションが切断される' do
       log_in(user)
       visit(root_path)
-      click_link('アカウント')
+      click_link('マイページ')
       click_link('ログアウト')
       expect(page).to have_content('ログイン')
     end

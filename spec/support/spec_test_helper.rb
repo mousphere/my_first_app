@@ -10,8 +10,8 @@ module SpecTestHelpers
 
   def log_out
     visit(root_path)
-    click_link('アカウント')
-    click_link('ログアウト')
+    click_link('mypage')
+    click_link('logout')
   end
 
   def create_article(user)

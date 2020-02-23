@@ -15,9 +15,9 @@
         通知 <span class="rounded-circle bg-danger number_of_notice"><%= "#{number_of_notice}" %></span>
       <% end %>
     </li>
-    <li><%= link_to "ストック記事", stocks_user_path(user), class:"btn btn-primary" %></li>
-    <li><%= link_to "プロフィール変更", edit_user_path(user), class:"btn btn-primary" %></li>
-    <li><%= link_to "ログアウト", logout_path, method: :delete, class:"btn btn-primary" %></li>
-    <li><%= link_to "アカウント削除", deactivate_user_path(user), class:"btn btn-primary" %></li>
+    <li><%= link_to "ストック記事", stocks_user_path(user), class:"btn btn-primary", id:"stock" %></li>
+    <li><%= link_to "プロフィール変更", edit_user_path(user), class:"btn btn-primary", id:"change-profile" %></li>
+    <li><%= link_to "ログアウト", logout_path, method: :delete, class:"btn btn-primary", id:"logout" %></li>
+    <li><%= link_to "アカウント削除", deactivate_user_path(user), class:"btn btn-primary", id:"deactivate" %></li>
   </ul>
 <% end %>

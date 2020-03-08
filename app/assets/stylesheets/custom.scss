@@ -134,6 +134,16 @@ body{
     }
 
 /** ユーザーページ機能 **/
+.user-contents{
+    padding-left: 20px;
+}
+
+.follow-info{
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 87%;
+}
+
 .user_profile{
     padding: 0px;
     .btn-primary{

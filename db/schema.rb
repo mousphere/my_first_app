@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200202080631) do
+ActiveRecord::Schema.define(version: 20200308030018) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20200202080631) do
     t.index ["like_user_id", "liked_article_id"], name: "index_likes_on_like_user_id_and_liked_article_id", unique: true
     t.index ["like_user_id"], name: "index_likes_on_like_user_id"
     t.index ["liked_article_id"], name: "index_likes_on_liked_article_id"
+  end
+
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

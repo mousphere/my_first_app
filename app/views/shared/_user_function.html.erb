@@ -2,6 +2,7 @@
   <li><%= link_to image_tag(image, alt: 'User_image', class:'user_image'), user %></li>
   <li><p><%= link_to user.name, user %></p></li>
 </ul>
+<span>フォロー <%= user.followings.count %>&emsp;フォロワー <%= user.followers.count %></span>
 
 <% if current_user?(user) %>
   <!-- 自分の記事がいいねされていて、かつそのcreated_atがlast_access_time より前であること -->

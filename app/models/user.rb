@@ -104,7 +104,7 @@ class User < ApplicationRecord
   end
 
   def unfollow(user)
-    followings.find_by(followed_id: user.id).destroy
+    active_relationships.find_by(followed_id: user.id).destroy
   end
 
   # ストック関連

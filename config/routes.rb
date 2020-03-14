@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   post '/', to: 'static_pages#home'
 
   resources :users do
-    get 'deactivate', on: :member
-    get 'notify', on: :member
     member do
+      get :notify
       get :stocks
+      get :deactivate
+      get :followings
+      get :followers
     end
   end
 

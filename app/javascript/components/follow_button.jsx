@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-// import PropTypes from "prop-types"
 import classnames from 'classnames'
 
 function FollowButton(props) {
   const [followUser, setFollowUser] = useState(props.follow_user)
   const [followedUserID, setFollowedUserID] = useState(props.followed_user_id)
   const [relationshipID, setRelationshipID] = useState(props.relationship_id)
+  const [followings, setFollowings] = useState(props.followings)
+  const [followers, setFollowers] = useState(props.followers)
 
   const alertMessage = () =>{
     alert('ログインが必要です')
@@ -25,6 +26,7 @@ function FollowButton(props) {
       }
     }).then((response) => {
       setRelationshipID(response.relationship.id)
+      setFollowers(response.followers)
     })
   }
   
@@ -39,6 +41,7 @@ function FollowButton(props) {
       }
     }).then((response) => {
       setRelationshipID(null)
+      setFollowers(response.followers)
     })
   }
 
@@ -55,6 +58,9 @@ function FollowButton(props) {
       >
         { followed? 'フォロー中' : 'フォローする' }
       </button>
+      <span className= "follow-info">
+        フォロー {followings}&emsp;フォロワー {followers}
+      </span>
     </div>
     )
 }

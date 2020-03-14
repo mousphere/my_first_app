@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import classnames from 'classnames'
 
 function FollowButton(props) {
-  const [followUser, setFollowUser] = useState(props.follow_user)
-  const [followedUserID, setFollowedUserID] = useState(props.followed_user_id)
+  const [followUserID, setFollowUserID] = useState(props.follow_user.id)
+  const [followedUserID, setFollowedUserID] = useState(props.followed_user.id)
   const [relationshipID, setRelationshipID] = useState(props.relationship_id)
   const [followings, setFollowings] = useState(props.followings)
   const [followers, setFollowers] = useState(props.followers)
@@ -46,23 +46,25 @@ function FollowButton(props) {
   }
 
   const followed = relationshipID !== null
-  const notLoggedIn = followUser == null
+  const notLoggedIn = followUserID == null
   const notFollowed = classnames('btn btn-outline-primary rounded-pill')
   
   return (
     <div>
-      <button
-        className={ notFollowed }
-        onClick={ notLoggedIn ? () => alertMessage()
-                 :   followed ? () => unfollow() : () => follow() }
-      >
-        { followed? 'フォロー中' : 'フォローする' }
-      </button>
+      { followUserID !== followedUserID &&
+        <button
+          className={ notFollowed }
+          onClick={ notLoggedIn ? () => alertMessage()
+                   :   followed ? () => unfollow() : () => follow() }
+        >
+          { followed ? 'フォロー中' : 'フォローする' }
+        </button>
+      }
       <span className= "follow-info">
         フォロー {followings}&emsp;フォロワー {followers}
       </span>
     </div>
-    )
+  )
 }
 
 export default FollowButton

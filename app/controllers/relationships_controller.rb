@@ -12,8 +12,11 @@ class RelationshipsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @followed_user }
-      format.json { render json: { relationship: current_user.active_relationships.find_by(followed_id: @followed_user.id),
-                                   followers: @follower_counts} }
+      format.json do
+        render json:
+                  { relationship: current_user.active_relationships.find_by(followed_id: @followed_user.id),
+                    followers: @follower_counts }
+      end
     end
   end
 

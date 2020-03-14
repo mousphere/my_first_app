@@ -61,7 +61,8 @@ function FollowButton(props) {
         </button>
       }
       <span className= "follow-info">
-        フォロー {followings}&emsp;フォロワー {followers}
+        フォロー   <a href={ "/users/" + followedUserID + "/followings" }>{followings}</a>&emsp;
+        フォロワー <a href={ "/users/" + followedUserID + "/followers"  }>{followers}</a>
       </span>
     </div>
   )

@@ -54,6 +54,7 @@ function FollowButton(props) {
     <div>
       { followUserID !== followedUserID &&
         <button
+          id='follow-button'
           className={ followed ? followedClass : notFollowedClass }
           onClick={ notLoggedIn ? () => alertMessage()
                    :   followed ? () => unfollow() : () => follow() }

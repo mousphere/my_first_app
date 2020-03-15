@@ -68,10 +68,6 @@ class UsersController < ApplicationController
 
     @likes = Like.where(liked_article_id: Article.select(:id)
                  .where(user_id: params[:id])).order(created_at: :desc)
-
-    # @users = User.where(id: Like.select(:like_user_id)
-    #                   .where(liked_article_id: Article.select(:id)
-    #                   .where(user_id: params[:id])))
   end
 
   private

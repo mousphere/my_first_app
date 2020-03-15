@@ -47,13 +47,14 @@ function FollowButton(props) {
 
   const followed = relationshipID !== null
   const notLoggedIn = followUserID == null
-  const notFollowed = classnames('btn btn-outline-primary rounded-pill')
+  const followedClass = classnames('btn btn-primary-follow rounded-pill')
+  const notFollowedClass = classnames('btn btn-outline-primary rounded-pill')
   
   return (
     <div>
       { followUserID !== followedUserID &&
         <button
-          className={ notFollowed }
+          className={ followed ? followedClass : notFollowedClass }
           onClick={ notLoggedIn ? () => alertMessage()
                    :   followed ? () => unfollow() : () => follow() }
         >

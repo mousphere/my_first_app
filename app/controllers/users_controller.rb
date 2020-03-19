@@ -68,10 +68,18 @@ class UsersController < ApplicationController
 
     @likes = Like.where(liked_article_id: Article.select(:id)
                  .where(user_id: params[:id])).order(created_at: :desc)
+  end
 
-    # @users = User.where(id: Like.select(:like_user_id)
-    #                   .where(liked_article_id: Article.select(:id)
-    #                   .where(user_id: params[:id])))
+  def followings
+    @users = User.find(params[:id]).followings.all
+    @title = 'フォロー中'
+    render '/users/follow'
+  end
+
+  def followers
+    @users = User.find(params[:id]).followers.all
+    @title = 'フォロワー'
+    render '/users/follow'
   end
 
   private

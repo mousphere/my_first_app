@@ -168,6 +168,20 @@ body{
     width: 85%;
 }
 
+/** フォローページ **/
+.follow{
+    @extend .article;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.follow-image{
+    padding-left: 150px;
+    padding-right: 30px;
+}
+
+
+
 /** ログインページ **/
 /* チェックボックス */
 .cookie_check{

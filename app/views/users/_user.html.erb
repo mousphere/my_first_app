@@ -1,0 +1,6 @@
+<div class="follow">
+  <% image = user.image.present? ? user.image : 'images.png' %>
+  <span class="follow-image"><%= link_to image_tag(image, alt: 'User_image', class:'user_image'), user %></span>
+  <span><%= link_to user.name, user %></span>
+  <%= link_to '', user_path(user) %>
+</div>

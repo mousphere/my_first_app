@@ -70,6 +70,18 @@ class UsersController < ApplicationController
                  .where(user_id: params[:id])).order(created_at: :desc)
   end
 
+  def followings
+    @users = User.find(params[:id]).followings.all
+    @title = 'フォロー中'
+    render '/users/follow'
+  end
+
+  def followers
+    @users = User.find(params[:id]).followers.all
+    @title = 'フォロワー'
+    render '/users/follow'
+  end
+
   private
 
   def user_params

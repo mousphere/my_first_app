@@ -21,6 +21,7 @@
           通知 <span class="rounded-circle bg-danger number_of_notice"><%= "#{number_of_notice}" %></span>
         <% end %>
       </div>
+      <div><%= link_to "フォローユーザー記事", followings_articles_user_path(user), class:"btn btn-primary", id:"followings-articles" %></div>
       <div><%= link_to "ストック記事", stocks_user_path(user), class:"btn btn-primary", id:"stock" %></div>
       <div><%= link_to "プロフィール変更", edit_user_path(user), class:"btn btn-primary", id:"change-profile" %></div>
       <div><%= link_to "ログアウト", logout_path, method: :delete, class:"btn btn-primary", id:"logout" %></div>

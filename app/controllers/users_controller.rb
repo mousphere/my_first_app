@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @articles = @user.articles.order(created_at: :desc)
+    @title = '作成記事一覧'
   end
 
   def edit
@@ -80,6 +81,14 @@ class UsersController < ApplicationController
     @users = User.find(params[:id]).followers.all
     @title = 'フォロワー'
     render '/users/follow'
+  end
+
+  def followings_articles
+    @user = User.find(params[:id])
+    @articles = Article.where(user_id: Relationship.select(:followed_id)
+                       .where(follower_id: @user.id)).order(created_at: :desc)
+    @title = 'フォローユーザー記事一覧'
+    render '/users/show'
   end
 
   private

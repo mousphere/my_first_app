@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :deactivate
       get :followings
       get :followers
+      get :followings_articles
     end
   end
 

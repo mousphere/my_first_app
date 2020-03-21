@@ -4,6 +4,21 @@ class User < ApplicationRecord
   # 記事
   has_many :articles, dependent: :destroy
 
+  # フォロー
+  has_many :active_relationships,
+           class_name: 'Relationship',
+           foreign_key: 'follower_id',
+           inverse_of: :follower,
+           dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :followed
+
+  has_many :passive_relationships,
+           class_name: 'Relationship',
+           foreign_key: 'followed_id',
+           inverse_of: :followed,
+           dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+
   # ストック
   has_many :stocks,
            foreign_key: 'stock_user_id', inverse_of: :stock_user, dependent: :destroy
@@ -81,6 +96,15 @@ class User < ApplicationRecord
     return false if remember_digest.nil?
 
     Bcrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # フォロー関連
+  def follow(user)
+    followings << user
+  end
+
+  def unfollow(user)
+    active_relationships.find_by(followed_id: user.id).destroy
   end
 
   # ストック関連

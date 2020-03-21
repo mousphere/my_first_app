@@ -45,3 +45,67 @@ li{
     border: 3px solid gainsboro;
     color: black;
 }
+
+
+/* btn-outline-primary の色設定変更 */
+
+.btn-outline-primary,
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+  color: #007bff;
+  background-color: transparent;
+  border-color: #007bff;
+}
+
+/* focusされた時の枠線の色 */
+.btn-outline-primary:focus, .btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0px;
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+.btn-outline-primary:hover {
+  background: rgba(0,255,255,0.15);
+  color: #007bff;
+  border-color: #007bff;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #007bff;
+  background-color: transparent;
+  border-color: #007bff;
+}
+
+
+/* btn-primary-follow-follow の色設定変更 */
+
+.btn-primary-follow,
+.btn-primary-follow.disabled, .btn-primary-follow:disabled {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* focusされた時の枠線の色 */
+.btn-primary-follow:focus, .btn-primary-follow.focus,
+.btn-primary-follow:not(:disabled):not(.disabled):active:focus, .btn-primary-follow:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary-follow.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0px;
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+.btn-primary-follow:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-primary-follow:not(:disabled):not(.disabled):active, .btn-primary-follow:not(:disabled):not(.disabled).active,
+.show > .btn-primary-follow.dropdown-toggle {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}

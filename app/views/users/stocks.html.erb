@@ -1,14 +1,15 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col">
+      <h2 class="text-center">ストック一覧</h2>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-2 text-center user_profile">
       <%= render 'shared/user_profile' %>
     </div>
     <div class="col-md-6 offset-md-1">
-      <h2 class="text-center">ストック一覧</h2>
       <%= render @articles %>
-    </div>
-    <div class="col-md-3">
-      <p class="text-center">空白列（仮）</p>
     </div>
   </div>
 </div>

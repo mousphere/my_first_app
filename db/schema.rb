@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200308030018) do
+ActiveRecord::Schema.define(version: 20200321081419) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "content"
+    t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.string "genre"
+    t.bigint "user_id", null: false
+    t.string "genre", null: false
     t.string "image"
-    t.string "sweet_name"
+    t.string "sweet_name", null: false
     t.integer "like_counts", default: 0, null: false
     t.index ["user_id", "created_at"], name: "index_articles_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_articles_on_user_id"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20200308030018) do
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "like_user_id"
-    t.integer "liked_article_id"
+    t.integer "like_user_id", null: false
+    t.integer "liked_article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "checked?", default: false, null: false
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20200308030018) do
   end
 
   create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "stock_user_id"
-    t.integer "stocked_article_id"
+    t.integer "stock_user_id", null: false
+    t.integer "stocked_article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stock_user_id", "stocked_article_id"], name: "index_stocks_on_stock_user_id_and_stocked_article_id", unique: true
@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 20200308030018) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
+    t.string "password_digest", null: false
     t.string "remember_digest"
     t.string "image"
     t.datetime "last_access_time", default: "1900-01-01 00:00:00"

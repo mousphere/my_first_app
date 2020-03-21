@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   def show
     session[:for_article_show] = 1
 
-    @user = User.find(params[:id])
-    @articles = @user.articles.order(created_at: :desc)
+    user = User.find(params[:id])
+    @articles = user.articles.order(created_at: :desc)
     @title = '作成記事一覧'
   end
 
@@ -84,9 +84,9 @@ class UsersController < ApplicationController
   end
 
   def followings_articles
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
     @articles = Article.where(user_id: Relationship.select(:followed_id)
-                       .where(follower_id: @user.id)).order(created_at: :desc)
+                       .where(follower_id: user.id)).order(created_at: :desc)
     @title = 'フォローユーザー記事一覧'
     render '/users/show'
   end

@@ -366,8 +366,11 @@ div.content{
 .lightcyan{
     background-color: lightcyan;
 }
-.like_notification {
-    width: 70%;
+.like-notification {
+    width: 80%;
+    border-bottom: solid 4px #DDDDDD;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
 }
 
 /** ページネーション **/

@@ -6,19 +6,23 @@
       <%= f.file_field :image %>
     </div>
     <div class="form-group">
-      <%= f.label :sweet_name, '商品名' %>
+      <%= f.label :sweet_name, '商品名(必須)' %>
       <%= f.text_field :sweet_name, class:"form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :genre, 'ジャンル' %>
+      <%= f.label :genre, 'ジャンル(必須)' %>
       <%= f.select :genre, [['チョコレート', 'chocolate'],
                             ['クッキー', 'cookie'],
                             ['アイス', 'ice_cream'],
                             ['ケーキ', 'cake'],
-                            ['その他', 'etc'] ] %>
+                            ['その他', 'etc'] ], {}, class:"form-control article_genre" %>
     </div>
     <div class="form-group">
-      <%= f.label :content, '紹介文' %>
+      <%= f.label :url, '参考URL' %>
+      <%= f.text_field :url, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content, '紹介文(必須)' %>
       <%= f.text_area :content, rows: 5, class:"form-control" %>
     </div>
     <div class="form-group">

@@ -62,7 +62,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:sweet_name, :genre, :content, :image)
+    params.require(:article).permit(:sweet_name, :genre, :url, :content, :image)
   end
 
   def correct_article_user

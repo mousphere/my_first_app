@@ -232,8 +232,8 @@ h2{
     border-radius: 9px;
 }
 
-.sweet_name{
-    padding: 10px 0;
+.article-padding{
+    padding: 5px 0;
 }
 
 .user{
@@ -248,6 +248,14 @@ h2{
     background-position: center center;
 }
 
+.url{
+    word-wrap: break-word;
+}
+
+div.url{
+    margin-right: 25px;
+}
+
 .content{
     display: block;
     margin-top: 1px;
@@ -257,7 +265,6 @@ h2{
 
 div.content{
     margin-right: 25px;
-    // padding-bottom: 10px;
 }
 
 .timestamp{

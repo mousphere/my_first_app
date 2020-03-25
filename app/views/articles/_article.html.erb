@@ -8,22 +8,33 @@
                     article.user %>
       </div>
       <div class="col-md-9 no_padding">
-        <span class="user"><%= link_to article.user.name, article.user %></span>
-        <span class="timestamp">
-          <%= time_ago_in_words(article.created_at) %> 前
-        </span>
+        <div class="article-padding">
+          <span class="user"><%= link_to article.user.name, article.user %></span>
+          <span class="timestamp">
+            <%= time_ago_in_words(article.created_at) %> 前
+          </span>
+        </div>
         <% if article.image.present? %>
           <%= image_tag(article.image, alt: 'sweet_image', class:'sweet_image') %>
         <% end %>
-        <div class="sweet_name">
+        <div class="article-padding">
           <span>商品名：<%= link_to article.sweet_name, article %></span>
         </div>
-        <p>ジャンル：
-        <span class="genre"><%= article.converted_genre %></span>
-        </p>
-        <u>紹介文</u>
-        <div class="border rounded content">
-          <span class="content"><%= article.content %></span>
+        <div class="article-padding">
+          <span class="genre">ジャンル：<%= article.converted_genre %></span>
+        </div>
+        <% if article.url.present? %>
+          <div class="article-padding url">
+            <span class="url">
+              参考URL：<a href="<%= article.url %>" target="_blank"><%= article.url %></a>
+            </span>
+          </div>
+        <% end %>
+        <div class="article-padding">
+          <u>紹介文</u>
+          <div class="border rounded content">
+            <span class="content"><%= article.content %></span>
+          </div>
         </div>
         
         <!-- ボタン一覧 -->

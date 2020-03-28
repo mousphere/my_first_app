@@ -3,7 +3,7 @@
 class ArticlesController < ApplicationController
   include Common
   include DisplayOrder
-  PER = 5
+  PER = 10
 
   before_action :logged_in_user, only: %i[new create edit update destroy]
   before_action :correct_article_user, only: %i[edit update destroy]
@@ -24,7 +24,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = Comment.where(article_id: params[:id]).order(created_at: :desc)
+    @comments = Comment.where(article_id: params[:id])
+                       .page(params[:page]).per(PER)
+                       .order(created_at: :desc)
 
     if session[:for_article_show].zero?
       render '/articles/show_with_category'

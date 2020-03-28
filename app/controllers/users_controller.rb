@@ -2,6 +2,8 @@
 
 class UsersController < ApplicationController
   include Common
+  PER = 10
+  PER_NOTIFY = 20
 
   before_action :logged_in_user, only: %i[edit update deactivate destroy stocks notify]
   before_action :correct_user, only: %i[edit update deactivate destroy notify]
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
     session[:for_article_show] = 1
 
     user = User.find(params[:id])
-    @articles = user.articles.order(created_at: :desc)
+    @articles = user.articles.page(params[:page]).per(PER).order(created_at: :desc)
     @title = '作成記事一覧'
   end
 
@@ -62,6 +64,7 @@ class UsersController < ApplicationController
   def stocks
     @articles = Article.where(id: Stock.select(:stocked_article_id)
                        .where(stock_user_id: params[:id]))
+                       .page(params[:page]).per(PER)
   end
 
   def notify
@@ -69,6 +72,7 @@ class UsersController < ApplicationController
 
     @likes = Like.where(liked_article_id: Article.select(:id)
                  .where(user_id: params[:id])).order(created_at: :desc)
+                 .page(params[:page]).per(PER_NOTIFY)
   end
 
   def followings
@@ -87,6 +91,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @articles = Article.where(user_id: Relationship.select(:followed_id)
                        .where(follower_id: user.id)).order(created_at: :desc)
+                       .page(params[:page]).per(PER)
     @title = 'フォローユーザー記事一覧'
     render '/users/show'
   end

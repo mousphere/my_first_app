@@ -3,7 +3,7 @@
 class StaticPagesController < ApplicationController
   include DisplayOrder
 
-  PER = 5
+  PER = 10
 
   def home
     session[:for_article_show] = 0

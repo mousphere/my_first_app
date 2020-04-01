@@ -8,13 +8,19 @@
   </div>
   <div class="row">
     <div class="col-md-2 text-center user_profile">
-      <%= render 'shared/user_profile' %>
+      <div class="fixed-sidebar">
+        <%= render 'shared/user_profile' %>
+      </div>
     </div>
     <div class="col-md-6 offset-md-1">
-      <%= render @articles %>
-    </div>
-    <div class="pagination">
-      <%= paginate @articles %>
+      <div class="articles">
+        <ul>
+          <%= render @articles %>
+        </ul>
+      </div>
+      <div class="pagination">
+        <%= paginate @articles %>
+      </div>
     </div>
   </div>
 </div>

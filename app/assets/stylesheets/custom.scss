@@ -1,4 +1,6 @@
 @import "bootstrap";
+
+/** htmlタグ **/
 html{
     height: 100%;
 }
@@ -18,15 +20,22 @@ h2{
     padding: 3px 0;
 }
 
+/** タイトル、サイドバー固定 **/
 .fixed-title{
     position: sticky;
     position: -webkit-sticky;
     top: 51.5px;
     left: 0px;
-    width: 100%;
-    height: 52px;
     z-index: 1;
     background-color: #FFEEFF;
+}
+
+.fixed-sidebar{
+    background-color: #FFEEFF;
+    position: sticky;
+    top: 103.5px;
+    left: 0px;
+    z-index: 1;
 }
 
 /** 全体リンク化 **/

@@ -6,7 +6,9 @@
   </div>
   <div class="row">
     <div class="col-md-2 text-center user_profile">
-      <%= render 'shared/user_profile' %>
+      <div class="fixed-sidebar">
+        <%= render 'shared/user_profile' %>
+      </div>
     </div>
     <div class="col-md-4 offset-md-2">
       <%= render 'shared/article_form', button_string: '投稿する' %>

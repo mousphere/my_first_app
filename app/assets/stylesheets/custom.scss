@@ -1,4 +1,6 @@
 @import "bootstrap";
+
+/** htmlタグ **/
 html{
     height: 100%;
 }
@@ -16,6 +18,16 @@ body{
 
 h2{
     padding: 3px 0;
+}
+
+/** サイドバー固定 **/
+.fixed-sidebar{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 103.5px;
+    left: 0px;
+    z-index: 1;
+    background-color: #FFEEFF;
 }
 
 /** 全体リンク化 **/

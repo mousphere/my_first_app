@@ -31,11 +31,12 @@ h2{
 }
 
 .fixed-sidebar{
-    background-color: #FFEEFF;
     position: sticky;
+    position: -webkit-sticky;
     top: 103.5px;
     left: 0px;
     z-index: 1;
+    background-color: #FFEEFF;
 }
 
 /** 全体リンク化 **/

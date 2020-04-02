@@ -20,23 +20,27 @@ RSpec.describe Article, type: :model do
         expect(article).not_to be_valid
       end
     end
+
     context '2. 記事内容が無効' do
       example '記事内容が入力されていない' do
         article.content = ''
         expect(article).not_to be_valid
       end
     end
+
     context '3. ジャンルが無効' do
       example 'ジャンルが入力されていない' do
         article.genre = ''
         expect(article).not_to be_valid
       end
     end
+
     context '4. URLが無効' do
       example 'スキームが正しくない' do
         article.url = 'htt://yahoo.co.jp'
         expect(article).not_to be_valid
       end
+
       example 'スキーム以下がない' do
         article.url = 'http://'
         expect(article).not_to be_valid

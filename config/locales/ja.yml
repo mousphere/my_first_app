@@ -9,6 +9,7 @@ ja:
       article:
         sweet_name: '商品名'
         content: '紹介文'
+        url: 'URL'
       comment:
         content: 'コメント文'
     errors:
@@ -33,6 +34,8 @@ ja:
               blank: 'が入力されていません'
             content:
               blank: 'が入力されていません'
+            url:
+              invalid: 'が不正です。正しいURLを入力してください'
         comment:
           attributes:
             content:

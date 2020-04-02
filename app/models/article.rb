@@ -25,6 +25,9 @@ class Article < ApplicationRecord
   validates :genre, presence: true
   validates :content, presence: true
 
+  VALID_URL_REGEX = %r{https?://[\w/:%\#\$&?()~.=+-]+|\A\z}.freeze
+  validates :url, format: { with: VALID_URL_REGEX }
+
   # ----- -----
 
   mount_uploader :image, ImagesUploader

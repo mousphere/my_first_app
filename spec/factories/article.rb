@@ -23,5 +23,6 @@ FactoryBot.define do
     sweet_name { 'テストチョコ' }
     genre { 'chocolate' }
     content
+    url { '' }
   end
 end

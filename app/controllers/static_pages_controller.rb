@@ -13,6 +13,9 @@ class StaticPagesController < ApplicationController
 
     display_order_change(option, PER, genre)
 
+    @q = Article.ransack(params[:q])
+    @results = @q.result.includes(:articles).page(params[:page]).per(PER)
+
     respond_to do |format|
       format.html {}
       format.json { render json: nil }

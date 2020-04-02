@@ -40,6 +40,12 @@ class ArticlesController < ApplicationController
     @like.change_checked?
   end
 
+  def index
+    @q = Article.ransack(params[:q])
+    @articles = @q.result.page(params[:page]).per(PER).order(created_at: :desc)
+    render '/static_pages/home'
+  end
+
   def edit
     @article = Article.find(params[:id])
   end

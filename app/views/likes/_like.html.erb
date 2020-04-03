@@ -9,5 +9,5 @@
     <% end %>
     さんがあなたの記事をいいねしました
   </p>
-  <%= link_to '', article_path(Article.find(like.liked_article_id)), class: 'link-area' %>
+  <%= link_to '', article_path(Article.find(like.liked_article_id), like_id: like.id), class: 'link-area' %>
 </div>

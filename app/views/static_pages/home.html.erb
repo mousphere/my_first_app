@@ -38,7 +38,7 @@
       <div class="reference">
         <%= search_form_for @q, url: "/", html: { method: :post } do |f| %>
           <%= f.label :sweet_name, "商品名" %>
-          <%= f.search_field :sweet_name_cont %>
+          <%= f.search_field :sweet_name_cont, id:'search_field' %>
           <%= f.submit "検索", class:'btn btn-primary' %>
         <% end %>
       </div>

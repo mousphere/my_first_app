@@ -20,16 +20,6 @@ h2{
     padding: 3px 0;
 }
 
-/** サイドバー固定 **/
-.fixed-sidebar{
-    position: sticky;
-    position: -webkit-sticky;
-    top: 103.5px;
-    left: 0px;
-    z-index: 1;
-    background-color: #FFEEFF;
-}
-
 /** 全体リンク化 **/
 .whole-link{
     position: relative;
@@ -85,6 +75,23 @@ h2{
 .genre_list{
     display: inline-block;
     height: 40px;
+}
+
+/* サイドバー固定 */
+.fixed-sidebar{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 103.5px;
+    left: 0px;
+    z-index: 1;
+    background-color: #FFEEFF;
+}
+
+/* 検索フォーム固定 */
+.fixed_reference{
+    position: fixed;
+    top: 133.5px; /* 133.5px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
+    z-index: 1;
 }
 
 /* 表示順切替ボタン */

@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import classnames from 'classnames'
 
 function ChangingDisplayOrderButton(props){
-  const root_url = "https://b57360db244146fc98d63bdf0ee06acb.vfs.cloud9.us-east-2.amazonaws.com/"
+  const root_url = "/"
   const url = window.location.href
   
   const [option, setOption] = useState(props.option)

@@ -46,7 +46,7 @@ class Article < ApplicationRecord
   def self.choose(genre, query)
     if genre.present?
       Article.where(genre: genre)
-    elsif query.result.count >= 0
+    elsif query.result
       query.result
     else
       Article.all

@@ -2,7 +2,6 @@
 
 class ArticlesController < ApplicationController
   include Common
-  include DisplayOrder
   PER = 10
 
   before_action :logged_in_user, only: %i[new create edit update destroy]
@@ -38,12 +37,6 @@ class ArticlesController < ApplicationController
 
     @like = Like.find(params[:like_id])
     @like.change_checked?
-  end
-
-  def index
-    @q = Article.ransack(params[:q])
-    @articles = @q.result.page(params[:page]).per(PER).order(created_at: :desc)
-    render '/static_pages/home'
   end
 
   def edit

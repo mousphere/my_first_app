@@ -2,7 +2,6 @@
 
 class ArticlesController < ApplicationController
   include Common
-  include DisplayOrder
   PER = 10
 
   before_action :logged_in_user, only: %i[new create edit update destroy]

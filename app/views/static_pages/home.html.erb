@@ -34,6 +34,15 @@
         <%= paginate @articles %>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="reference">
+        <%= search_form_for @q, url: "/", html: { method: :post } do |f| %>
+          <%= f.label :sweet_name, "商品名" %>
+          <%= f.search_field :sweet_name_cont, id:'search_field' %>
+          <%= f.submit "検索", class:'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 <script>
@@ -42,18 +51,21 @@
     const naviParent = $('#naviParent');
     const navbar = $('.navbar');
     const sidebar = $('.sidebar');
+    const reference = $('.reference');
 
     function removeClass()
     {
       button.removeClass('fixed_button');
       naviParent.removeClass('fixed_naviParent');
       sidebar.removeClass('fixed_sidebar');
+      reference.removeClass('fixed_reference');
     }
 
     function addClass(){
       button.addClass('fixed_button');
       naviParent.addClass('fixed_naviParent');
       sidebar.addClass('fixed_sidebar')
+      reference.addClass('fixed_reference');
     }
 
     function initialize()

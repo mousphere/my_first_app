@@ -28,6 +28,9 @@ gem 'font-awesome-sass', '~> 5.11.2'
 # ページネーション用
 gem 'kaminari'
 
+# 記事検索用
+gem 'ransack'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # Use Puma as the app server

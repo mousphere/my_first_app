@@ -28,7 +28,7 @@ class Article < ApplicationRecord
   VALID_URL_REGEX = %r{https?://[\w/:%\#\$&?()~.=+-]+|\A\z}.freeze
   validates :url, format: { with: VALID_URL_REGEX }
 
-  # ----- -----
+  # ----- 画像アップロード -----
 
   mount_uploader :image, ImagesUploader
 
@@ -41,5 +41,15 @@ class Article < ApplicationRecord
                           'cake' => 'ケーキ',
                           'etc' => 'その他' }
     translation_table[genre]
+  end
+
+  def self.choose(genre, query)
+    if genre.present?
+      Article.where(genre: genre)
+    elsif query.result.count >= 0
+      query.result
+    else
+      Article.all
+    end
   end
 end

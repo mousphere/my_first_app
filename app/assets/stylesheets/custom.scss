@@ -418,7 +418,11 @@ div.content{
     margin-top: 15px;
     height: 130px;
     width: 100%;
-    background-color: #EEEEEE;
+    // background-color: #EEEEEE;
+    background-color: #FAFAFA;
+    border-bottom: solid 4px #DDDDDD;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
     display: table;
 }
 

@@ -18,17 +18,15 @@
           <%= render 'shared/error_messages', object: f.object %>
         </div>
       
-      <!-- コメントフォームを作成する -->
-      <!-- プロフ写真、テキストエリア、コメントボタン -->
-      <div class="border border-dark rounded comment-form">
-        <div class="row">
-          <div class="col-md-3 text-center">
-            <div>
-              <%= link_to image_tag(current_user.image, alt: 'User_image', class:'user_image'),
-                  current_user %>
+        <div class="comment-form">
+          <div class="row">
+            <div class="col-md-3 text-center">
+              <div>
+                <%= link_to image_tag(current_user.image, alt: 'User_image', class:'user_image'),
+                    current_user %>
+              </div>
             </div>
-          </div>
-          <div class="col-md-9 no_padding">
+            <div class="col-md-9 no_padding">
               <div class="display-flex">
                 <div class="form-group comment-area">
                   <%= f.text_area :content, rows: 4, class:"form-control", id: "comment-area", placeholder: 'コメントを入力' %>
@@ -40,10 +38,10 @@
                   <%= f.submit '送信', class:"btn btn-primary" %>
                 </div>
               </div>
-            <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

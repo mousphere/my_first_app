@@ -12,7 +12,7 @@ RSpec.describe 'いいねボタン関連の挙動', type: :system do
       article
       visit(root_path)
       find('.like-button').click
-      expect(page.driver.browser.switch_to.alert.text).to eq 'ログインが必要です'
+      expect(page.driver.browser.switch_to.alert.text).to include 'ログインが必要です'
     end
     example 'いいねリレーションが生成されない' do
       article

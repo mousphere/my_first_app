@@ -10,7 +10,7 @@ function StockButton(props){
   const [user, setUser] = useState(props.user)
   
   const alertMessage = () =>{
-    alert('ログインが必要です')
+    alert('記事をストックするにはログインが必要です')
   }
   
   const stockArticle = () =>{

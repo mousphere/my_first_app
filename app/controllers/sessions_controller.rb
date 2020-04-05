@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # すでに別のタブでログアウトが完了していたら、再度ログアウト処理は行わない
     log_out if logged_in?
     redirect_to root_url
   end

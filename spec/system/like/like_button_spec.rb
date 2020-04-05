@@ -75,6 +75,7 @@ RSpec.describe 'いいねボタン関連の挙動', type: :system do
       click_link('ホーム')
       expect(Like.count).to eq(1)
       find('.like-button').click
+      sleep 1
       expect(Like.count).to eq(0)
     end
 

@@ -25,6 +25,9 @@
         <%= link_to 'テストユーザーとしてログイン', login_path(for_test: true), method: :post,
             class: 'test-user-button' %>
       </button>
+      <div class="guidance">
+        <%= link_to 'アカウントを作成していない方はこちら', '/users/new' %>
+      </div>
     </div>
   </div>
 </div>

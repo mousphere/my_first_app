@@ -11,7 +11,7 @@ function LikeButton(props) {
   const [user, setUser] = useState(props.user)
   
   const alertMessage = () =>{
-    alert('ログインが必要です')
+    alert('いいねするにはログインが必要です')
   }
   
   const addLike = () =>{

@@ -12,7 +12,7 @@ RSpec.describe 'ストックボタン関連の挙動', type: :system do
       article
       visit(root_path)
       find('.stock-button').click
-      expect(page.driver.browser.switch_to.alert.text).to eq 'ログインが必要です'
+      expect(page.driver.browser.switch_to.alert.text).to include 'ログインが必要です'
     end
     example 'ストックが生成されない' do
       article

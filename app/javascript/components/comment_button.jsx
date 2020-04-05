@@ -7,11 +7,10 @@ function CommentButton(props) {
   const [articleID, setArticleID] = useState(props.article_id)
   
   const alertMessage = () =>{
-    alert('ログインが必要です')
+    alert('コメントするにはログインが必要です')
   }
   
   const moveToCommentView = () =>{
-    // window.location.href = '/comments/new' + '?id=' + articleID 
     window.location.href = '/articles/' + articleID + '/comments/new' 
   }
   

@@ -9,7 +9,7 @@ function FollowButton(props) {
   const [followers, setFollowers] = useState(props.followers)
 
   const alertMessage = () =>{
-    alert('ログインが必要です')
+    alert('フォローするにはログインが必要です')
   }
   
   const follow = () =>{

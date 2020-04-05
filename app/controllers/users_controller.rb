@@ -68,7 +68,8 @@ class UsersController < ApplicationController
   end
 
   def notify
-    update_access_time
+    user = User.find(params[:id])
+    user.update_last_access_time
 
     @likes = Like.where(liked_article_id: Article.select(:id)
                  .where(user_id: params[:id])).order(created_at: :desc)
@@ -108,10 +109,5 @@ class UsersController < ApplicationController
   def user_params_including_image
     params.require(:user).permit(:name, :email,
                                  :password, :password_confirmation, :image)
-  end
-
-  def update_access_time
-    @user = User.find(params[:id])
-    @user.update_last_access_time if current_user?(@user)
   end
 end

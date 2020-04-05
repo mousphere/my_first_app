@@ -40,8 +40,8 @@ class CommentsController < ApplicationController
   end
 
   def correct_comment_user
-    @comment = Comment.find(params[:id])
-    return if current_user?(@comment.user)
+    comment = Comment.find(params[:id])
+    return if current_user?(comment.user)
 
     flash[:danger] = 'アクセス権がありません'
     redirect_to root_url

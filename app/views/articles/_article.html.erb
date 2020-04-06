@@ -1,15 +1,15 @@
 <li id="article-<%= article.id %>">
-  <div class ="article">
+  <div class ="article whole-link whole-link-article">
     <div class="row">
       <div class="col-md-3 text-center">
         <% image = 
            article.user.image.present? ? article.user.image : 'images.png' %>
         <%= link_to image_tag(image, alt: 'User_image', class:'user_image'),
-                    article.user %>
+                    article.user, class:'upper-link' %>
       </div>
       <div class="col-md-9 no_padding">
         <div class="article-padding">
-          <span class="user"><%= link_to article.user.name, article.user %></span>
+          <span class="user"><%= link_to article.user.name, article.user, class:'upper-link' %></span>
           <span class="timestamp">
             <%= time_ago_in_words(article.created_at) %> 前
           </span>
@@ -18,7 +18,7 @@
           <%= image_tag(article.image, alt: 'sweet_image', class:'sweet_image') %>
         <% end %>
         <div class="article-padding">
-          <span>商品名：<%= link_to article.sweet_name, article %></span>
+          <span>商品名：<%= link_to article.sweet_name, article, class:'upper-link' %></span>
         </div>
         <div class="article-padding">
           <span class="genre">ジャンル：<%= article.converted_genre %></span>
@@ -26,7 +26,7 @@
         <% if article.url.present? %>
           <div class="article-padding url">
             <span class="url">
-              参考URL：<a href="<%= article.url %>" target="_blank"><%= article.url %></a>
+              参考URL：<a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
             </span>
           </div>
         <% end %>
@@ -42,7 +42,7 @@
           <% @article = article %>
           <% @user = current_user %>
           <div class="comment-button">
-            <div class="d-inline-block">
+            <div class="d-inline-block upper-link">
               <%= react_component('comment_button',
                                    article_id: @article.id,
                                    user: @user) %>
@@ -51,13 +51,13 @@
               <span><%= article.comments.all.count %></span>
             </div>
           </div>
-          <div class="stock-button">
+          <div class="stock-button upper-link">
             <%= react_component('stock_button',
                                  article_id: @article.id,
                                  stock_id: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.id,
                                  user: @user) %>
           </div>
-          <div class="like-button">
+          <div class="like-button  upper-link">
             <%= react_component('like_button',
                                  article_id: @article.id,
                                  like_id: current_user &. likes &.find_by(liked_article_id: @article.id)&.id,
@@ -66,14 +66,14 @@
           </div>
           <% if current_user?(@article.user) %>
             <div class="article-edit-button">
-              <button class="btn btn-link icon-big">
+              <button class="btn btn-link icon-big upper-link">
                 <%= link_to edit_article_path(@article) do %>
                    <%= icon('far', 'edit') %>
                 <% end %>
               </button>
             </div>
             <div class="article-delete-button">
-              <button type="button" class="btn btn-link icon-big" data-toggle="modal" data-target="#articleModal">
+              <button type="button" class="btn btn-link icon-big upper-link" data-toggle="modal" data-target="#articleModal">
                 <%= icon('far', 'trash-alt') %>
               </button>
 
@@ -105,7 +105,6 @@
         </div> <!-- ボタン一覧 ここまで -->
       </div>
     </div>
-    <div class="border-bottom">
-    </div>
+    <%= link_to '', article, class: 'link-area' %>
   </div>
 </li>

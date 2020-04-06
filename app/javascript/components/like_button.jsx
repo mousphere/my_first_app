@@ -55,7 +55,7 @@ function LikeButton(props) {
   
   const liked = likeID !== null
   const notLoggedIn = user == null
-  const btnClass = classnames('btn btn-link icon-big',{
+  const btnClass = classnames('btn btn-link icon-big common-button',{
                               'liked': liked,
   })
   const spanClass = classnames('like-count')

@@ -42,7 +42,7 @@
           <% @article = article %>
           <% @user = current_user %>
           <div class="comment-button">
-            <div class="d-inline-block upper-link">
+            <div class="d-inline-block upper-link common-button">
               <%= react_component('comment_button',
                                    article_id: @article.id,
                                    user: @user) %>
@@ -51,7 +51,7 @@
               <span><%= article.comments.all.count %></span>
             </div>
           </div>
-          <div class="stock-button upper-link">
+          <div class="stock-button upper-link common-button">
             <%= react_component('stock_button',
                                  article_id: @article.id,
                                  stock_id: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.id,
@@ -66,14 +66,14 @@
           </div>
           <% if current_user?(@article.user) %>
             <div class="article-edit-button">
-              <button class="btn btn-link icon-big upper-link">
+              <button class="btn btn-link icon-big upper-link common-button">
                 <%= link_to edit_article_path(@article) do %>
                    <%= icon('far', 'edit') %>
                 <% end %>
               </button>
             </div>
             <div class="article-delete-button">
-              <button type="button" class="btn btn-link icon-big upper-link" data-toggle="modal" data-target="#articleModal">
+              <button type="button" class="btn btn-link icon-big upper-link common-button" data-toggle="modal" data-target="#articleModal">
                 <%= icon('far', 'trash-alt') %>
               </button>
 

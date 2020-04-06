@@ -1,5 +1,5 @@
 <li id="article-<%= article.id %>">
-  <div class ="article whole-link">
+  <div class ="article whole-link whole-link-article">
     <div class="row">
       <div class="col-md-3 text-center">
         <% image = 
@@ -26,7 +26,7 @@
         <% if article.url.present? %>
           <div class="article-padding url">
             <span class="url">
-              参考URL：<a href="<%= article.url %>" target="_blank"><%= article.url %></a>
+              参考URL：<a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
             </span>
           </div>
         <% end %>
@@ -38,11 +38,11 @@
         </div>
         
         <!-- ボタン一覧 -->
-        <div class="function-button flex upper-link">
+        <div class="function-button flex">
           <% @article = article %>
           <% @user = current_user %>
           <div class="comment-button">
-            <div class="d-inline-block">
+            <div class="d-inline-block upper-link">
               <%= react_component('comment_button',
                                    article_id: @article.id,
                                    user: @user) %>
@@ -51,13 +51,13 @@
               <span><%= article.comments.all.count %></span>
             </div>
           </div>
-          <div class="stock-button">
+          <div class="stock-button upper-link">
             <%= react_component('stock_button',
                                  article_id: @article.id,
                                  stock_id: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.id,
                                  user: @user) %>
           </div>
-          <div class="like-button">
+          <div class="like-button  upper-link">
             <%= react_component('like_button',
                                  article_id: @article.id,
                                  like_id: current_user &. likes &.find_by(liked_article_id: @article.id)&.id,
@@ -66,14 +66,14 @@
           </div>
           <% if current_user?(@article.user) %>
             <div class="article-edit-button">
-              <button class="btn btn-link icon-big">
+              <button class="btn btn-link icon-big upper-link">
                 <%= link_to edit_article_path(@article) do %>
                    <%= icon('far', 'edit') %>
                 <% end %>
               </button>
             </div>
             <div class="article-delete-button">
-              <button type="button" class="btn btn-link icon-big" data-toggle="modal" data-target="#articleModal">
+              <button type="button" class="btn btn-link icon-big upper-link" data-toggle="modal" data-target="#articleModal">
                 <%= icon('far', 'trash-alt') %>
               </button>
 

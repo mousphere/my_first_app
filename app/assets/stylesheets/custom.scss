@@ -340,6 +340,13 @@ div.content{
     font-size: 1.2em;
 }
 
+.common-button{
+    border-radius: 50%;
+    &:hover{
+        background-color: lightcyan;
+        opacity: 0.8;
+    }
+}
 
 /* ストックボタン */
 .function-button{

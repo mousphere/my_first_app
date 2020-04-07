@@ -10,15 +10,11 @@
                         followers: user &. passive_relationships &. all.count ) %>
   </div>
   <% if current_user?(user) %>
-    <!-- 自分の記事がいいねされていて、かつそのcreated_atがlast_access_time より前であること -->
-    <% number_of_notice = Like.where(liked_article_id: Article.where(user_id: user.id))
-                              .where("created_at > ?", user.last_access_time).count.to_s.tr('0-9', '０-９') %>
-    <% number_of_notice = '' if number_of_notice == '０' %>
     <div class="user-function">
       <div><%= link_to "記事投稿", new_article_path, class:"btn btn-primary" %></div>
       <div>
         <%= link_to notify_user_path(user), class:"btn btn-primary" do %>
-          通知 <span class="rounded-circle bg-danger number_of_notice"><%= "#{number_of_notice}" %></span>
+          通知 <span class="rounded-circle bg-danger number_of_notice"><%= "#{number_of_notice(user)}" %></span>
         <% end %>
       </div>
       <div><%= link_to "フォローユーザー記事", followings_articles_user_path(user), class:"btn btn-primary", id:"followings-articles" %></div>

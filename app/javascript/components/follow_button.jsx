@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import classnames from 'classnames'
 
 function FollowButton(props) {
-  const [followUserID, setFollowUserID] = useState(props.follow_user.id)
-  const [followedUserID, setFollowedUserID] = useState(props.followed_user.id)
+  const [followUserID, setFollowUserID] = useState(props.follow_user_id)
+  const [followedUserID, setFollowedUserID] = useState(props.followed_user_id)
   const [relationshipID, setRelationshipID] = useState(props.relationship_id)
   const [followings, setFollowings] = useState(props.followings)
   const [followers, setFollowers] = useState(props.followers)

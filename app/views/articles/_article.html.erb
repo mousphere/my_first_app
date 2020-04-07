@@ -37,12 +37,11 @@
         
         <!-- ボタン一覧 -->
         <div class="function-button flex">
-          <% @user = current_user %>
           <div class="comment-button">
             <div class="d-inline-block upper-link common-button">
               <%= react_component('comment_button',
                                    article_id: article.id,
-                                   user: @user) %>
+                                   user: current_user) %>
               <p class="bloom bloom-comment">コメント</p>
             </div>
             <div class="d-inline-block">
@@ -53,7 +52,7 @@
             <%= react_component('stock_button',
                                  article_id: article.id,
                                  stock_id: current_user &. stocks &. find_by(stocked_article_id: article.id)&.id,
-                                 user: @user) %>
+                                 user: current_user) %>
             <p class="bloom bloom-stock">ストック</p>
           </div>
           <div class="like-button upper-link">
@@ -61,7 +60,7 @@
                                  article_id: article.id,
                                  like_id: current_user &. likes &.find_by(liked_article_id: article.id)&.id,
                                  count: Like.where(liked_article_id: article.id).count,
-                                 user: @user) %>
+                                 user: current_user) %>
           </div>
           <% if current_user?(user) %>
             <div class="article-edit-button">

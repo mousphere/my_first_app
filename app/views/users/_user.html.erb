@@ -1,6 +1,5 @@
-<div class="follow whole-link">
-  <% image = user.image.present? ? user.image : 'images.png' %>
-  <span class="follow-image upper-link"><%= link_to image_tag(image, alt: 'User_image', class:'user_image'), user %></span>
+<div class="follow whole-link whole-link-article">
+  <span class="follow-image upper-link"><%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user %></span>
   <span class="upper-link"><%= link_to user.name, user %></span>
   <%= link_to '', user, class: 'link-area' %>
 </div>

@@ -2,8 +2,7 @@
 <% whole_link = like.checked? ? 'whole-link-checked' : 'whole-link-unchecked' %>
 <div class="like-notification whole-link <%= whole_link %> <%= bg_color %>">
   <% user = User.find(like.like_user_id) %>
-  <% image = user.image.present? ? user.image : 'images.png' %>
-  <%= image_tag(image, alt: 'User_image', class:'user_image') %>
+  <%= image_tag(image(user), alt: 'User_image', class:'user_image') %>
   <p>
     <%= link_to user, class:'upper-link' do %>
       <b><%= "#{User.find(like.like_user_id).name}" %></b>

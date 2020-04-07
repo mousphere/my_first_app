@@ -2,8 +2,7 @@
   <div class="comment">
     <div class="row">
       <div class="col-md-3 text-center">
-        <% image = comment.user.image.present? ? comment.user.image : 'images.png' %>
-        <%= link_to image_tag(image, alt: 'User_image', class:'user_image'), comment.user %>
+        <%= link_to image_tag(image(comment.user), alt: 'User_image', class:'user_image'), comment.user %>
       </div>
       <div class="col-md-9 no_padding">
         <span class="user"><%= link_to comment.user.name, comment.user %></span>

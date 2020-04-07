@@ -46,6 +46,7 @@
               <%= react_component('comment_button',
                                    article_id: @article.id,
                                    user: @user) %>
+              <p class="bloom">コメント</p>
             </div>
             <div class="d-inline-block">
               <span><%= article.comments.all.count %></span>

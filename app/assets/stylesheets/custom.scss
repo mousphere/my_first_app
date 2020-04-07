@@ -341,6 +341,7 @@ div.content{
 }
 
 .common-button{
+    position: relative;
     border-radius: 50%;
     &:hover{
         background-color: lightcyan;
@@ -348,11 +349,29 @@ div.content{
     }
 }
 
-/* ストックボタン */
+.bloom{
+      display: none;
+      width: 48px;
+      position: absolute;
+      top: -12px;
+      left: 40px;
+      padding: 1px 4px;
+      border-radius: 5px;
+      background: #33cc99;
+      color: #fff;
+      font-size: 0.6rem;
+}
+
+.common-button:hover .bloom {
+      display: block;
+      z-index: 10;
+    }
+
+/* ボタン一覧 */
 .function-button{
     padding-left: 20px;
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 /* いいねボタン */

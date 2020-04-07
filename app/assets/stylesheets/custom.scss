@@ -351,7 +351,6 @@ div.content{
 
 .bloom{
       display: none;
-      width: 48px;
       position: absolute;
       top: -12px;
       left: 40px;
@@ -360,6 +359,12 @@ div.content{
       background: #33cc99;
       color: #fff;
       font-size: 0.6rem;
+      &-comment{
+          width: 48px;
+      }
+      &-stock{
+          width: 48px;
+      }
 }
 
 .common-button:hover .bloom {

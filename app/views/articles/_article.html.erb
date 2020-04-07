@@ -72,11 +72,13 @@
                 <%= link_to edit_article_path(@article) do %>
                    <%= icon('far', 'edit') %>
                 <% end %>
+                <p class="bloom bloom-edit">編集</p>
               </button>
             </div>
             <div class="article-delete-button">
               <button type="button" class="btn btn-link icon-big upper-link common-button" data-toggle="modal" data-target="#articleModal">
                 <%= icon('far', 'trash-alt') %>
+                <p class="bloom bloom-delete">削除</p>
               </button>
 
               <!-- モーダルの設定 -->

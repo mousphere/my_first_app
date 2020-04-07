@@ -358,15 +358,21 @@ div.content{
       border-radius: 5px;
       background: #33cc99;
       color: #fff;
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       &-comment{
-          width: 48px;
+          width: 50px;
       }
       &-stock{
-          width: 48px;
+          width: 50px;
       }
       &-like{
-          width: 38px;
+          width: 40px;
+      }
+      &-edit{
+          width: 30px;
+      }
+      &-delete{
+          width: 30px;
       }
 }
 

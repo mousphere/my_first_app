@@ -3,8 +3,8 @@
   <div><%= link_to user.name, user %></div>
   <div class="follow-button">
     <%= react_component('follow_button',
-                        follow_user: current_user,
-                        followed_user: user,
+                        follow_user_id: current_user&.id,
+                        followed_user_id: user&.id,
                         relationship_id: current_user &. active_relationships &. find_by(followed_id: user.id)&.id,
                         followings: user &. active_relationships &. all.count,
                         followers: user &. passive_relationships &. all.count ) %>

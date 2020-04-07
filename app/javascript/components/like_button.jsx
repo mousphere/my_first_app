@@ -55,22 +55,25 @@ function LikeButton(props) {
   
   const liked = likeID !== null
   const notLoggedIn = user == null
-  const btnClass = classnames('btn btn-link icon-big common-button',{
+  const btnClass = classnames('btn btn-link icon-big',{
                               'liked': liked,
   })
-  const spanClass = classnames('like-count')
+  const spanClass = classnames('like-count d-inline-block')
   
   return (
     <div>
-      <button
-        className={ btnClass }
-        onClick={ notLoggedIn ? () => alertMessage()
-                 :      liked ? () =>   removeLike() : () => addLike() }
-        disabled={ loading }
-      >
-        { liked ? <FontAwesomeIcon icon={['fas', 'heart']} />
-                : <FontAwesomeIcon icon={['far', 'heart']} /> }
-      </button>
+      <div className='common-button d-inline-block'>
+        <button
+          className={ btnClass }
+          onClick={ notLoggedIn ? () => alertMessage()
+                   :      liked ? () =>   removeLike() : () => addLike() }
+          disabled={ loading }
+        >
+          { liked ? <FontAwesomeIcon icon={['fas', 'heart']} />
+                  : <FontAwesomeIcon icon={['far', 'heart']} /> }
+        </button>
+        <p className='bloom bloom-like'>いいね</p>
+      </div>
       <span className={ spanClass }>{ count }</span>
     </div>
   )

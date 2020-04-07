@@ -46,6 +46,7 @@
               <%= react_component('comment_button',
                                    article_id: @article.id,
                                    user: @user) %>
+              <p class="bloom bloom-comment">コメント</p>
             </div>
             <div class="d-inline-block">
               <span><%= article.comments.all.count %></span>
@@ -56,8 +57,9 @@
                                  article_id: @article.id,
                                  stock_id: current_user &. stocks &. find_by(stocked_article_id: @article.id)&.id,
                                  user: @user) %>
+            <p class="bloom bloom-stock">ストック</p>
           </div>
-          <div class="like-button  upper-link">
+          <div class="like-button upper-link">
             <%= react_component('like_button',
                                  article_id: @article.id,
                                  like_id: current_user &. likes &.find_by(liked_article_id: @article.id)&.id,
@@ -70,11 +72,13 @@
                 <%= link_to edit_article_path(@article) do %>
                    <%= icon('far', 'edit') %>
                 <% end %>
+                <p class="bloom bloom-edit">編集</p>
               </button>
             </div>
             <div class="article-delete-button">
               <button type="button" class="btn btn-link icon-big upper-link common-button" data-toggle="modal" data-target="#articleModal">
                 <%= icon('far', 'trash-alt') %>
+                <p class="bloom bloom-delete">削除</p>
               </button>
 
               <!-- モーダルの設定 -->

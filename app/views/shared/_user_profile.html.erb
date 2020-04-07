@@ -3,8 +3,5 @@
      記事作成時はuser_idを取得できないが
      current_userによる使用のみなのでcurrent_userを返す -->
 <% user = params[:id] ? User.find(params[:id]) : current_user %>
-<!-- データベースに画像ファイルが保存されていない場合は
-     デフォルト画像を使用する -->
-<% image = user.image.present? ? user.image : 'images.png' %>
 
-<%= render 'shared/user_function', {user: user, image: image}  %>
+<%= render 'shared/user_function', {user: user, image: image(user)}  %>

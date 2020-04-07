@@ -9,4 +9,9 @@ module UsersHelper
     number_of_notice = '' if number_of_notice == '０'
     number_of_notice
   end
+
+  def image(user)
+    image = user.image.presence || 'images.png'
+    image
+  end
 end

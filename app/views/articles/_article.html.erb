@@ -7,13 +7,13 @@
       </div>
       <div class="col-md-9 no_padding">
         <div class="article-padding">
-          <span class="user"><%= link_to user.name, user, class:'upper-link' %></span>
-          <span class="timestamp">
+          <span class="article-user"><%= link_to user.name, user, class:'upper-link' %></span>
+          <span class="article-timestamp">
             <%= time_ago_in_words(article.created_at) %> 前
           </span>
         </div>
         <% if article.image.present? %>
-          <%= image_tag(article.image, alt: 'sweet_image', class:'sweet_image') %>
+          <%= image_tag(article.image, alt: 'sweet_image', class:'article-sweet-image') %>
         <% end %>
         <div class="article-padding">
           <span>商品名：<%= link_to article.sweet_name, article, class:'upper-link' %></span>

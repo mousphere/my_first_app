@@ -16,7 +16,22 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-/** li ・消し **/
+/** htmlタグ **/
+html{
+    height: 100%;
+}
+
+body{
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    height: 100%;
+    background-color: #FFEEFF;
+}
+
+h2{
+    padding: 3px 0;
+}
+
+/* ドット(・)消し */
 li{
     list-style: none;
 }

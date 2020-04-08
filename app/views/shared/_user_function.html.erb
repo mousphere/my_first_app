@@ -1,5 +1,5 @@
 <div class="user-contents">
-  <div><%= link_to image_tag(image, alt: 'User_image', class:'user_image'), user %></div>
+  <div><%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user %></div>
   <div><%= link_to user.name, user %></div>
   <div class="follow-button">
     <%= react_component('follow_button',

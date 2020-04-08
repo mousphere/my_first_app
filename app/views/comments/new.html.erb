@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-md-3 text-center">
               <div>
-                <%= link_to image_tag(current_user.image, alt: 'User_image', class:'user_image'),
+                <%= link_to image_tag(image(current_user), alt: 'User_image', class:'user_image'),
                     current_user %>
               </div>
             </div>

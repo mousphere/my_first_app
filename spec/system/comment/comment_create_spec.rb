@@ -18,7 +18,7 @@ RSpec.describe 'コメント投稿時の挙動', type: :system do
   subject(:content) do
     log_in(user)
     visit(new_article_comment_path(article_id: article.id))
-    fill_in('comment-area', with: content)
+    fill_in('comment-form-area', with: content)
     click_button('送信')
   end
 

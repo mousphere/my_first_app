@@ -62,7 +62,7 @@ function ChangingDisplayOrderButton(props){
     )
   }
   
-  const orderByCreatedAtAsk = () =>{
+  const orderByLikesDesk = () =>{
     const [type, opt] = setInfo(url, 1)
     
     setOpt(opt)
@@ -88,7 +88,7 @@ function ChangingDisplayOrderButton(props){
           </button>
           <button
             className={ option === 0 ? secondaryButton : primaryButton }
-            onClick={ () => orderByCreatedAtAsk() }
+            onClick={ () => orderByLikesDesk() }
             disabled={ loading }
           >
             いいね多い順

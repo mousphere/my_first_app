@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200402015209) do
+ActiveRecord::Schema.define(version: 20200415021852) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content", null: false
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20200402015209) do
     t.string "remember_digest"
     t.string "image"
     t.datetime "last_access_time", default: "1900-01-01 00:00:00"
-    t.integer "order_option", default: 0, null: false
     t.boolean "for_test", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -8,11 +8,7 @@
   <div id="naviParent">
     <div class="row" id="changing_display_order_button">
       <div class="col-md-6 offset-md-3">
-        <% if current_user %>
-          <% option = current_user.order_option %>
-        <% else %>
-          <% option = session[:not_logged_in] %>
-        <% end %>
+        <% option = session[:option] %>
         <div>
           <%= react_component('changing_display_order_button', option: option) %>
         </div>

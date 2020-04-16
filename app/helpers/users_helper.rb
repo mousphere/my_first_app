@@ -11,7 +11,7 @@ module UsersHelper
   end
 
   def image(user)
-    image = user.image.presence || 'images.png'
+    image = user.remote_image_url.presence || user.image.presence || 'images.png'
     image
   end
 end

@@ -21,10 +21,13 @@
           <%= f.submit 'ログイン', class:"btn btn-primary" %>
         </div>
       <% end %>
-      <button class="btn btn-success">
+      <div class="btn">
+        <%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %>
+      </div>
+      <div class="btn btn-success">
         <%= link_to 'テストユーザーとしてログイン', login_path(for_test: true), method: :post,
             class: 'test-user-button' %>
-      </button>
+      </div>
       <div class="guidance">
         <%= link_to 'アカウントを作成していない方はこちら', '/users/new' %>
       </div>

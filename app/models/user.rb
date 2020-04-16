@@ -38,7 +38,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   # ----- バリデーション -----
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 30 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
@@ -128,5 +128,10 @@ class User < ApplicationRecord
   # 通知機能関連
   def update_last_access_time
     update(last_access_time: Time.zone.now.to_s(:custom))
+  end
+
+  # Twitterアカウントログイン機能
+  def self.dummy_email(uid)
+    "#{uid}@example.com"
   end
 end

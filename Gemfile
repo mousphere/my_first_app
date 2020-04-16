@@ -31,6 +31,9 @@ gem 'kaminari'
 # 記事検索用
 gem 'ransack'
 
+# 環境変数管理用
+gem 'dotenv-rails'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # Use Puma as the app server
@@ -83,3 +86,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+group :production, :staging do
+  gem 'unicorn'
+end

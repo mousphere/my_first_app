@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
       end
 
-      example 'ユーザー名が20文字超え' do
-        user.name = 'hoge' * 6
+      example 'ユーザー名が30文字超え' do
+        user.name = 'a' * 31
         expect(user).not_to be_valid
       end
     end

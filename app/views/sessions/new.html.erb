@@ -22,13 +22,13 @@
         </div>
       <% end %>
       <div class="login-button-padding">
-        <%= link_to '/auth/twitter', class: ' btn btn-twitter login-button' do %>
+        <%= link_to '/auth/twitter', class: ' btn btn-twitter login-button', id: 'twitter' do %>
           <%= icon('fab', 'twitter') %><span class="twitter-login">Twitterアカウントでログイン</span>
         <% end %>
       </div>
       <div class="login-button-padding">
         <%= link_to 'テストユーザーとしてログイン', login_path(for_test: true), method: :post,
-            class: 'btn btn-success login-button' %>
+            class: 'btn btn-success login-button', id: 'test-user' %>
       </div>
       <div class="guidance">
         <%= link_to 'アカウントを作成していない方はこちら', '/users/new' %>

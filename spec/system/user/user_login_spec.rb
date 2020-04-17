@@ -10,7 +10,7 @@ RSpec.describe 'ログイン時の挙動', type: :system do
     example 'テストユーザー用ログインボタンのクリックのみでログイン可能' do
       test_user
       visit(login_path)
-      find('a.test-user-button').click
+      find('a#test-user').click
       expect(page).to have_content(test_user.name)
     end
   end

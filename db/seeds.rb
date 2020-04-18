@@ -9,5 +9,4 @@ User.create(name: 'テストユーザー',
             email: 'test@test.com',
             password_digest: User.digest('password'),
             image: File.open('./app/assets/images/animal_penguin.png'),
-            order_option: 0,
             for_test: true)

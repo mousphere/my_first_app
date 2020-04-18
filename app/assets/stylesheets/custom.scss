@@ -206,18 +206,26 @@
     }
 }
 
-/* テストユーザーログインボタン */
-.test-user-button{
+/* Twitterアカウント、テストユーザーログインボタン */
+.login-button{
+    display: inline-block;
+    width: 100%;
+    color: white;
     &:hover{
         color: white;
         text-decoration: none;
     }
-    color: white;
+    &-padding{
+        padding-bottom: 15px;
+    }
+}
+
+.twitter-login{
+    padding-left: 8px;
 }
 
 /* 新規登録案内 */
 .guidance{
-    padding-top: 15px;
 }
 
 /** 記事投稿フォーム **/

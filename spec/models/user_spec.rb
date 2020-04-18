@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:user1) }
+  let(:user) { build(:user_for_validation_check) }
 
   context '有効なユーザー情報' do
     example 'テストケースの有効性確認' do
@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
       end
 
-      example 'ユーザー名が20文字超え' do
-        user.name = 'hoge' * 6
+      example 'ユーザー名が50文字超え' do
+        user.name = 'a' * 51
         expect(user).not_to be_valid
       end
     end
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       example '大文字、小文字の区別をしない' do
         user.save
         @other_user = user.dup
-        @other_user.email = 'TesT1@tESt.coM'
+        @other_user.email = 'a' * 246 + '@tESt.coM'
         expect(@other_user).not_to be_valid
       end
     end
@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
       end
 
       example 'スペースは無効' do
-        user.password = user.password_confirmation = ' ' * 10
+        user.password = user.password_confirmation = ' ' * 8
         expect(user).not_to be_valid
       end
 

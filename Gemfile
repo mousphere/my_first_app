@@ -34,6 +34,9 @@ gem 'ransack'
 # 環境変数管理用
 gem 'dotenv-rails'
 
+# Twitter API 用
+gem 'omniauth-twitter'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # Use Puma as the app server

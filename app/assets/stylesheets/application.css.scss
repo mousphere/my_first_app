@@ -94,7 +94,7 @@ li{
 }
 
 
-/* btn-primary-follow-follow の色設定変更 */
+/* btn-primary-follow の色設定変更 */
 
 .btn-primary-follow,
 .btn-primary-follow.disabled, .btn-primary-follow:disabled {
@@ -123,4 +123,35 @@ li{
   color: #fff;
   background-color: #0062cc;
   border-color: #005cbf;
+}
+
+/* btn-twitter の色設定変更 */
+
+.btn-twitter,
+.btn-twitter.disabled, .btn-twitter:disabled {
+  color: #fff;
+  background-color: #00bfff;
+  border-color: #00bfff;
+}
+
+/* focusされた時の枠線の色 */
+.btn-twitter:focus, .btn-twitter.focus,
+.btn-twitter:not(:disabled):not(.disabled):active:focus, .btn-twitter:not(:disabled):not(.disabled).active:focus,
+.show > .btn-twitter.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0px;
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+.btn-twitter:hover {
+  color: #fff;
+  background-color: #00afff;
+  border-color: #00afff;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-twitter:not(:disabled):not(.disabled):active, .btn-twitter:not(:disabled):not(.disabled).active,
+.show > .btn-twitter.dropdown-toggle {
+  color: #fff;
+  background-color: #00afff;
+  border-color: #00afff;
 }

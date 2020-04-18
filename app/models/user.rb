@@ -81,12 +81,7 @@ class User < ApplicationRecord
     update(remember_digest: nil)
   end
 
-  # 渡されたトークンがダイジェストと一致したらtrueを返す
-  # --------------------------------------------------------------------
-  # has_secure_passwordメソッドではpassword_digestとの検証を行う
-  # authenticateメソッドが提供されるが、それ以外の属性の認証を行うための
-  # メソッドを作成
-  # --------------------------------------------------------------------
+  # 永続セッション用クッキーによる認証
   def authenticated?
     # サイトアクセス時は、ヘッダーのnav表示判断用にcurrent_user メソッドが
     # 必ず実行される。
@@ -130,8 +125,27 @@ class User < ApplicationRecord
     update(last_access_time: Time.zone.now.to_s(:custom))
   end
 
-  # Twitterアカウントログイン機能
+  # Twitterアカウントログイン機能関連
   def self.dummy_email(uid)
     "#{uid}@example.com"
+  end
+
+  def self.create_by_twitter_account_info(user_data)
+    user = User.new(
+      name: user_data[:info][:name],
+      email: User.dummy_email(user_data[:uid]),
+      password_digest: User.digest(SecureRandom.alphanumeric(8)),
+      for_test: false,
+      uid: user_data[:uid],
+      remote_image_url: user_data[:info][:image]
+    )
+    user
+  end
+
+  def update_twitter_info(user_data)
+    update(
+      name: user_data[:info][:name],
+      remote_image_url: user_data[:info][:image]
+    )
   end
 end

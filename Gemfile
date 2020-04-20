@@ -17,6 +17,7 @@ gem 'sprockets-rails', '>= 2.3.2'
 
 # 画像アップロード用
 gem 'carrierwave'
+gem 'fog-aws'
 
 # React用
 gem 'react-rails'

@@ -19,6 +19,9 @@ gem 'sprockets-rails', '>= 2.3.2'
 gem 'carrierwave'
 gem 'fog-aws'
 
+# 画像加工用
+gem 'mini_magick'
+
 # React用
 gem 'react-rails'
 gem 'webpacker', '>= 4.0.0'

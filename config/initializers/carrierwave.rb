@@ -10,5 +10,6 @@ unless Rails.env.development? || Rails.env.test?
     }
 
     config.fog_directory  = ENV['S3_BUCKET']
+    config.asset_host = ENV['FOG_ASSET_HOST']
   end
 end

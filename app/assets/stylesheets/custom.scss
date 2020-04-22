@@ -256,6 +256,10 @@
         height: 200px;
         margin: 5px 0px;
         background-position: center center;
+        border: 2px solid #FFF5EE;
+        &:hover{
+            border: 2px solid blue;
+        }
     }
     &-timestamp{
         margin-left: 20px;

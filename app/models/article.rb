@@ -28,11 +28,17 @@ class Article < ApplicationRecord
   VALID_URL_REGEX = %r{https?://[\w/:%\#\$&?()~.=+-]+|\A\z}.freeze
   validates :url, format: { with: VALID_URL_REGEX }
 
+  validates :prefecture, presence: true, if: :address_exists
+
   # ----- 画像アップロード -----
 
   mount_uploader :image, ImagesUploader
 
   # ----- 関数一覧 -----
+
+  def address_exists
+    address.present?
+  end
 
   def converted_genre
     translation_table = { 'chocolate' => 'チョコレート',

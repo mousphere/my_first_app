@@ -46,5 +46,13 @@ RSpec.describe Article, type: :model do
         expect(article).not_to be_valid
       end
     end
+
+    context '5. 都道府県が無効' do
+      example '都道府県以降は入力されているが、都道府県が入力されていない' do
+        article.address = '港区'
+        article.prefecture = ''
+        expect(article).not_to be_valid
+      end
+    end
   end
 end

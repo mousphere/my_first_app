@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
+  include ArticlesHelper
+
   # ストック
   has_many :stocked,
            class_name: 'Stock', foreign_key: 'stocked_article_id',
@@ -47,6 +49,10 @@ class Article < ApplicationRecord
                           'cake' => 'ケーキ',
                           'etc' => 'その他' }
     translation_table[genre]
+  end
+
+  def arranged_address
+    prefecture_list.find { |_key, value| value == prefecture }[0] + address
   end
 
   def self.choose(genre, query)

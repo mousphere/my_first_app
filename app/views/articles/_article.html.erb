@@ -17,6 +17,11 @@
             <%= image_tag article.image, class: 'article-sweet-image upper-link' %>
           <% end %>
         <% end %>
+        <% if article.shop.present? %>
+          <div class="article-padding">
+            <span>店名：<%= article.shop %></span>
+          </div>
+        <% end %>
         <div class="article-padding">
           <span>商品名：<%= article.sweet_name %></span>
         </div>
@@ -27,6 +32,13 @@
           <div class="article-padding url">
             <span class="url">
               参考URL：<a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
+            </span>
+          </div>
+        <% end %>
+        <% if article.prefecture.present? %>
+          <div class="article-padding">
+            <span class="address">
+              住所：<%= article.arranged_address %>
             </span>
           </div>
         <% end %>

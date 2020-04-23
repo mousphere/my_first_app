@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module ArticlesHelper
+  def genre_list
+    [%w[チョコレート chocolate],
+     %w[クッキー cookie],
+     %w[アイス ice_cream],
+     %w[ケーキ cake],
+     %w[その他 etc]]
+  end
+
   def prefecture_list
     [%w[北海道 hokkaido],
      %w[青森県 aomori],

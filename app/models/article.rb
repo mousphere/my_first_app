@@ -43,12 +43,7 @@ class Article < ApplicationRecord
   end
 
   def converted_genre
-    translation_table = { 'chocolate' => 'チョコレート',
-                          'cookie' => 'クッキー',
-                          'ice_cream' => 'アイスクリーム',
-                          'cake' => 'ケーキ',
-                          'etc' => 'その他' }
-    translation_table[genre]
+    genre_list.find { |_key, value| value == genre }[0]
   end
 
   def arranged_address

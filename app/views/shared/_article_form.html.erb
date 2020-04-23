@@ -7,11 +7,7 @@
     </div>
     <div class="form-group">
       <%= f.label :genre, '・ジャンル' %><span style="color: black;">(必須)</span>
-      <%= f.select :genre, [['チョコレート', 'chocolate'],
-                            ['クッキー', 'cookie'],
-                            ['アイス', 'ice_cream'],
-                            ['ケーキ', 'cake'],
-                            ['その他', 'etc'] ], {}, class:"form-control article_genre" %>
+      <%= f.select :genre, genre_list, {}, class:"form-control article_genre" %>
     </div>
     <div class="form-group">
       <%= f.label :image, '・画像', class:"image-label" %>

@@ -21,7 +21,7 @@
       <% flash.each do |message_type, message| %>
         <div class='alert-position alert alert-<%= message_type %>'><%= message %></div>
       <% end %>
-
+      <script src=<%= google_map_api_src %>></script>
       <%= yield %>
     </div>
   </body>

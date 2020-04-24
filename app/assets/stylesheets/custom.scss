@@ -291,7 +291,7 @@ div.url{
 }
 
 /* Google マップ */
-#map{
+div[id^="map-"]{
     height: 300px;
     margin-right: 25px;
 }

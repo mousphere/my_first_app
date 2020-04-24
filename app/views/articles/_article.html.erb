@@ -38,21 +38,21 @@
         <% if article.prefecture.present? %>
           <div class="article-padding">
             <span class="address">
-              住所：<span id="address"><%= article.arranged_address %></span>
+              住所：<span id="address-<%= article.id %>"><%= article.arranged_address %></span>
             </span>
           </div>
-          <div class='upper-link' id='map'>
+          <div class='upper-link' id='map-<%= article.id %>'>
           </div>
           <script>
-            function showMap(){
+            {
               const geocoder = new google.maps.Geocoder()
 
-              const map = new google.maps.Map(document.getElementById('map'), {
+              const map = new google.maps.Map(document.getElementById('map-<%= article.id %>'), {
               center: {lat: -34.397, lng: 150.644},
               zoom: 12
               });
 
-              const inputAddress = $('#address')[0].textContent;
+              const inputAddress = document.getElementById('address-<%= article.id %>').textContent;
 
               geocoder.geocode( { 'address': inputAddress}, function(results, status) {
                 if (status == 'OK') {
@@ -68,7 +68,6 @@
               });
             }
           </script>
-          <script src=<%= google_map_api_src %> async defer></script>
         <% end %>
         <div class="article-padding">
           <span class="content">紹介文：</span>

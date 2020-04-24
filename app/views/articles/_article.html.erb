@@ -38,9 +38,37 @@
         <% if article.prefecture.present? %>
           <div class="article-padding">
             <span class="address">
-              住所：<%= article.arranged_address %>
+              住所：<span id="address"><%= article.arranged_address %></span>
             </span>
           </div>
+          <div class='upper-link' id='map'>
+          </div>
+          <script>
+            function showMap(){
+              const geocoder = new google.maps.Geocoder()
+
+              const map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.397, lng: 150.644},
+              zoom: 12
+              });
+
+              const inputAddress = $('#address')[0].textContent;
+
+              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+                if (status == 'OK') {
+                  map.setCenter(results[0].geometry.location);
+
+                  const marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                  });
+                } else {
+                  alert('Geocode was not successful for the following reason: ' + status);
+                }
+              });
+            }
+          </script>
+          <script src=<%= google_map_api_src %> async defer></script>
         <% end %>
         <div class="article-padding">
           <u>紹介文</u>

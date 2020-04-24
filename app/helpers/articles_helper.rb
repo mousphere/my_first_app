@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module ArticlesHelper
+  def google_map_api_src
+    google_map_api_key = ENV['GOOGLE_MAP_API_KEY']
+    src = "https://maps.googleapis.com/maps/api/js?key=#{google_map_api_key}&callback=showMap"
+    src
+  end
+
   def genre_list
     [%w[チョコレート chocolate],
      %w[クッキー cookie],

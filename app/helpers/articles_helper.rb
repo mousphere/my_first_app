@@ -3,8 +3,19 @@
 module ArticlesHelper
   def google_map_api_src
     google_map_api_key = ENV['GOOGLE_MAP_API_KEY']
-    src = "https://maps.googleapis.com/maps/api/js?key=#{google_map_api_key}&callback=showMap"
+    src = "https://maps.googleapis.com/maps/api/js?key=#{google_map_api_key}"
     src
+  end
+
+  def prefecture_array
+    results = Article.used_prefectures
+    prefecture_array = []
+    results.each do |result|
+      key = prefecture_list.find { |_key, value| value == result.prefecture }[0]
+      value = result.prefecture
+      prefecture_array << [key, value]
+    end
+    prefecture_array
   end
 
   def genre_list

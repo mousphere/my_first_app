@@ -7,9 +7,10 @@ class StaticPagesController < ApplicationController
     session[:for_article_show] = 0
 
     genre ||= params[:genre]
+    prefecture ||= params[:prefecture]
     @q = Article.ransack(params[:q])
 
-    articles = Article.choose(genre, @q)
+    articles = Article.choose(genre, prefecture, @q)
 
     option = set_option
 

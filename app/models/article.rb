@@ -50,9 +50,15 @@ class Article < ApplicationRecord
     prefecture_list.find { |_key, value| value == prefecture }[0] + address
   end
 
-  def self.choose(genre, query)
+  def self.used_prefectures
+    Article.select(:prefecture).group(:prefecture).where.not(prefecture: nil)
+  end
+
+  def self.choose(genre, prefecture, query)
     if genre.present?
       Article.where(genre: genre)
+    elsif prefecture.present?
+      Article.where(prefecture: prefecture)
     elsif query.result
       query.result
     else

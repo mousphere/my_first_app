@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
+  include ArticlesHelper
+
   # ストック
   has_many :stocked,
            class_name: 'Stock', foreign_key: 'stocked_article_id',
@@ -28,19 +30,24 @@ class Article < ApplicationRecord
   VALID_URL_REGEX = %r{https?://[\w/:%\#\$&?()~.=+-]+|\A\z}.freeze
   validates :url, format: { with: VALID_URL_REGEX }
 
+  validates :prefecture, presence: true, if: :address_exists
+
   # ----- 画像アップロード -----
 
   mount_uploader :image, ImagesUploader
 
   # ----- 関数一覧 -----
 
+  def address_exists
+    address.present?
+  end
+
   def converted_genre
-    translation_table = { 'chocolate' => 'チョコレート',
-                          'cookie' => 'クッキー',
-                          'ice_cream' => 'アイスクリーム',
-                          'cake' => 'ケーキ',
-                          'etc' => 'その他' }
-    translation_table[genre]
+    genre_list.find { |_key, value| value == genre }[0]
+  end
+
+  def arranged_address
+    prefecture_list.find { |_key, value| value == prefecture }[0] + address
   end
 
   def self.choose(genre, query)

@@ -2,6 +2,7 @@ require: rubocop-rails
 
 AllCops:
   Exclude:
+    - "app/helpers/articles_helper.rb"
     - "config/initializers/*"
     - 'config/environments/*'
     - 'config/application.rb'

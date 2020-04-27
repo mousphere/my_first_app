@@ -14,4 +14,9 @@
     <li><%= link_to 'その他', root_path(genre: 'etc'),
             class:"genre_list" %></li>
   </ul>
+  <p class="category">都道府県</p>
+  <%= form_tag(root_path, method: :get, id:'prefecture-form') do %>
+    <%= select_tag(:prefecture, options_for_select(prefecture_array), include_blank: true, id:'prefecture-selection') %>
+    <%= submit_tag("検索") %>
+  <% end %>
 </div>

@@ -13,11 +13,11 @@ RSpec.describe '記事検索フォーム利用時の挙動', type: :system do
       log_in(user)
       visit(root_path)
 
-      fill_in('search_field', with: 'テスト')
-      click_button('検索')
+      fill_in('search-field', with: 'テスト')
+      find('.search-button').click
       expect(page).to have_css('div.article', count: 5)
-      fill_in('search_field', with: 'おいしい')
-      click_button('検索')
+      fill_in('search-field', with: 'おいしい')
+      find('.search-button').click
       expect(page).to have_css('div.article', count: 1)
     end
   end

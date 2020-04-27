@@ -86,6 +86,15 @@
 }
 
 /* サイドバー & 固定 */
+#prefecture-form{
+    padding-left: 40px;
+}
+
+select#prefecture-selection{
+    height: 30px;
+    width: 100px;
+}
+
 .category{
     display: inline-block;
     margin-bottom: 20px;

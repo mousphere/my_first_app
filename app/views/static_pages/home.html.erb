@@ -32,7 +32,7 @@
     </div>
     <div class="col-md-3">
       <div class="reference">
-        <%= search_form_for @q, url: "/", html: { method: :post }, class:'search_form' do |f| %>
+        <%= search_form_for @q, url: "/", html: { method: :get }, class:'search_form' do |f| %>
           <%= f.search_field :sweet_name_cont, id:'search-field', placeholder:'商品名検索' %>
           <%= button_tag type: 'submit', class:'search-button' do %>
             <%= icon('fas', 'search') %>

@@ -4,8 +4,6 @@ class StaticPagesController < ApplicationController
   PER = 10
 
   def home
-    session[:for_article_show] = 0
-
     genre ||= params[:genre]
     prefecture ||= params[:prefecture]
     @q = Article.ransack(params[:q])
@@ -14,11 +12,7 @@ class StaticPagesController < ApplicationController
 
     option = set_option
 
-    if option.zero?
-      @articles = articles.page(params[:page]).per(PER).order(created_at: :desc)
-    elsif option == 1
-      @articles = articles.page(params[:page]).per(PER).order(like_counts: :desc)
-    end
+    @articles = Article.order_arrange_by_option(articles, params[:page], PER, option)
 
     respond_to do |format|
       format.html {}

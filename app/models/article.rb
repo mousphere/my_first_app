@@ -65,4 +65,13 @@ class Article < ApplicationRecord
       Article.all
     end
   end
+
+  def self.order_arrange_by_option(articles, params_page, per, option)
+    if option.zero?
+      @articles = articles.page(params_page).per(per).order(created_at: :desc)
+    elsif option == 1
+      @articles = articles.page(params_page).per(per).order(like_counts: :desc)
+    end
+    @articles
+  end
 end

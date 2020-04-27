@@ -10,10 +10,16 @@ module ArticlesHelper
   def prefecture_array
     results = Article.used_prefectures
     prefecture_array = []
+
+    return prefecture_array if results.empty?
+
     results.each do |result|
-      key = prefecture_list.find { |_key, value| value == result.prefecture }[0]
-      value = result.prefecture
-      prefecture_array << [key, value]
+      key = prefecture_list.find { |_key, value| value == result.prefecture }
+      if key # undefined method `[]' for nil:NilClass を防ぐため
+        key = key[0]
+        value = result.prefecture
+        prefecture_array << [key, value]
+      end
     end
     prefecture_array
   end

@@ -86,49 +86,31 @@
 }
 
 /* サイドバー & 固定 */
-#prefecture-form{
-    padding-left: 40px;
-}
-
-select#prefecture-selection{
-    height: 30px;
-    width: 100px;
+#q_prefecture_eq, #q_genre_eq{
+    display: block;
+    height: 35px;
+    margin-bottom: 10px;
 }
 
 .category{
     display: inline-block;
     margin-bottom: 20px;
-    padding-left: 40px;
 }
 
-.genre_list{
+#sweet-name-search{
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    height: 35px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.clear-button{
     display: inline-block;
-    height: 40px;
 }
 
-.fixed_sidebar {
-    position: fixed;
-    top: 133.5px; /* 133.5px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
-    z-index: 1;
-}
-
-/* 検索フォーム & 固定 */
-.reference{
-    padding-left: 30px;
-}
-
-.search_form{
-    position: relative;
-}
-
-#search-field::placeholder{
-    color: #aaaaaa;
-}
-
-.search-button{
-    position: absolute;
-    left: 197px;
-    top: 0px;
+#search-button{
     height: 35px;
     width: 35px;
     background-color: #007bff;
@@ -139,18 +121,59 @@ select#prefecture-selection{
     }
 }
 
-.reference .search_form input#search-field{
-    padding-left: 10px;
-    height: 35px;
-    border-radius: 4px;
-    outline: none;
+.search-button{
+    display: inline-block;
 }
 
-.fixed_reference{
+.sidebar{
+    padding-left: 30px;
+}
+
+.fixed_sidebar {
     position: fixed;
     top: 133.5px; /* 133.5px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
     z-index: 1;
 }
+
+/* 検索フォーム & 固定 */
+// .reference{
+//     padding-left: 30px;
+// }
+
+// .search_form{
+//     position: relative;
+// }
+
+// #search-field::placeholder{
+//     color: #aaaaaa;
+// }
+
+// .search-button{
+//     position: absolute;
+//     left: 197px;
+//     top: 0px;
+//     height: 35px;
+//     width: 35px;
+//     background-color: #007bff;
+//     color: white;
+//     border-radius: 4px;
+//     &:focus{
+//         outline: 0;
+//     }
+// }
+
+// .reference .search_form input#search-field{
+//     padding-left: 10px;
+//     height: 35px;
+//     border-radius: 4px;
+//     outline: none;
+// }
+
+// .fixed_reference{
+//     position: fixed;
+//     top: 133.5px; /* 133.5px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
+//     z-index: 1;
+// }
 
 /* 表示順切替ボタン & 固定 */
 #naviParent{

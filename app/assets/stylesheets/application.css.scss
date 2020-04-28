@@ -36,31 +36,36 @@ li{
     list-style: none;
 }
 
-/* btn-light の色設定変更 */
-.btn-light {
-    background: gainsboro;
-    color: black;
+/* btn-secondary の色設定変更 */
+
+.btn-secondary,
+.btn-secondary.disabled, .btn-secondary:disabled {
+  color: white;
+  background-color: #999999;
+  border-color: #999999;
 }
 
-.btn-light:hover, .btn-light:focus, 
-.btn-light:active, .btn-light:active:focus, .btn-light:active:hover, .btn-light:active.focus,
-.btn-light.active, .btn-light.active:focus, .btn-light.active:hover, .btn-light.active.focus,
-.open > .dropdown-toggle.btn-light, 
-.open > .dropdown-toggle.btn-light:hover,
-.open > .dropdown-toggle.btn-light:focus, 
-.open > .dropdown-toggle.btn-light.focus,
-.btn-light.disabled:hover, .btn-light[disabled]:hover, fieldset[disabled] .btn-light:hover,
-.btn-light.disabled:focus, .btn-light[disabled]:focus, fieldset[disabled] .btn-light:focus,
-.btn-light.disabled.focus, .btn-light[disabled].focus, fieldset[disabled] .btn-light.focus {
-    background: lightgray;
-    color: black;
+/* focusされた時の枠線の色 */
+.btn-secondary:focus, .btn-secondary.focus,
+.btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-secondary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0px;
 }
 
-.btn-light.outline {
-    border: 3px solid gainsboro;
-    color: black;
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+.btn-secondary:hover {
+  background: #888888;
+  color: white;
+  border-color: #888888;
 }
 
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active,
+.show > .btn-secondary.dropdown-toggle {
+  color: white;
+  background-color: #888888;
+  border-color: #888888;
+}
 
 /* btn-outline-primary の色設定変更 */
 

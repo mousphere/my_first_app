@@ -1,25 +1,38 @@
-<nav class="navbar navbar-expand navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
   <div class="container" data-turbolinks="false">
     <%= link_to root_path, class:"navbar-brand" do %>
       <%= icon('fas', 'cookie-bite') %><span class="title">Sweet-Share</span>
     <% end %>
-    <div class="collapse navbar-collapse justify-content-end">
+    <button class="navbar-toggler" type="button"
+      data-toggle="collapse"
+      data-target="#navmenu1"
+      aria-controls="navmenu1"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navmenu1">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to "ホーム", root_path, class:"nav-link navbar-u-line", id:"home" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "新規登録", '/users/new', class:"nav-link navbar-u-line", id:"signup" %>
-        </li>
-        <% if logged_in? %>
+        <div class="nav-items">
           <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user), class:"nav-link navbar-u-line", id:"mypage" %>
+            <%= link_to "ホーム", root_path, class:"nav-link navbar-u-line", id:"home" %>
           </li>
-        <% else %>
           <li class="nav-item">
-            <%= link_to "ログイン", '/login', class:"nav-link navbar-u-line", id:"login" %>
+            <%= link_to "新規登録", '/users/new', class:"nav-link navbar-u-line", id:"signup" %>
           </li>
-        <% end %>
+          <% if logged_in? %>
+            <li class="nav-item">
+              <%= link_to "マイページ", user_path(current_user), class:"nav-link navbar-u-line", id:"mypage" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", logout_path, method: :delete, class:"nav-link navbar-u-line", id:"logout" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "ログイン", '/login', class:"nav-link navbar-u-line", id:"login" %>
+            </li>
+          <% end %>
+        </div>
       </ul>
     </div>
   </div>

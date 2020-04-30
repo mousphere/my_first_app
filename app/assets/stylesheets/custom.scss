@@ -124,12 +124,6 @@
     outline: none;
 }
 
-.fixed_sidebar {
-    position: fixed;
-    top: 138px; /* 138px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
-    z-index: 1;
-}
-
 .search-form-button{
     width: 200px;
     display: flex;
@@ -150,6 +144,27 @@
 
 .sidebar{
     padding-left: 30px;
+}
+
+@media screen and (max-width:1120px) {
+    .sidebar{
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .sidebar{
+        text-align: center;
+        padding: 0;
+    }
+    #q_prefecture_eq, #q_genre_eq, #sweet-name-search{
+        display: block;
+        width: 200px;
+        margin: 0 auto 10px auto;
+    }
+    .search-form-button{
+        margin: 0 auto 10px auto;
+    }
 }
 
 .fixed_sidebar {

@@ -19,10 +19,10 @@
   </div>
   <!--カテゴリ、記事一覧-->
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-lg-2">
       <%= render 'shared/category' %>
     </div>
-    <div class="col-md-6 offset-md-1">
+    <div class="col-lg-7 offset-lg-1">
       <div class="articles">
         <ul>
           <%= render @articles %>
@@ -31,8 +31,6 @@
       <div class="pagination", data-turbolinks="false">
         <%= paginate @articles %>
       </div>
-    </div>
-    <div class="col-md-3">
     </div>
   </div>
 </div>
@@ -80,6 +78,9 @@
           addClass();
         } else {
           removeClass();
+        }
+        if(window.matchMedia("(max-width:992px)").matches){
+          $('.sidebar').removeClass('fixed_sidebar');
         }
       });
     });

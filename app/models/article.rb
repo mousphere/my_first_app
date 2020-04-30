@@ -47,7 +47,13 @@ class Article < ApplicationRecord
   end
 
   def arranged_address
-    prefecture_list.find { |_key, value| value == prefecture }[0] + address
+    fixed_address = if address.nil?
+                     ''
+                   else
+                     address
+                   end
+
+    prefecture_list.find { |_key, value| value == prefecture }[0] + fixed_address
   end
 
   def self.used_prefectures

@@ -1,22 +1,25 @@
 <div class="sidebar">
-  <span class="category">ジャンル</span>
-  <ul>
-    <li><%= link_to '全て', root_path,
-            class:"genre_list" %></li>
-    <li><%= link_to 'チョコレート', root_path(genre: 'chocolate'),
-            class:"genre_list" %></li>
-    <li><%= link_to 'クッキー', root_path(genre: 'cookie'),
-            class:"genre_list" %></li>
-    <li><%= link_to 'アイスクリーム', root_path(genre: 'ice_cream'),
-            class:"genre_list" %></li>
-    <li><%= link_to 'ケーキ', root_path(genre: 'cake'),
-            class:"genre_list" %></li>
-    <li><%= link_to 'その他', root_path(genre: 'etc'),
-            class:"genre_list" %></li>
-  </ul>
-  <p class="category">都道府県</p>
-  <%= form_tag(root_path, method: :get, id:'prefecture-form') do %>
-    <%= select_tag(:prefecture, options_for_select(prefecture_array), include_blank: true, id:'prefecture-selection') %>
-    <%= submit_tag("検索") %>
-  <% end %>
+  <span class="category">
+    <%= icon('fas', 'search') %><span class="search-content">条件で検索</span>
+  </span>
+  <div class="reference">
+    <%= search_form_for @q, url: "/", html: { method: :get }, class:'search_form' do |f| %>
+      <%= f.label :genre, 'ジャンルを選択' %>
+      <%= f.select :genre_eq, genre_list, include_blank: true, id:'genre-selection' %>
+
+      <%= f.label :prefecture, '都道府県を選択' %>
+      <%= f.select :prefecture_eq, prefecture_array, include_blank: true, id:'prefecture-selection' %>
+
+      <%= f.label :sweet_name, '商品名を入力' %>
+      <%= f.search_field :sweet_name_cont, id:'sweet-name-search', placeholder:'' %>
+      <div class="search-form-button">
+        <div class="clear-button">
+          <%= link_to 'クリア', root_path, class:'btn btn-secondary', id:'clear-button' %>
+        </div>
+        <div class="search-button">
+          <%= button_tag '検索', type: 'submit', class:'btn btn-primary', id:'search-button' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

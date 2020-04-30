@@ -2,7 +2,7 @@
 
 /** メインコンテンツ **/
 .main{
-    padding-top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+    padding-top: 56px; /* 56px...ナビゲーションバーのheight */
     color: #888888;
 }
 
@@ -67,13 +67,20 @@
 }
 
 .navbar{
-    height: 51.5px;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
     &-u-line{
         text-decoration: underline;
     }
+}
+
+.navbar-dark .navbar-toggler{
+  border-color: white;
+  color: white;
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'
+  xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)'
+  stroke-width='2' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -83,6 +90,11 @@
 .navbar-dark .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
     color: rgba(255,255,255,.9);
     font-size: 1.1rem;
+}
+
+.nav-items{
+    display: flex;
+    justify-content: space-around;
 }
 
 /* サイドバー & 固定 */
@@ -112,6 +124,12 @@
     outline: none;
 }
 
+.fixed_sidebar {
+    position: fixed;
+    top: 138px; /* 138px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
+    z-index: 1;
+}
+
 .search-form-button{
     width: 200px;
     display: flex;
@@ -136,7 +154,7 @@
 
 .fixed_sidebar {
     position: fixed;
-    top: 133.5px; /* 133.5px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
+    top: 138px; /* 138px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
     z-index: 1;
 }
 
@@ -153,7 +171,7 @@
 .fixed_button {
     background-color: #FFEEFF;
     position: fixed;
-    top: 51.5px; /* 51.5px...ナビゲーションバーのheight */
+    top: 56px; /* 56px...ナビゲーションバーのheight */
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -191,6 +209,13 @@
 }
 
 /** ユーザーページ機能 **/
+.fixed-user-function{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 108px;
+    z-index: 1;
+}
+
 .user-contents{
     padding-left: 20px;
 }
@@ -281,7 +306,7 @@
 
 /** 記事詳細ページ */
 .title{
-    padding-top: 51.5px;
+    padding-top: 56px;
 }
 
 /** 記事内容 **/

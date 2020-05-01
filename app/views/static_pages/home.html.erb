@@ -71,13 +71,22 @@
     const promise = initialize();
 
     promise.then(function(){
-      const offset = button.offset();
+      const themeHeight = $('.theme-bg').height();
 
       $(window).scroll(function () {
-        if($(window).scrollTop() >= (offset.top - navbar.outerHeight() - 20.0)) {
+        if($(window).scrollTop() >= themeHeight) {
           addClass();
         } else {
           removeClass();
+        }
+        if(window.matchMedia("(max-width:992px)").matches){
+          $('.sidebar').removeClass('fixed_sidebar');
+        }
+      });
+
+      $(window).resize(function() {
+        if($(window).scrollTop() >= themeHeight) {
+          $('.sidebar').addClass('fixed_sidebar');
         }
         if(window.matchMedia("(max-width:992px)").matches){
           $('.sidebar').removeClass('fixed_sidebar');

@@ -120,6 +120,7 @@
     margin-bottom: 15px;
     padding-left: 10px;
     height: 35px;
+    width: 200px;
     border-radius: 7px;
     outline: none;
 }
@@ -146,9 +147,27 @@
     padding-left: 30px;
 }
 
-@media screen and (max-width:1120px) {
+.fixed_sidebar {
+    position: fixed;
+    top: 138px; /* 138px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
+    z-index: 1;
+}
+
+@media screen and (min-width:1041px) and (max-width:1120px) {
     .sidebar{
         padding-left: 20px;
+    }
+    .col-lg-6{
+        padding: 0 10px;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1040px) {
+    .sidebar{
+        padding-left: 8px;
+    }
+    .col-lg-6{
+        padding: 0;
     }
 }
 
@@ -163,14 +182,8 @@
         margin: 0 auto 10px auto;
     }
     .search-form-button{
-        margin: 0 auto 10px auto;
+        margin: 0 auto 15px auto;
     }
-}
-
-.fixed_sidebar {
-    position: fixed;
-    top: 138px; /* 138px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
-    z-index: 1;
 }
 
 /* 表示順切替ボタン & 固定 */

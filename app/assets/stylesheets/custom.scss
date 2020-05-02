@@ -244,10 +244,6 @@
     z-index: 1;
 }
 
-.user-contents{
-    padding-left: 20px;
-}
-
 .follow-info{
     display: inline-block;
     padding: 10px 0;
@@ -269,13 +265,32 @@
     padding-top: 10px;
 }
 
+#follow-button{
+    display: block;
+    margin: 0 auto;
+}
+
 .number_of_notice{
     width: 100px;
     height: 100px;
 }
 
 .user-function a{
-    width: 91%;
+    width: 70%;
+}
+
+@media screen and (max-width:991px) {
+    .row1, .row2{
+        display: flex;
+        padding: 0 10px;
+        div{
+            width: calc(100% / 3);
+            display: inline-block;
+            a{
+                width: 95%;
+            }
+        }
+    }
 }
 
 /** フォローページ **/

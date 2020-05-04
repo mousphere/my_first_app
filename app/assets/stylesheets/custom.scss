@@ -560,10 +560,17 @@ div.content{
 }
 
 .like-notification {
-    width: 75%;
+    max-width: 500px;
     border-bottom: solid 4px #DDDDDD;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
+}
+
+@media screen and (max-width:991px) {
+    .like-notification{
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }
 
 /** ページネーション **/

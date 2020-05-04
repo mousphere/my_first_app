@@ -318,6 +318,18 @@
     }
 }
 
+/** プロフィール変更ページ **/
+.user-edit{
+    padding: 5px 10px;
+}
+
+@media screen and (max-width:991px) {
+    .user-edit{
+        max-width: 650px;
+        margin: 0 auto;
+    }
+}
+
 /** フォローページ **/
 .follow{
     @extend .article;

@@ -1,43 +1,49 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="d-none d-lg-block col">
       <h2 class="text-center">ユーザー情報編集</h2>
     </div>
   </div>
-  <div>
-  <div class="row">
-    <div class="col-md-2 text-center user_profile">
-      <div class="fixed-sidebar">
+  <div class="row justify-content-between" id="article-new">
+    <div class="col-lg-3 text-center user_profile">
+      <div class="fixed-user-function">
         <%= render 'shared/user_profile' %>
       </div>
     </div>
-    <div class="col-md-4 offset-md-2">
+    <div class="d-lg-none col-12">
+      <h2 class="text-center">ユーザー情報編集</h2>
+    </div>
+    <div class="col-12 col-lg-auto">
       <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div class="form-group">
-          <%= f.label :image, "プロフィール画像", class:"image-label" %>
-          <%= f.file_field :image %>
-        </div>
-        <div class="form-group">
-          <%= f.label :name, "ユーザー名" %>
-          <%= f.text_field :name, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, "パスワード(確認用にもう1度入力してください)" %>
-          <%= f.password_field :password_confirmation, class:"form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "変更", class:"btn btn-primary" %>
+        <div class="user-edit border rounded">
+          <div class="form-group">
+            <%= f.label :image, "プロフィール画像", class:"image-label" %>
+            <%= f.file_field :image %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, "ユーザー名" %>
+            <%= f.text_field :name, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード(確認用にもう1度入力してください)" %>
+            <%= f.password_field :password_confirmation, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "変更", class:"btn btn-primary" %>
+          </div>
         </div>
       <% end %>
+    </div>
+    <div class="d-none d-lg-block col-lg-3">
     </div>
   </div>
 </div>

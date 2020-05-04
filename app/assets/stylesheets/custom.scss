@@ -284,6 +284,8 @@
         display: flex;
         padding: 0 10px;
         flex-wrap: wrap;
+        max-width: 650px;
+        margin: 0 auto;
 	    justify-content: space-between;
         div{
         display: inline-block;
@@ -299,6 +301,8 @@
         display: flex;
         padding: 0 10px;
         flex-wrap: wrap;
+        max-width: 470px;
+        margin: 0 auto;
 	    justify-content: space-between;
         div{
         display: inline-block;
@@ -362,6 +366,13 @@
 /** 記事投稿フォーム **/
 .article-form{
     padding: 5px 10px;
+}
+
+@media screen and (max-width:991px) {
+    .article-form{
+        max-width: 650px;
+        margin: 0 auto;
+    }
 }
 
 /** 記事詳細ページ */

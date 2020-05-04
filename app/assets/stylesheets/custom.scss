@@ -330,6 +330,13 @@
     }
 }
 
+/** アカウント削除ページ **/
+@media screen and (max-width:991px) {
+    .user-deactivate{
+        width: 390px;
+        margin: auto;
+    }
+}
 /** フォローページ **/
 .follow{
     @extend .article;

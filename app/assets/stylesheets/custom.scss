@@ -2,7 +2,7 @@
 
 /** メインコンテンツ **/
 .main{
-    padding-top: 56px; /* 56px...ナビゲーションバーのheight */
+    padding-top: 58px; /* 58px...ナビゲーションバーのheight */
     color: #888888;
 }
 
@@ -199,7 +199,7 @@
 .fixed_button {
     background-color: #FFEEFF;
     position: fixed;
-    top: 56px; /* 56px...ナビゲーションバーのheight */
+    top: 58px; /* 58px...ナビゲーションバーのheight */
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -246,7 +246,7 @@
 .fixed-user-function{
     position: sticky;
     position: -webkit-sticky;
-    top: 108px;
+    top: 124px;
     z-index: 1;
 }
 
@@ -406,7 +406,7 @@
 
 /** 記事詳細ページ */
 .title{
-    padding-top: 56px;
+    padding-top: 58px;
 }
 
 /** 記事内容 **/

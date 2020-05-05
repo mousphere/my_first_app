@@ -6,7 +6,7 @@
         <%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user, class:'upper-link' %>
       </div>
       <div class="col-9 no_padding">
-        <div class="article-padding">
+        <div class="article-padding article-first-row">
           <span class="article-user"><%= link_to user.name, user, class:'upper-link' %></span>
           <span class="article-timestamp">
             <%= time_ago_in_words(article.created_at) %> 前

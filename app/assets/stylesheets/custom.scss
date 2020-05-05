@@ -435,8 +435,12 @@
     &-padding{
         padding: 5px 0;
     }
+    &-first-row{
+        margin-right: 25px;
+    }
     &-user{
         font-size: 1.2rem;
+        word-wrap: break-word;
     }
     &-sweet-image{
         display: block;
@@ -449,8 +453,10 @@
         }
     }
     &-timestamp{
+        display: inline-block;
         margin-left: 20px;
         font-size: 0.9rem;
+        word-wrap: normal;
     }
 }
 

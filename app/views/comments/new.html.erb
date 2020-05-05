@@ -1,18 +1,22 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="d-none d-lg-block col">
       <h2 class="text-center">コメント作成</h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2 text-center user_profile">
-      <div class="fixed-sidebar">
+    <div class="col-lg-3 text-center user_profile">
+      <div class="fixed-user-function">
         <%= render 'shared/article_user_profile' %>
       </div>
     </div>
-    <div class="col-md-6 offset-md-1">
-      <%= render @article %>
-      
+    <div class="col-12 d-lg-none">
+      <h2 class="text-center">コメント作成</h2>
+    </div>
+    <div class="col-lg-6">
+      <div class="articles">
+        <%= render @article %>
+      </div>
       <%= form_for [@article, @comment] do |f| %>
         <div class="comment-error-messages">
           <%= render 'shared/error_messages', object: f.object %>
@@ -20,13 +24,13 @@
       
         <div class="comment-form">
           <div class="row">
-            <div class="col-md-3 text-center">
+            <div class="col-3 text-center">
               <div>
                 <%= link_to image_tag(image(current_user), alt: 'User_image', class:'user_image'),
                     current_user %>
               </div>
             </div>
-            <div class="col-md-9 no_padding">
+            <div class="col-9 no_padding">
               <div class="display-flex">
                 <div class="form-group comment-form-area">
                   <%= f.text_area :content, rows: 4, class:"form-control", id: "comment-form-area", placeholder: 'コメントを入力' %>

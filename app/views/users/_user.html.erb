@@ -1,5 +1,5 @@
 <div class="follow whole-link whole-link-article">
   <span class="follow-image upper-link"><%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user %></span>
-  <span class="upper-link"><%= link_to user.name, user %></span>
+  <p class="upper-link user-name"><%= link_to user.name, user %></p>
   <%= link_to '', user, class: 'link-area' %>
 </div>

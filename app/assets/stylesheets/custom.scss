@@ -206,12 +206,6 @@
     z-index: 100;
 }
 
-/** 記事一覧 **/
-.articles ul,
-.comments ul{
-    padding-left: 0px;
-}
-
 /** col padding 0 **/
 .no_padding{
     padding: 0px;
@@ -347,17 +341,28 @@
 /** フォローページ **/
 .follow{
     @extend .article;
-    width: 75%;
+    max-width: 480px;
     &-image{
-        margin-left: 25%;
-        margin-right: 25px;
+        text-align: center;
     }
 }
 
 @media screen and (max-width:991px) {
     .follow{
-        max-width: 500px;
         margin: 0 auto;
+    }
+}
+
+.user-name{
+    padding-left: 0;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    p{
+        padding-right: 5px;
+        margin: 0;
+        word-break: break-all;
     }
 }
 

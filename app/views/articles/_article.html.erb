@@ -1,81 +1,83 @@
 <li id="article-<%= article.id %>">
   <div class ="article whole-link whole-link-article">
     <div class="row">
-      <div class="col-md-3 text-center">
+      <div class="col-3 text-center">
         <% user = article.user %>
         <%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user, class:'upper-link' %>
       </div>
-      <div class="col-md-9 no_padding">
-        <div class="article-padding">
-          <span class="article-user"><%= link_to user.name, user, class:'upper-link' %></span>
-          <span class="article-timestamp">
-            <%= time_ago_in_words(article.created_at) %> 前
-          </span>
-        </div>
-        <% if article.image.present? %>
-          <%=  link_to article.image.url, 'data-lightbox': article.image do %>
-            <%= image_tag article.image, class: 'article-sweet-image upper-link' %>
+      <div class="col-9 no_padding">
+        <div class="article-content">
+          <div class="article-padding">
+            <span class="article-user"><%= link_to user.name, user, class:'upper-link' %></span>
+            <span class="article-timestamp">
+              <%= time_ago_in_words(article.created_at) %> 前
+            </span>
+          </div>
+          <% if article.image.present? %>
+            <%=  link_to article.image.url, 'data-lightbox': article.image do %>
+              <%= image_tag article.image, class: 'article-sweet-image upper-link' %>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if article.shop.present? %>
+          <% if article.shop.present? %>
+            <div class="article-padding">
+              <span>店名：<%= article.shop %></span>
+            </div>
+          <% end %>
           <div class="article-padding">
-            <span>店名：<%= article.shop %></span>
+            <span>商品名：<%= article.sweet_name %></span>
           </div>
-        <% end %>
-        <div class="article-padding">
-          <span>商品名：<%= article.sweet_name %></span>
-        </div>
-        <div class="article-padding">
-          <span class="genre">ジャンル：<%= article.converted_genre %></span>
-        </div>
-        <% if article.url.present? %>
-          <div class="article-padding url">
-            <span class="url">
-              参考URL：<a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
-            </span>
-          </div>
-        <% end %>
-        <% if article.prefecture.present? %>
           <div class="article-padding">
-            <span class="address">
-              住所：<span id="address-<%= article.id %>"><%= article.arranged_address %></span>
-            </span>
+            <span>ジャンル：<%= article.converted_genre %></span>
           </div>
-          <div class='upper-link' id='map-<%= article.id %>'>
-          </div>
-          <script>
-            {
-              const geocoder = new google.maps.Geocoder()
+          <% if article.url.present? %>
+            <div class="article-padding url">
+              <span class="url">
+                参考URL：<a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
+              </span>
+            </div>
+          <% end %>
+          <% if article.prefecture.present? %>
+            <div class="article-padding">
+              <span>
+                住所：<span id="address-<%= article.id %>"><%= article.arranged_address %></span>
+              </span>
+            </div>
+            <div class='upper-link' id='map-<%= article.id %>'>
+            </div>
+            <script>
+              {
+                const geocoder = new google.maps.Geocoder()
 
-              const map = new google.maps.Map(document.getElementById('map-<%= article.id %>'), {
-              center: {lat: -34.397, lng: 150.644},
-              zoom: 12
-              });
+                const map = new google.maps.Map(document.getElementById('map-<%= article.id %>'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 12
+                });
 
-              const inputAddress = document.getElementById('address-<%= article.id %>').textContent;
+                const inputAddress = document.getElementById('address-<%= article.id %>').textContent;
 
-              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                if (status == 'OK') {
-                  map.setCenter(results[0].geometry.location);
+                geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+                  if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location);
 
-                  const marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                  });
-                } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-                }
-              });
-            }
-          </script>
-        <% end %>
-        <div class="article-padding">
-          <span class="content">紹介文：</span>
-          <div class="border rounded content">
-            <p class="content"><%= article.content %></p>
+                    const marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location
+                    });
+                  } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+              }
+            </script>
+          <% end %>
+          <div class="article-padding">
+            <span class="content">紹介文：</span>
+            <div class="border rounded content">
+              <p class="content"><%= article.content %></p>
+            </div>
           </div>
         </div>
-        
+
         <!-- ボタン一覧 -->
         <div class="function-button flex">
           <div class="comment-button">

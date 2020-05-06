@@ -1,15 +1,22 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="d-none d-lg-block col">
       <h2 class="text-center">記事編集</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-2 text-center user_profile">
-      <%= render 'shared/article_user_profile' %>
+  <div class="row justify-content-between" id="article-new">
+    <div class="col-lg-3 text-center user_profile">
+      <div class="fixed-user-function">
+        <%= render 'shared/article_user_profile' %>
+      </div>
     </div>
-    <div class="col-md-4 offset-md-2">
+    <div class="d-lg-none col-12">
+      <h2 class="text-center">記事編集</h2>
+    </div>
+    <div class="col-12 col-lg-auto">
       <%= render 'shared/article_form', button_string: '更新する' %>
+    </div>
+    <div class="d-none d-lg-block col-lg-3">
     </div>
   </div>
 </div>

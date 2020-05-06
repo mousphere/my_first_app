@@ -14,6 +14,7 @@ RSpec.describe 'コメント削除時の挙動', type: :system do
     visit(article_path(article))
     expect(page).to have_css('button#comment-delete-icon')
     find('#comment-delete-icon').click
+    sleep 1
     expect { find('#comment-delete-button').click }.to change(Comment, :count).by(-1)
   end
 

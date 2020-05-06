@@ -2,7 +2,7 @@
 
 /** メインコンテンツ **/
 .main{
-    padding-top: 56px; /* 56px...ナビゲーションバーのheight */
+    padding-top: 58px; /* 58px...ナビゲーションバーのheight */
     color: #888888;
 }
 
@@ -44,12 +44,9 @@
 
 /** ホーム画面 **/
 .theme{
-    display: flex;
-	justify-content: center;
 	color: #0099FF;
 	font-size: 2.0rem;
 	font-weight: bold;
-	line-height: 300px;
 	&-bg{
 	    width: 100%;
         height: 300px;
@@ -58,6 +55,9 @@
         background-blend-mode:lighten;
         background-position: center center;
         background-size: 100% auto;
+        display: flex;
+	    justify-content: center;
+	    align-items: center;
 	}
 }
 
@@ -120,14 +120,9 @@
     margin-bottom: 15px;
     padding-left: 10px;
     height: 35px;
+    width: 200px;
     border-radius: 7px;
     outline: none;
-}
-
-.fixed_sidebar {
-    position: fixed;
-    top: 138px; /* 138px...ナビゲーションバー+padding含めた表示順切替ボタンのheight */
-    z-index: 1;
 }
 
 .search-form-button{
@@ -158,6 +153,39 @@
     z-index: 1;
 }
 
+@media screen and (min-width:1041px) and (max-width:1120px) {
+    .sidebar{
+        padding-left: 20px;
+    }
+    .col-lg-6{
+        padding: 0 10px;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1040px) {
+    .sidebar{
+        padding-left: 8px;
+    }
+    .col-lg-6{
+        padding: 0;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .sidebar{
+        text-align: center;
+        padding: 0;
+    }
+    #q_prefecture_eq, #q_genre_eq, #sweet-name-search{
+        display: block;
+        width: 200px;
+        margin: 0 auto 10px auto;
+    }
+    .search-form-button{
+        margin: 0 auto 15px auto;
+    }
+}
+
 /* 表示順切替ボタン & 固定 */
 #naviParent{
     padding-top: 20px;
@@ -171,17 +199,11 @@
 .fixed_button {
     background-color: #FFEEFF;
     position: fixed;
-    top: 56px; /* 56px...ナビゲーションバーのheight */
+    top: 58px; /* 58px...ナビゲーションバーのheight */
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
     z-index: 100;
-}
-
-/** 記事一覧 **/
-.articles ul,
-.comments ul{
-    padding-left: 0px;
 }
 
 /** col padding 0 **/
@@ -208,16 +230,18 @@
     }
 }
 
+/** 新規登録ページ **/
+.signup{
+    max-width: 380px;
+    margin: 0 auto;
+}
+
 /** ユーザーページ機能 **/
 .fixed-user-function{
     position: sticky;
     position: -webkit-sticky;
-    top: 108px;
+    top: 124px;
     z-index: 1;
-}
-
-.user-contents{
-    padding-left: 20px;
 }
 
 .follow-info{
@@ -241,23 +265,109 @@
     padding-top: 10px;
 }
 
+#follow-button{
+    display: block;
+    margin: 0 auto;
+}
+
 .number_of_notice{
     width: 100px;
     height: 100px;
 }
 
 .user-function a{
-    width: 91%;
+    width: 76%;
+}
+
+.user-contents-user-name{
+    padding: 0 10px;
+    word-break: break-all;
+}
+
+@media screen and (max-width:991px) {
+    .user-function{
+        display: flex;
+        padding: 0 10px;
+        flex-wrap: wrap;
+        max-width: 650px;
+        margin: 0 auto;
+	    justify-content: space-between;
+        div{
+        display: inline-block;
+        width: calc(100% / 3);
+            a{
+                width: 90%;
+            }
+        }
+    }
+    .articles{
+        max-width: 650px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width:650px) {
+    .user-function{
+        display: flex;
+        padding: 0 10px;
+        flex-wrap: wrap;
+        max-width: 470px;
+        margin: 0 auto;
+	    justify-content: space-between;
+        div{
+        display: inline-block;
+        width: calc(100% / 2);
+            a{
+                width: 90%;
+            }
+        }
+    }
+}
+
+/** プロフィール変更ページ **/
+.user-edit{
+    padding: 5px 10px;
+}
+
+@media screen and (max-width:991px) {
+    .user-edit{
+        max-width: 650px;
+        margin: 0 auto;
+    }
+}
+
+/** アカウント削除ページ **/
+@media screen and (max-width:991px) {
+    .user-deactivate{
+        width: 390px;
+        margin: auto;
+    }
 }
 
 /** フォローページ **/
 .follow{
     @extend .article;
-    width: 75%;
-    margin: 0 auto;
+    max-width: 480px;
     &-image{
-        margin-left: 140px;
-        margin-right: 30px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .follow{
+        margin: 0 auto;
+    }
+}
+
+.user-name{
+    padding-left: 0;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    p{
+        padding-right: 5px;
+        margin: 0;
+        word-break: break-all;
     }
 }
 
@@ -304,9 +414,16 @@
     padding: 5px 10px;
 }
 
+@media screen and (max-width:991px) {
+    .article-form{
+        max-width: 650px;
+        margin: 0 auto;
+    }
+}
+
 /** 記事詳細ページ */
 .title{
-    padding-top: 56px;
+    padding-top: 58px;
 }
 
 /** 記事内容 **/
@@ -315,11 +432,15 @@
     border-bottom: solid 4px #DDDDDD;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
+    &-content{
+        margin-right: 25px;
+    }
     &-padding{
         padding: 5px 0;
     }
     &-user{
         font-size: 1.2rem;
+        word-wrap: break-word;
     }
     &-sweet-image{
         display: block;
@@ -332,8 +453,10 @@
         }
     }
     &-timestamp{
+        display: inline-block;
         margin-left: 20px;
         font-size: 0.9rem;
+        word-wrap: normal;
     }
 }
 
@@ -341,18 +464,9 @@
     word-wrap: break-word;
 }
 
-div.url{
-    margin-right: 25px;
-}
-
-.address{
-    margin-right: 25px;
-}
-
 /* Google マップ */
 div[id^="map-"]{
     height: 300px;
-    margin-right: 25px;
 }
 
 p.content{
@@ -362,7 +476,6 @@ p.content{
 
 div.content{
     padding: 2px 0;
-    margin-right: 25px;
 }
 
 /* コメント内容 */
@@ -481,10 +594,17 @@ div.content{
 }
 
 .like-notification {
-    width: 75%;
+    max-width: 500px;
     border-bottom: solid 4px #DDDDDD;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
+}
+
+@media screen and (max-width:991px) {
+    .like-notification{
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }
 
 /** ページネーション **/

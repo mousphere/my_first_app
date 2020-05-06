@@ -1,22 +1,27 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="d-none d-lg-block col">
       <h2 class="text-center">通知一覧</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-2 text-center user_profile">
-      <div class="fixed-sidebar">
+  <div class="row justify-content-between">
+    <div class="col-lg-3 text-center user_profile">
+      <div class="fixed-user-function">
         <%= render 'shared/user_profile' %>
       </div>
     </div>
-    <div class="col-md-6 offset-md-1 text-center">
+    <div class="d-lg-none col-12">
+      <h2 class="text-center">通知一覧</h2>
+    </div>
+    <div class="col-12 col-lg-6 text-center">
       <%= render @likes %>
+    </div>
+    <div class="d-none d-lg-block col-lg-3">
     </div>
   </div>
 </div>
 <script>
   window.addEventListener("popstate", function() {
-  window.location.reload();
-});
+    window.location.reload();
+  });
 </script>

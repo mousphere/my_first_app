@@ -48,10 +48,10 @@ class Article < ApplicationRecord
 
   def arranged_address
     fixed_address = if address.nil?
-                     ''
-                   else
-                     address
-                   end
+                      ''
+                    else
+                      address
+                    end
 
     prefecture_list.find { |_key, value| value == prefecture }[0] + fixed_address
   end

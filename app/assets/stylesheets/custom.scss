@@ -432,11 +432,11 @@
     border-bottom: solid 4px #DDDDDD;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
+    &-content{
+        margin-right: 25px;
+    }
     &-padding{
         padding: 5px 0;
-    }
-    &-first-row{
-        margin-right: 25px;
     }
     &-user{
         font-size: 1.2rem;
@@ -460,26 +460,13 @@
     }
 }
 
-div.sweet-name{
-    margin-right: 25px;
-}
-
 .url{
     word-wrap: break-word;
-}
-
-div.url{
-    margin-right: 25px;
-}
-
-.address{
-    margin-right: 25px;
 }
 
 /* Google マップ */
 div[id^="map-"]{
     height: 300px;
-    margin-right: 25px;
 }
 
 p.content{
@@ -489,7 +476,6 @@ p.content{
 
 div.content{
     padding: 2px 0;
-    margin-right: 25px;
 }
 
 /* コメント内容 */

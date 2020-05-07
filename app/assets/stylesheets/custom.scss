@@ -2,7 +2,7 @@
 
 /** メインコンテンツ **/
 .main{
-    padding-top: 58px; /* 58px...ナビゲーションバーのheight */
+    padding-top: 56px; /* 56px...ナビゲーションバーのheight */
     color: #888888;
 }
 
@@ -61,6 +61,13 @@
 	}
 }
 
+@media screen and (max-width:470px) {
+    .theme-bg{
+        height: 250px;
+        background-size: cover;
+    }
+}
+
 /* ナビゲーションバー */
 .title{
     padding-left: 5px;
@@ -72,6 +79,12 @@
     }
 }
 
+@media screen and (min-width:768px) {
+    .navbar{
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+}
 .navbar-dark .navbar-toggler{
   border-color: white;
   color: white;
@@ -199,7 +212,7 @@
 .fixed_button {
     background-color: #FFEEFF;
     position: fixed;
-    top: 58px; /* 58px...ナビゲーションバーのheight */
+    top: 56px; /* 56px...ナビゲーションバーのheight */
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -230,6 +243,43 @@
     }
 }
 
+/* 記事内のユーザー画像 */
+@media screen and (min-width:430px) and (max-width:500px){
+    .user_image{
+        width: 65px;
+        height: 65px;
+    }
+}
+
+@media screen and (min-width:376px) and (max-width:429px){
+    .user_image{
+        width: 55px;
+        height: 55px;
+    }
+}
+
+@media screen and (max-width:375px){
+    .user_image{
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media screen and (max-width:375px){
+    .user_image{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* マイページのユーザー画像 */
+@media screen and (max-width:429px){
+    .user-contents .user_image{
+        width: 60px;
+        height: 60px;
+    }
+}
+
 /** 新規登録ページ **/
 .signup{
     max-width: 380px;
@@ -237,6 +287,10 @@
 }
 
 /** ユーザーページ機能 **/
+.user-contents{
+    padding: 0 20px;
+}
+
 .fixed-user-function{
     position: sticky;
     position: -webkit-sticky;
@@ -276,11 +330,10 @@
 }
 
 .user-function a{
-    width: 76%;
+    width: 200px;
 }
 
 .user-contents-user-name{
-    padding: 0 10px;
     word-break: break-all;
 }
 
@@ -296,7 +349,7 @@
         display: inline-block;
         width: calc(100% / 3);
             a{
-                width: 90%;
+                width: 93%;
             }
         }
     }
@@ -305,19 +358,57 @@
         margin: 0 auto;
     }
 }
-@media screen and (max-width:650px) {
+@media screen and (max-width:670px) {
     .user-function{
-        display: flex;
-        padding: 0 10px;
-        flex-wrap: wrap;
         max-width: 470px;
-        margin: 0 auto;
-	    justify-content: space-between;
         div{
-        display: inline-block;
         width: calc(100% / 2);
             a{
                 width: 90%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:484px) {
+    .user-contents{
+        padding: 0 10px;
+    }
+
+    .user-function{
+        max-width: 470px;
+        div{
+        width: calc(100% / 2);
+            a{
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:415px) {
+    .user-contents{
+        padding: 0 10px;
+    }
+    .user-function{
+        div{
+            a{
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:359px) {
+    .user-contents{
+        padding: 0 8px;
+    }
+    .user-function{
+        padding: 0;
+        div{
+        width: calc(100% / 2);
+            a{
+                font-size: 0.65rem;
             }
         }
     }
@@ -423,7 +514,7 @@
 
 /** 記事詳細ページ */
 .title{
-    padding-top: 58px;
+    padding-top: 56px;
 }
 
 /** 記事内容 **/
@@ -460,6 +551,12 @@
     }
 }
 
+@media screen and (max-width:375px) {
+    .article-user{
+        font-size: 1.0rem;
+    }
+}
+
 .url{
     word-wrap: break-word;
 }
@@ -467,6 +564,12 @@
 /* Google マップ */
 div[id^="map-"]{
     height: 300px;
+}
+
+@media screen and (max-width:429px) {
+    div[id^="map-"]{
+        height: 200px;
+    }
 }
 
 p.content{
@@ -497,11 +600,33 @@ div.content{
 .flex{
     display: inline-flex;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
 }
 
 .icon-big{
     font-size: 1.2em;
+}
+
+@media screen and (max-width:472px) {
+    .icon-big{
+        font-size: 1.0em;
+    }
+    .flex{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .flex{
+        justify-content: start;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .article-delete-button{
+        padding-left: 15px;
+    }
 }
 
 .common-button{
@@ -548,8 +673,22 @@ div.content{
 /* ボタン一覧 */
 .function-button{
     padding-left: 20px;
+    padding-right: 25px;
     padding-top: 10px;
     padding-bottom: 15px;
+}
+
+@media screen and (max-width:472px) {
+    .function-button{
+        padding-left: 0px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .function-button{
+        padding-left: 25px;
+        padding-right: 35px;
+    }
 }
 
 /* いいねボタン */
@@ -581,6 +720,17 @@ div.content{
     }
     &-article-delete{
         width: 42.8px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .dummy{
+        &-edit{
+            width: 42.2px;
+        }
+        &-article-delete{
+            width: 38.61px;
+        }
     }
 }
 

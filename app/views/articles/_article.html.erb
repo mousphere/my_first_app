@@ -1,7 +1,7 @@
 <li id="article-<%= article.id %>">
   <div class ="article whole-link whole-link-article">
     <div class="row">
-      <div class="col-3 text-center">
+      <div class="col-3 text-center image-area">
         <% user = article.user %>
         <%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user, class:'upper-link' %>
       </div>

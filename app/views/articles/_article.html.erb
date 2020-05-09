@@ -46,7 +46,7 @@
             </div>
             <script>
               $(document).on('turbolinks:load', function() {
-                const geocoder = new google.maps.Geocoder()
+                const geocoder = new google.maps.Geocoder();
 
                 const map = new google.maps.Map(document.getElementById('map-<%= article.id %>'), {
                 center: {lat: -34.397, lng: 150.644},
@@ -62,6 +62,21 @@
                     const marker = new google.maps.Marker({
                       map: map,
                       position: results[0].geometry.location
+                    });
+                  }
+                });
+                $(window).resize(function() {
+                  if(document.getElementById('map-<%= article.id %>').clientWidth <= 400){
+                    map.setOptions({
+                      mapTypeControl: false,
+                      streetViewControl: false,
+                      zoomControl: false
+                    });
+                  }else{
+                    map.setOptions({
+                      mapTypeControl: true,
+                      streetViewControl: true,
+                      zoomControl: true
                     });
                   }
                 });

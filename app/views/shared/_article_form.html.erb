@@ -11,7 +11,12 @@
     </div>
     <div class="form-group">
       <%= f.label :image, '・画像', class:"image-label" %>
-      <%= f.file_field :image %>
+      <%= f.file_field :image, id: "file" %>
+      <div id="img-field">
+        <% if @article.image.present? %>
+          <%= image_tag(@article.image, class: 'article-sweet-image') %>
+        <% end %>
+      </div>
     </div>
     <div class="form-group">
       <%= f.label :shop, '・店名' %>
@@ -38,3 +43,23 @@
     </div>
   </div>
 <% end %>
+<script>
+  const fileField = $("#file");
+  const preview = $("#img-field");
+
+  // 選択された画像を取得し表示
+  $(document).on('change', fileField, function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (function() {
+        preview.empty();
+        preview.append($('<img>').attr({
+          src: reader.result,
+          height: "200px",
+          class: "preview"
+      }));
+    });
+    reader.readAsDataURL(file);
+  });
+</script>

@@ -54,6 +54,14 @@
                   zoom: 12
                 });
 
+                if(mapArea.clientWidth <= 400){
+                  map.setOptions({
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    zoomControl: false
+                  });
+                }
+
                 const inputAddress = document.getElementById('address-<%= article.id %>').textContent;
 
                 geocoder.geocode( { 'address': inputAddress}, function(results, status) {

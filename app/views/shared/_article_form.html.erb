@@ -12,7 +12,7 @@
     <div class="form-group">
       <%= f.label :image, '・画像', class:"image-label" %>
       <%= f.file_field :image, id: "file" %>
-      <div id="img_field">
+      <div id="img-field">
         <% if @article.image.present? %>
           <%= image_tag(@article.image, class: 'article-sweet-image') %>
         <% end %>
@@ -45,7 +45,7 @@
 <% end %>
 <script>
   const fileField = $("#file");
-  const preview = $("#img_field");
+  const preview = $("#img-field");
 
   // 選択された画像を取得し表示
   $(document).on('change', fileField, function(e) {

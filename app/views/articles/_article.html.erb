@@ -46,11 +46,12 @@
             </div>
             <script>
               $(document).on('turbolinks:load', function() {
-                const geocoder = new google.maps.Geocoder()
+                const geocoder = new google.maps.Geocoder();
+                const mapArea = document.getElementById('map-<%= article.id %>')
 
-                const map = new google.maps.Map(document.getElementById('map-<%= article.id %>'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 12
+                const map = new google.maps.Map(mapArea, {
+                  center: {lat: -34.397, lng: 150.644},
+                  zoom: 12
                 });
 
                 const inputAddress = document.getElementById('address-<%= article.id %>').textContent;
@@ -62,6 +63,21 @@
                     const marker = new google.maps.Marker({
                       map: map,
                       position: results[0].geometry.location
+                    });
+                  }
+                });
+                $(window).resize(function() {
+                  if(mapArea.clientWidth <= 400){
+                    map.setOptions({
+                      mapTypeControl: false,
+                      streetViewControl: false,
+                      zoomControl: false
+                    });
+                  }else{
+                    map.setOptions({
+                      mapTypeControl: true,
+                      streetViewControl: true,
+                      zoomControl: true
                     });
                   }
                 });

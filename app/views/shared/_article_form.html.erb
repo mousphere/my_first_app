@@ -44,26 +44,22 @@
   </div>
 <% end %>
 <script>
-  $(function(){
-    $fileField = $('#file')
+  const fileField = $("#file");
+  const preview = $("#img_field");
 
-    // 選択された画像を取得し表示
-    $($fileField).on('change', $fileField, function(e) {
-      file = e.target.files[0]
-      reader = new FileReader(),
-      $preview = $("#img_field");
+  // 選択された画像を取得し表示
+  $(document).on('change', fileField, function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
 
-      reader.onload = (function(file) {
-        return function(e) {
-          $preview.empty();
-          $preview.append($('<img>').attr({
-            src: e.target.result,
-            height: "200px",
-            class: "preview",
-          }));
-        };
-      })(file);
-      reader.readAsDataURL(file);
+    reader.onload = (function() {
+        preview.empty();
+        preview.append($('<img>').attr({
+          src: reader.result,
+          height: "200px",
+          class: "preview"
+      }));
     });
+    reader.readAsDataURL(file);
   });
 </script>

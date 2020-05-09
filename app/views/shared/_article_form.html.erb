@@ -11,15 +11,12 @@
     </div>
     <div class="form-group">
       <%= f.label :image, '・画像', class:"image-label" %>
-      <div id="img_field" class="border round add" onClick="$('#file').click()" >
-        <!--/画像があるときは画像を表示する-->
+      <%= f.file_field :image, id: "file" %>
+      <div id="img_field">
         <% if @article.image.present? %>
           <%= image_tag(@article.image, class: 'article-sweet-image') %>
-        <% else %>
-          <%= icon('fas', 'camera', class:'image-icon fa-3x') %>
         <% end %>
       </div>
-      <%= f.file_field :image, style: "display:none;", id: "file"%>
     </div>
     <div class="form-group">
       <%= f.label :shop, '・店名' %>
@@ -61,10 +58,8 @@
           $preview.empty();
           $preview.append($('<img>').attr({
             src: e.target.result,
-            // width: "100%",
             height: "200px",
             class: "preview",
-            title: file.name
           }));
         };
       })(file);

@@ -544,9 +544,6 @@
         margin: 5px 0px;
         background-position: center center;
         border: 2px solid #FFF5EE;
-        &:hover{
-            border: 2px solid blue;
-        }
     }
     &-timestamp{
         display: inline-block;
@@ -554,6 +551,16 @@
         font-size: 0.9rem;
         word-wrap: normal;
     }
+}
+
+.article-content .article-sweet-image{
+    &:hover{
+        border: 2px solid blue;
+    }
+}
+
+#img-field .article-sweet-image{
+    margin-top: 10px;
 }
 
 @media screen and (max-width:375px) {

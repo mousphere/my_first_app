@@ -181,7 +181,7 @@
         padding-left: 8px;
     }
     .col-lg-6{
-        padding: 0;
+        padding: 0 5px;
     }
 }
 
@@ -355,7 +355,7 @@
         }
     }
     .articles{
-        max-width: 650px;
+        max-width: 620px;
         margin: 0 auto;
     }
 }
@@ -422,7 +422,7 @@
 
 @media screen and (max-width:991px) {
     .user-edit{
-        max-width: 650px;
+        max-width: 620px;
         margin: 0 auto;
     }
 }
@@ -512,7 +512,7 @@
 
 @media screen and (max-width:991px) {
     .article-form{
-        max-width: 650px;
+        max-width: 620px;
         margin: 0 auto;
     }
 }
@@ -599,12 +599,26 @@ div.content{
     border-bottom: solid 4px #DDDDDD;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
+    &-timestamp{
+        @extend .article-timestamp;
+    }
     &-content{
         margin: 5px 0;
         padding-right: 20px;
     }
     &-delete-button{
         padding-right: 25px;
+    }
+}
+
+.comments{
+    padding-top: 10px;
+}
+
+@media screen and (max-width:991px) {
+    .comments{
+        max-width: 620px;
+        margin: 0 auto;
     }
 }
 

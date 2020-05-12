@@ -20,26 +20,34 @@
           <% end %>
           <% if article.shop.present? %>
             <div class="article-padding">
-              <span>店名：<%= article.shop %></span>
+              <span>
+                <span class="article-item">店名&emsp;&emsp;&emsp;</span><%= article.shop %>
+              </span>
             </div>
           <% end %>
           <div class="article-padding">
-            <span>商品名：<%= article.sweet_name %></span>
+            <span>
+              <span class="article-item">商品名&emsp;&emsp;</span><%= article.sweet_name %>
+            </span>
           </div>
           <div class="article-padding">
-            <span>ジャンル：<%= article.converted_genre %></span>
+            <span>
+              <span class="article-item">ジャンル&emsp;</span><%= article.converted_genre %>
+            </span>
           </div>
           <% if article.url.present? %>
             <div class="article-padding url">
               <span class="url">
-                参考URL：<a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
+                <span class="article-item">参考URL&emsp;</span>
+                <a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
               </span>
             </div>
           <% end %>
           <% if article.prefecture.present? %>
             <div class="article-padding">
               <span>
-                住所：<span id="address-<%= article.id %>"><%= article.arranged_address %></span>
+                <span class="article-item">住所&emsp;&emsp;&emsp;</span>
+                <span id="address-<%= article.id %>"><%= article.arranged_address %></span>
               </span>
             </div>
             <div class='upper-link' id='map-<%= article.id %>'>
@@ -93,7 +101,10 @@
             </script>
           <% end %>
           <div class="article-padding">
-            <span class="content">紹介文：</span>
+            <!--<span class="content">-->
+              <!--<span class="article-item">紹介文&emsp;&emsp;</span>-->
+              <span class="article-item content">紹介文&emsp;&emsp;</span>
+            <!--</span>-->
             <div class="border rounded content">
               <p class="content"><%= article.content %></p>
             </div>

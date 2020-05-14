@@ -19,43 +19,40 @@
             <% end %>
           <% end %>
           <% if article.shop.present? %>
-            <div class="article-padding">
-              <span>
-                <span class="article-item">店名&emsp;&emsp;&emsp;</span><%= article.shop %>
-              </span>
-            </div>
+            <!--<div class="article-padding">-->
+              <table>
+                <tr>
+                  <td class="article-item" width="80px">店名</td>
+                  <td><%= article.shop %></td>
+                </tr>
+              </table>
+            <!--</div>-->
           <% end %>
-          <div class="article-padding">
-            <span>
-              <span class="article-item">商品名&emsp;&emsp;</span><%= article.sweet_name %>
-            </span>
-          </div>
-          <div class="article-padding">
-            <span>
-              <span class="article-item">ジャンル&emsp;</span><%= article.converted_genre %>
-            </span>
-          </div>
+          <table>
+            <tr>
+              <td class="article-item" width="80px">商品名</td>
+              <td><%= article.sweet_name %></td>
+            </tr>
+            <tr>
+              <td class="article-item" width="80px">ジャンル</td>
+              <td><%= article.converted_genre %></td>
+            </tr>
+          </table>
           <% if article.url.present? %>
-            <div class="article-padding url">
-              <div class="row">
-                <div class="col-2">
-                  <span class="article-item">URL</span>
-                </div>
-                <div class="col-10">
-                  <span class="url">
-                    <a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
-                  </span>
-                </div>
-              </div>
-            </div>
+            <table class="url-table">
+              <tr>
+                <td class="article-item" width="80px">URL</td>
+                <td style="word-wrap: break-word;"><a href="<%= article.url %>" target="_blank" class="upper-link url"><%= article.url %></a></td>
+              </tr>
+            </table>
           <% end %>
           <% if article.prefecture.present? %>
-            <div class="article-padding">
-              <span>
-                <span class="article-item">住所&emsp;&emsp;&emsp;</span>
-                <span id="address-<%= article.id %>"><%= article.arranged_address %></span>
-              </span>
-            </div>
+            <table>
+              <tr>
+                <td class="article-item" width="80px">住所</td>
+                <td id="address-<%= article.id %>"><%= article.arranged_address %></td>
+              </tr>
+            </table>
             <div class='upper-link' id='map-<%= article.id %>'>
             </div>
             <script>
@@ -106,16 +103,12 @@
               });
             </script>
           <% end %>
-          <div class="article-padding">
-            <div class="row content">
-              <div class="col-2">
-                <span class="article-item content">紹介文</span>
-              </div>
-              <div class="col-10">
-                <p class="content"><%= article.content %></p>
-              </div>
-            </div>
-          </div>
+          <table>
+            <tr>
+              <td class="article-item" width="80px">紹介文</td>
+              <td><%= article.content %></td>
+            </tr>
+          </table>
         </div>
 
         <!-- ボタン一覧 -->

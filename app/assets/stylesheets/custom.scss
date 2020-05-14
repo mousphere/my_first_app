@@ -572,8 +572,13 @@
     }
 }
 
+.url-table{
+    table-layout: fixed;
+    width: 100%;
+}
+
 .url{
-    word-wrap: break-word;
+    font-size: 0.9rem;
 }
 
 /* Google マップ */

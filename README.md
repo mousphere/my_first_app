@@ -41,6 +41,8 @@
 - Route53
 - ALB
 - ACM
+- S3
+- CloudFront
 
 ## 機能一覧：
 - ユーザー登録、ログイン機能

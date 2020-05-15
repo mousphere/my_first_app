@@ -530,6 +530,7 @@
     border-radius: 9px;
     &-item{
         color: black;
+        width: 80px;
     }
     &-content-area{
         margin-right: 25px;
@@ -569,15 +570,6 @@
     margin-top: 10px;
 }
 
-@media screen and (max-width:375px) {
-    .article-user{
-        font-size: 1.0rem;
-    }
-    .article-content-area{
-        font-size: 0.8rem;
-    }
-}
-
 .content-table{
     table-layout: fixed;
     width: 100%;
@@ -586,6 +578,27 @@
 
 .url{
     font-size: 0.9rem;
+}
+
+@media screen and (max-width:429px) {
+    .article-sweet-image{
+        height: 170px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .article-user{
+        font-size: 1.0rem;
+    }
+    .article-content-area{
+        font-size: 0.8rem;
+    }
+    .article-item{
+        width: 70px;
+    }
+    .url{
+        font-size: 0.7rem;
+    }
 }
 
 /* Google マップ */

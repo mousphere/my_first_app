@@ -6,7 +6,7 @@
         <%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user, class:'upper-link' %>
       </div>
       <div class="col-9 no_padding">
-        <div class="article-content">
+        <div class="article-content-area">
           <div class="article-padding">
             <span class="article-user"><%= link_to user.name, user, class:'upper-link' %></span>
             <span class="article-timestamp">
@@ -18,30 +18,35 @@
               <%= image_tag article.image, class: 'article-sweet-image upper-link' %>
             <% end %>
           <% end %>
-          <% if article.shop.present? %>
-            <div class="article-padding">
-              <span>店名：<%= article.shop %></span>
-            </div>
-          <% end %>
-          <div class="article-padding">
-            <span>商品名：<%= article.sweet_name %></span>
-          </div>
-          <div class="article-padding">
-            <span>ジャンル：<%= article.converted_genre %></span>
-          </div>
-          <% if article.url.present? %>
-            <div class="article-padding url">
-              <span class="url">
-                参考URL：<a href="<%= article.url %>" target="_blank" class="upper-link"><%= article.url %></a>
-              </span>
-            </div>
-          <% end %>
+          <table class="content-table">
+            <% if article.shop.present? %>
+              <tr>
+                <td class="article-item" valign="top">店名</td>
+                <td class="article-content"><%= article.shop %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td class="article-item" valign="top">商品名</td>
+              <td class="article-content"><%= article.sweet_name %></td>
+            </tr>
+            <tr>
+              <td class="article-item" valign="top">ジャンル</td>
+              <td class="article-content"><%= article.converted_genre %></td>
+            </tr>
+            <% if article.url.present? %>
+              <tr>
+                <td class="article-item" valign="top">URL</td>
+                <td class="article-content"><a href="<%= article.url %>" target="_blank" class="upper-link url"><%= article.url %></a></td>
+              </tr>
+            <% end %>
+          </table>
           <% if article.prefecture.present? %>
-            <div class="article-padding">
-              <span>
-                住所：<span id="address-<%= article.id %>"><%= article.arranged_address %></span>
-              </span>
-            </div>
+            <table class="content-table">
+              <tr>
+                <td class="article-item" valign="top">住所</td>
+                <td class="article-content" id="address-<%= article.id %>"><%= article.arranged_address %></td>
+              </tr>
+            </table>
             <div class='upper-link' id='map-<%= article.id %>'>
             </div>
             <script>
@@ -51,13 +56,16 @@
 
                 const map = new google.maps.Map(mapArea, {
                   center: {lat: -34.397, lng: 150.644},
-                  zoom: 12
+                  zoom: 14
+                });
+
+                map.setOptions({
+                  mapTypeControl: false,
+                  streetViewControl: false,
                 });
 
                 if(mapArea.clientWidth <= 400){
                   map.setOptions({
-                    mapTypeControl: false,
-                    streetViewControl: false,
                     zoomControl: false
                   });
                 }
@@ -77,14 +85,10 @@
                 $(window).resize(function() {
                   if(mapArea.clientWidth <= 400){
                     map.setOptions({
-                      mapTypeControl: false,
-                      streetViewControl: false,
                       zoomControl: false
                     });
                   }else{
                     map.setOptions({
-                      mapTypeControl: true,
-                      streetViewControl: true,
                       zoomControl: true
                     });
                   }
@@ -92,12 +96,12 @@
               });
             </script>
           <% end %>
-          <div class="article-padding">
-            <span class="content">紹介文：</span>
-            <div class="border rounded content">
-              <p class="content"><%= article.content %></p>
-            </div>
-          </div>
+          <table class="content-table">
+            <tr>
+              <td class="article-item" valign="top">紹介文</td>
+              <td class="article-content"><%= article.content %></td>
+            </tr>
+          </table>
         </div>
 
         <!-- ボタン一覧 -->

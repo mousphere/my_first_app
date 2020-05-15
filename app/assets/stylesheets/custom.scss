@@ -528,8 +528,15 @@
     border-bottom: solid 4px #DDDDDD;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
-    &-content{
+    &-item{
+        color: black;
+        width: 80px;
+    }
+    &-content-area{
         margin-right: 25px;
+    }
+    &-content{
+        word-wrap: break-word;
     }
     &-padding{
         padding: 5px 0;
@@ -553,7 +560,7 @@
     }
 }
 
-.article-content .article-sweet-image{
+.article-content-area .article-sweet-image{
     &:hover{
         border: 2px solid blue;
     }
@@ -563,34 +570,55 @@
     margin-top: 10px;
 }
 
+.content-table{
+    table-layout: fixed;
+    width: 100%;
+    line-height: 170%;
+}
+
+.url{
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width:429px) {
+    .article-sweet-image{
+        height: 170px;
+    }
+}
+
 @media screen and (max-width:375px) {
     .article-user{
         font-size: 1.0rem;
     }
-}
-
-.url{
-    word-wrap: break-word;
+    .article-content-area{
+        font-size: 0.8rem;
+    }
+    .article-item{
+        width: 70px;
+    }
+    .url{
+        font-size: 0.7rem;
+    }
 }
 
 /* Google マップ */
 div[id^="map-"]{
-    height: 300px;
+    height: 200px;
+    margin: 6px 0;
 }
 
 @media screen and (max-width:429px) {
     div[id^="map-"]{
-        height: 200px;
+        height: 170px;
     }
 }
 
-p.content{
-    margin-left: 5px;
-    margin-bottom: 0px;
+.content .col-2{
+    padding-right: 0px;
 }
 
-div.content{
-    padding: 2px 0;
+p.content{
+    margin-bottom: 0px;
 }
 
 /* コメント内容 */

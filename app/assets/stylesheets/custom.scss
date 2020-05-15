@@ -591,11 +591,12 @@
 /* Google マップ */
 div[id^="map-"]{
     height: 200px;
+    margin: 6px 0;
 }
 
 @media screen and (max-width:429px) {
     div[id^="map-"]{
-        height: 200px;
+        height: 170px;
     }
 }
 

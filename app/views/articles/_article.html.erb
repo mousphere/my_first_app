@@ -59,10 +59,13 @@
                   zoom: 14
                 });
 
+                map.setOptions({
+                  mapTypeControl: false,
+                  streetViewControl: false,
+                });
+
                 if(mapArea.clientWidth <= 400){
                   map.setOptions({
-                    mapTypeControl: false,
-                    streetViewControl: false,
                     zoomControl: false
                   });
                 }
@@ -82,14 +85,10 @@
                 $(window).resize(function() {
                   if(mapArea.clientWidth <= 400){
                     map.setOptions({
-                      mapTypeControl: false,
-                      streetViewControl: false,
                       zoomControl: false
                     });
                   }else{
                     map.setOptions({
-                      mapTypeControl: true,
-                      streetViewControl: true,
                       zoomControl: true
                     });
                   }

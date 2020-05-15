@@ -531,8 +531,11 @@
     &-item{
         color: black;
     }
-    &-content{
+    &-content-area{
         margin-right: 25px;
+    }
+    &-content{
+        word-wrap: break-word;
     }
     &-padding{
         padding: 5px 0;
@@ -556,7 +559,7 @@
     }
 }
 
-.article-content .article-sweet-image{
+.article-content-area .article-sweet-image{
     &:hover{
         border: 2px solid blue;
     }
@@ -570,11 +573,15 @@
     .article-user{
         font-size: 1.0rem;
     }
+    .article-content-area{
+        font-size: 0.8rem;
+    }
 }
 
-.url-table{
+.content-table{
     table-layout: fixed;
     width: 100%;
+    line-height: 170%;
 }
 
 .url{

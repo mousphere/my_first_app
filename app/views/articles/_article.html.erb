@@ -6,7 +6,7 @@
         <%= link_to image_tag(image(user), alt: 'User_image', class:'user_image'), user, class:'upper-link' %>
       </div>
       <div class="col-9 no_padding">
-        <div class="article-content">
+        <div class="article-content-area">
           <div class="article-padding">
             <span class="article-user"><%= link_to user.name, user, class:'upper-link' %></span>
             <span class="article-timestamp">
@@ -18,39 +18,33 @@
               <%= image_tag article.image, class: 'article-sweet-image upper-link' %>
             <% end %>
           <% end %>
-          <% if article.shop.present? %>
-            <!--<div class="article-padding">-->
-              <table>
-                <tr>
-                  <td class="article-item" width="80px">店名</td>
-                  <td><%= article.shop %></td>
-                </tr>
-              </table>
-            <!--</div>-->
-          <% end %>
-          <table>
-            <tr>
-              <td class="article-item" width="80px">商品名</td>
-              <td><%= article.sweet_name %></td>
-            </tr>
-            <tr>
-              <td class="article-item" width="80px">ジャンル</td>
-              <td><%= article.converted_genre %></td>
-            </tr>
-          </table>
-          <% if article.url.present? %>
-            <table class="url-table">
+          <table class="content-table">
+            <% if article.shop.present? %>
               <tr>
-                <td class="article-item" width="80px">URL</td>
-                <td style="word-wrap: break-word;"><a href="<%= article.url %>" target="_blank" class="upper-link url"><%= article.url %></a></td>
+                <td class="article-item" width="80px" valign="top">店名</td>
+                <td class="article-content"><%= article.shop %></td>
               </tr>
-            </table>
-          <% end %>
-          <% if article.prefecture.present? %>
-            <table>
+            <% end %>
+            <tr>
+              <td class="article-item" width="80px" valign="top">商品名</td>
+              <td class="article-content"><%= article.sweet_name %></td>
+            </tr>
+            <tr>
+              <td class="article-item" width="80px" valign="top">ジャンル</td>
+              <td class="article-content"><%= article.converted_genre %></td>
+            </tr>
+            <% if article.url.present? %>
               <tr>
-                <td class="article-item" width="80px">住所</td>
-                <td id="address-<%= article.id %>"><%= article.arranged_address %></td>
+                <td class="article-item" width="80px" valign="top">URL</td>
+                <td class="article-content"><a href="<%= article.url %>" target="_blank" class="upper-link url"><%= article.url %></a></td>
+              </tr>
+            <% end %>
+          </table>
+          <% if article.prefecture.present? %>
+            <table class="content-table">
+              <tr>
+                <td class="article-item" width="80px" valign="top">住所</td>
+                <td class="article-content" id="address-<%= article.id %>"><%= article.arranged_address %></td>
               </tr>
             </table>
             <div class='upper-link' id='map-<%= article.id %>'>
@@ -103,10 +97,10 @@
               });
             </script>
           <% end %>
-          <table>
+          <table class="content-table">
             <tr>
-              <td class="article-item" width="80px">紹介文</td>
-              <td><%= article.content %></td>
+              <td class="article-item" width="80px" valign="top">紹介文</td>
+              <td class="article-content"><%= article.content %></td>
             </tr>
           </table>
         </div>

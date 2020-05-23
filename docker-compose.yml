@@ -1,0 +1,30 @@
+version: '3'
+services:
+  # webpacker:
+  #   build: .
+    # command: bundle exec bin/webpack-dev-server
+    # volumes:
+    #   - .:/my_app
+    #   - /my_app/node_modules/
+    # ports:
+    #   - "3035:3035"
+    # tty: true
+  rails:
+    build: .
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      # - webpacker
+    # volumes:
+    #   - .:/my_app
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: my_first_app_development
+    ports:
+      - "3306:3306"

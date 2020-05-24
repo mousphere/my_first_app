@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20200422055136) do
 
-  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20200422055136) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content", null: false
     t.bigint "user_id", null: false
     t.bigint "article_id", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20200422055136) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "like_user_id", null: false
     t.integer "liked_article_id", null: false
     t.datetime "created_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20200422055136) do
     t.index ["liked_article_id"], name: "index_likes_on_liked_article_id"
   end
 
-  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "follower_id", null: false
     t.integer "followed_id", null: false
     t.datetime "created_at", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20200422055136) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "stock_user_id", null: false
     t.integer "stocked_article_id", null: false
     t.datetime "created_at", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20200422055136) do
     t.index ["stocked_article_id"], name: "index_stocks_on_stocked_article_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.datetime "created_at", null: false
@@ -86,4 +86,6 @@ ActiveRecord::Schema.define(version: 20200422055136) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
 end

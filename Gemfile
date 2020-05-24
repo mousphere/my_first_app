@@ -25,7 +25,6 @@ gem 'mini_magick'
 # React用
 gem 'react-rails'
 gem 'webpacker', '~> 3.0'
-# gem 'webpacker'
 
 # font-awesome用
 gem 'font-awesome-sass', '~> 5.11.2'

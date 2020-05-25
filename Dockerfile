@@ -7,7 +7,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN apt-get update && apt-get install -y build-essential libpq-dev 
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    apt-get install nodejs
+    apt-get install -y nodejs
 
 # yarnパッケージ管理ツールインストール
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \

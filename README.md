@@ -35,14 +35,19 @@
 - JQuery
 - React 16.10.2 (Hooks)
 
-**AWS：**
-- EC2
-- RDS for MySQL
-- Route53
-- ALB
-- ACM
-- S3
-- CloudFront
+**インフラストラクチャー**
+- AWS
+  - EC2
+  - RDS for MySQL
+  - Route53
+  - ALB
+  - ACM
+  - S3
+  - CloudFront
+  - Nginx, unicorn
+
+- Docker, Docker-compose
+
 
 **インフラストラクチャー**
 - AWS

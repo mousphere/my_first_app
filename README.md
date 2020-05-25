@@ -48,21 +48,6 @@
 
 - Docker, Docker-compose
 
-
-**インフラストラクチャー**
-- AWS
-  - EC2
-  - RDS for MySQL
-  - Route53
-  - ALB
-  - ACM
-  - S3
-  - CloudFront
-  - Nginx, unicorn
-
-- Docker, Docker-compose
-
-
 ## 機能一覧：
 - ユーザー登録、ログイン機能
 - テストユーザーログイン機能

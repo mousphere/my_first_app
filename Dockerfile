@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:2.6.3
 
 # シェルスクリプトとしてbashを利用
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh

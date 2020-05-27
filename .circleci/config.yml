@@ -5,15 +5,18 @@ executors:
     working_directory: ~/my_app
 
 orbs:
+
   ruby: circleci/ruby@1.0
 
 jobs:
   checkout_code:
+
     executor: directory_settings
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
     steps:
       - checkout
+
       - save_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
@@ -54,6 +57,7 @@ jobs:
             - ./vendor/bundle
             - ./node_modules
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+
       - run:
           name: DB config settings
           command: mv config/database.yml.ci config/database.yml
@@ -70,6 +74,7 @@ jobs:
       - run: bundle exec rubocop
       - run: bundle exec rspec
 
+
 workflows:
   version: 2
   build_and_test:
@@ -78,3 +83,4 @@ workflows:
       - test:
           requires:
             - checkout_code
+

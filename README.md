@@ -48,6 +48,8 @@
 
 - Docker, Docker-compose
 
+- CircleCI
+
 ## 機能一覧：
 - ユーザー登録、ログイン機能
 - テストユーザーログイン機能

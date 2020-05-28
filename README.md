@@ -50,6 +50,9 @@
 
 - CircleCI
 
+**インフラストラクチャー構成図**
+(https://user-images.githubusercontent.com/50992247/83102990-c1120400-a0f0-11ea-96c8-d18b09ac5337.png)
+
 ## 機能一覧：
 - ユーザー登録、ログイン機能
 - テストユーザーログイン機能

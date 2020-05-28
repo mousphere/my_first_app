@@ -50,6 +50,9 @@
 
 - CircleCI
 
+**インフラストラクチャー構成図**
+![aws_infra](https://user-images.githubusercontent.com/50992247/83111698-f70ab480-a0ff-11ea-952c-f2395258a40b.png)
+
 ## 機能一覧：
 - ユーザー登録、ログイン機能
 - テストユーザーログイン機能

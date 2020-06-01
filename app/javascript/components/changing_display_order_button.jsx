@@ -44,39 +44,49 @@ function ChangingDisplayOrderButton(props){
   }
   
   const sendOptionWithAjax = (type, url, option) => {
-    $.ajax({
-      type: type,
-      url: url,
-      dataType: 'json',
-      contentType: 'application/json',
-      data: option,
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
-      }
-    }).then((response) => {
-      window.location.reload(true)
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        type: type,
+        url: url,
+        dataType: 'json',
+        contentType: 'application/json',
+        data: option,
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        }
+      }).then((response) => {
+        // ページネーションで2ページ目以降を開いている場合は
+        // 1ページ目に戻す
+        if (/page/.test(url)){
+          const replaced_url = url.replace(/[\?&]page=[2-9]+/, "")
+          window.location.replace(replaced_url)
+        }
+        resolve()
+      })
     })
   }
 
-  const orderByCreatedAtDesk = () =>{
-    
-    const [type, opt] = setInfo(url, 0)
-    
+  const reload = () =>{
+    window.location.reload(true)
+  }
+
+  const mainFunction = (type, url, opt) =>{
     setOpt(opt)
     .then(setLoadingTrue()
     .then(sendOptionWithAjax(type, url, opt)
+    .then(reload())
       )
     )
+  }
+
+  const orderByCreatedAtDesk = () =>{
+    const [type, opt] = setInfo(url, 0)
+    mainFunction(type, url, opt)
   }
   
   const orderByLikesDesk = () =>{
     const [type, opt] = setInfo(url, 1)
-    
-    setOpt(opt)
-    .then(setLoadingTrue()
-    .then(sendOptionWithAjax(type, url, opt)
-      )
-    )
+    mainFunction(type, url, opt)
   }
   
   const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')

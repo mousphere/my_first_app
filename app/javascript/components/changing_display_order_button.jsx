@@ -18,7 +18,7 @@ function ChangingDisplayOrderButton(props){
   const setInfo = (url, opt) => {
     let type, optionData
     
-    if(url == root_url){
+    if(url === root_url){
       type = 'POST'
       optionData = JSON.stringify({ option: opt })
     }else{

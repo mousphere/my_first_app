@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import classnames from 'classnames'
 
 function ChangingDisplayOrderButton(props){
@@ -7,7 +7,14 @@ function ChangingDisplayOrderButton(props){
   
   const [option, setOption] = useState(props.option)
   const [loading, setLoading] = useState(false)
-  
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
+
   const setInfo = (url, opt) => {
     let type, optionData
     
@@ -50,7 +57,7 @@ function ChangingDisplayOrderButton(props){
       window.location.reload(true)
     })
   }
-  
+
   const orderByCreatedAtDesk = () =>{
     
     const [type, opt] = setInfo(url, 0)

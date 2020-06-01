@@ -26,6 +26,7 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
+.DS_Store
 
 # Ignore encrypted secrets key file.
 config/secrets.yml.key

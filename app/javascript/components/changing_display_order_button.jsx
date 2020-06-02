@@ -57,12 +57,10 @@ function ChangingDisplayOrderButton(props){
       }).then((response) => {
         // ページネーションで2ページ目以降を開いている場合は
         // 1ページ目に戻す
-        if (/page/.test(url)){
-          const replaced_url = url.replace(/[\?&]page=[2-9]+/, "")
-          window.location.replace(replaced_url)
-        }
-        resolve()
+        const replaced_url = url.replace(/[\?&]page=[2-9]+/, "")
+        window.location.replace(replaced_url)
       })
+      resolve()
     })
   }
 

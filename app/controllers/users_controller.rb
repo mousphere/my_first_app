@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params_including_image)
+    if @user.update(user_params)
       flash[:success] = 'プロフィールが更新されました'
       redirect_to @user
     else
@@ -100,13 +100,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email,
-                                 :password, :password_confirmation)
-  end
-
-  # TODO
-  # 新規登録時も以下に更新する?
-  def user_params_including_image
     params.require(:user).permit(:name, :email,
                                  :password, :password_confirmation, :image)
   end

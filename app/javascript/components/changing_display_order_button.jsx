@@ -15,42 +15,38 @@ function ChangingDisplayOrderButton(props){
     })
   })
 
-  const setInfo = (url, opt) => {
-    let type, optionData
-    
-    if(url === root_url){
-      type = 'POST'
-      optionData = JSON.stringify({ option: opt })
-    }else{
-      type = 'GET'
-      optionData = { option: opt }
-    }
-    
-    return[type, optionData]
-  }
-  
-  const setLoadingTrue = () =>{
+  const setLoadingTrue = (opt) =>{
     return new Promise((resolve, reject) => {
       setLoading(true)
+      setOption(opt) // ボタンのカラー変更
       resolve()
     })
   }
-  
-  const setOpt = (opt) =>{
+
+  // ajax通信でのリクエストの種類、データ形式を設定する
+  const setInfo = (url, opt) => {
     return new Promise((resolve, reject) => {
-      setOption(opt)
-      resolve()
+      let type, optionData
+      
+      if(url === root_url){
+        type = 'POST'
+        optionData = JSON.stringify({ option: opt })
+      }else{
+        type = 'GET'
+        optionData = { option: opt }
+      }
+      resolve([type, optionData])
     })
   }
   
-  const sendOptionWithAjax = (type, url, option) => {
+  const sendOptionWithAjax = (url, type, opt) => {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: type,
         url: url,
         dataType: 'json',
         contentType: 'application/json',
-        data: option,
+        data: opt,
         beforeSend: function(xhr) {
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
         }
@@ -68,23 +64,22 @@ function ChangingDisplayOrderButton(props){
     window.location.reload(true)
   }
 
-  const mainFunction = (type, url, opt) =>{
-    setOpt(opt)
-    .then(setLoadingTrue()
-    .then(sendOptionWithAjax(type, url, opt)
+  const mainFunction = (url, opt) =>{
+    setLoadingTrue(opt)
+    .then(setInfo(url, opt)
+    .then((result) => {
+      sendOptionWithAjax(url, result[0], result[1])
+    })
     .then(reload())
-      )
     )
   }
 
   const orderByCreatedAtDesk = () =>{
-    const [type, opt] = setInfo(url, 0)
-    mainFunction(type, url, opt)
+    mainFunction(url, 0)
   }
   
   const orderByLikesDesk = () =>{
-    const [type, opt] = setInfo(url, 1)
-    mainFunction(type, url, opt)
+    mainFunction(url, 1)
   }
   
   const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')

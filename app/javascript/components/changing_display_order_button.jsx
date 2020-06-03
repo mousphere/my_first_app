@@ -15,31 +15,33 @@ function ChangingDisplayOrderButton(props){
     })
   })
 
+  // ajax通信で与えるデータの通信手段、データ形式を設定する
   const setInfo = (url, opt) => {
-    let type, optionData
-    
-    if(url === root_url){
-      type = 'POST'
-      optionData = JSON.stringify({ option: opt })
-    }else{
-      type = 'GET'
-      optionData = { option: opt }
-    }
-    
-    return[type, optionData]
-  }
-  
-  const setLoadingTrue = () =>{
     return new Promise((resolve, reject) => {
-      setLoading(true)
-      resolve()
+      let type, optionData
+      
+      if(url === root_url){
+        type = 'POST'
+        optionData = JSON.stringify({ option: opt })
+      }else{
+        type = 'GET'
+        optionData = { option: opt }
+      }
+      resolve([type, optionData])
     })
   }
   
-  const setOpt = (opt) =>{
+  const setOpt = (type, opt) =>{
     return new Promise((resolve, reject) => {
       setOption(opt)
-      resolve()
+      resolve([type, opt])
+    })
+  }
+
+  const setLoadingTrue = (type, opt) =>{
+    return new Promise((resolve, reject) => {
+      setLoading(true)
+      resolve([type, opt])
     })
   }
   
@@ -68,23 +70,28 @@ function ChangingDisplayOrderButton(props){
     window.location.reload(true)
   }
 
-  const mainFunction = (type, url, opt) =>{
-    setOpt(opt)
-    .then(setLoadingTrue()
-    .then(sendOptionWithAjax(type, url, opt)
-    .then(reload())
-      )
-    )
+  const mainFunction = (url, opt) =>{
+    setInfo(url, opt)
+    .then((value) => {
+      setOpt(value[0], value[1])
+      .then((value) => {
+        setLoadingTrue(value[0], value[1])
+        .then((value) => {
+          sendOptionWithAjax(value[0], url, value[1])
+          .then(
+            reload()
+          )
+        })
+      })
+    })
   }
 
   const orderByCreatedAtDesk = () =>{
-    const [type, opt] = setInfo(url, 0)
-    mainFunction(type, url, opt)
+    mainFunction(url, 0)
   }
   
   const orderByLikesDesk = () =>{
-    const [type, opt] = setInfo(url, 1)
-    mainFunction(type, url, opt)
+    mainFunction(url, 1)
   }
   
   const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')

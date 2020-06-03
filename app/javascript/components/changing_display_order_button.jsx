@@ -59,8 +59,8 @@ function ChangingDisplayOrderButton(props){
         // 1ページ目に戻す
         const replaced_url = url.replace(/[\?&]page=[2-9]+/, "")
         window.location.replace(replaced_url)
+        resolve()
       })
-      resolve()
     })
   }
 

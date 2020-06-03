@@ -15,14 +15,15 @@ function ChangingDisplayOrderButton(props){
     })
   })
 
-  const setLoadingTrue = () =>{
+  const setLoadingTrue = (opt) =>{
     return new Promise((resolve, reject) => {
       setLoading(true)
+      setOption(opt) // ボタンのカラー変更
       resolve()
     })
   }
 
-  // ajax通信で与えるデータの通信手段、データ形式を設定する
+  // ajax通信でのリクエストの種類、データ形式を設定する
   const setInfo = (url, opt) => {
     return new Promise((resolve, reject) => {
       let type, optionData
@@ -34,19 +35,18 @@ function ChangingDisplayOrderButton(props){
         type = 'GET'
         optionData = { option: opt }
       }
-      setOption(opt) // ボタンのカラー変更
       resolve([type, optionData])
     })
   }
   
-  const sendOptionWithAjax = (url, type, option) => {
+  const sendOptionWithAjax = (url, type, opt) => {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: type,
         url: url,
         dataType: 'json',
         contentType: 'application/json',
-        data: option,
+        data: opt,
         beforeSend: function(xhr) {
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
         }
@@ -65,7 +65,7 @@ function ChangingDisplayOrderButton(props){
   }
 
   const mainFunction = (url, opt) =>{
-    setLoadingTrue()
+    setLoadingTrue(opt)
     .then(setInfo(url, opt)
     .then((result) => {
       sendOptionWithAjax(url, result[0], result[1])

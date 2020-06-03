@@ -15,31 +15,30 @@ function ChangingDisplayOrderButton(props){
     })
   })
 
-  const setLoadingTrue = (opt) =>{
+  const setInfo = (url, opt) => {
+    setOption(opt) // ボタンのカラー変更
+
+    let type, optionData
+    
+    if(url === root_url){
+      type = 'POST'
+      optionData = JSON.stringify({ option: opt })
+    }else{
+      type = 'GET'
+      optionData = { option: opt }
+    }
+    
+    return[type, optionData]
+  }
+  
+  const setLoadingTrue = () =>{
     return new Promise((resolve, reject) => {
       setLoading(true)
-      setOption(opt) // ボタンのカラー変更
       resolve()
     })
   }
-
-  // ajax通信でのリクエストの種類、データ形式を設定する
-  const setInfo = (url, opt) => {
-    return new Promise((resolve, reject) => {
-      let type, optionData
-      
-      if(url === root_url){
-        type = 'POST'
-        optionData = JSON.stringify({ option: opt })
-      }else{
-        type = 'GET'
-        optionData = { option: opt }
-      }
-      resolve([type, optionData])
-    })
-  }
   
-  const sendOptionWithAjax = (url, type, opt) => {
+  const sendOptionWithAjax = (type, url, opt) => {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: type,
@@ -64,22 +63,21 @@ function ChangingDisplayOrderButton(props){
     window.location.reload(true)
   }
 
-  const mainFunction = (url, opt) =>{
-    setLoadingTrue(opt)
-    .then(setInfo(url, opt)
-    .then((result) => {
-      sendOptionWithAjax(url, result[0], result[1])
-    })
+  const mainFunction = (type, url, opt) =>{
+    setLoadingTrue()
+    .then(sendOptionWithAjax(type, url, opt)
     .then(reload())
     )
   }
 
   const orderByCreatedAtDesk = () =>{
-    mainFunction(url, 0)
+    const [type, opt] = setInfo(url, 0)
+    mainFunction(type, url, opt)
   }
   
   const orderByLikesDesk = () =>{
-    mainFunction(url, 1)
+    const [type, opt] = setInfo(url, 1)
+    mainFunction(type, url, opt)
   }
   
   const primaryButton = classnames('d-inline-block p-2 mx-2 btn btn-primary')

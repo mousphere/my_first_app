@@ -15,6 +15,13 @@ function ChangingDisplayOrderButton(props){
     })
   })
 
+  const setLoadingTrue = () =>{
+    return new Promise((resolve, reject) => {
+      setLoading(true)
+      resolve()
+    })
+  }
+
   // ajax通信で与えるデータの通信手段、データ形式を設定する
   const setInfo = (url, opt) => {
     return new Promise((resolve, reject) => {
@@ -27,25 +34,12 @@ function ChangingDisplayOrderButton(props){
         type = 'GET'
         optionData = { option: opt }
       }
+      setOption(opt) // ボタンのカラー変更
       resolve([type, optionData])
     })
   }
   
-  const setOpt = (type, opt) =>{
-    return new Promise((resolve, reject) => {
-      setOption(opt)
-      resolve([type, opt])
-    })
-  }
-
-  const setLoadingTrue = (type, opt) =>{
-    return new Promise((resolve, reject) => {
-      setLoading(true)
-      resolve([type, opt])
-    })
-  }
-  
-  const sendOptionWithAjax = (type, url, option) => {
+  const sendOptionWithAjax = (url, type, option) => {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: type,
@@ -71,19 +65,13 @@ function ChangingDisplayOrderButton(props){
   }
 
   const mainFunction = (url, opt) =>{
-    setInfo(url, opt)
-    .then((value) => {
-      setOpt(value[0], value[1])
-      .then((value) => {
-        setLoadingTrue(value[0], value[1])
-        .then((value) => {
-          sendOptionWithAjax(value[0], url, value[1])
-          .then(
-            reload()
-          )
-        })
-      })
+    setLoadingTrue()
+    .then(setInfo(url, opt)
+    .then((result) => {
+      sendOptionWithAjax(url, result[0], result[1])
     })
+    .then(reload())
+    )
   }
 
   const orderByCreatedAtDesk = () =>{

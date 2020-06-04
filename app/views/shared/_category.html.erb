@@ -14,7 +14,7 @@
       <%= f.search_field :sweet_name_cont, id:'sweet-name-search', placeholder:'' %>
       <div class="search-form-button">
         <div class="clear-button">
-          <%= link_to 'クリア', root_path, class:'btn btn-secondary', id:'clear-button' %>
+          <%= link_to 'クリア', root_path, class:'btn btn-secondary', id:'clear-button', data: { turbolinks: false } %>
         </div>
         <div class="search-button">
           <%= button_tag '検索', type: 'submit', class:'btn btn-primary', id:'search-button' %>
